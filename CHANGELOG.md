@@ -5,6 +5,54 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.2.0 — Match mode + URL matching (2026-05-23)
+
+Brings the new iOS "match scan" mode to the web and adds a web-only URL-based
+matching path.
+
+### Added
+
+- **Match scan mode** on `/scan` — a top-of-page toggle picks between
+  **Add to library** (existing flow → `/review`) and **Check match** (new
+  flow → `/match`).
+- **`/match` route** (`app/match/page.tsx`, `components/screens/MatchScreen.tsx`)
+  — shows the bag's attributes, a match-score badge, the reason highlights,
+  and **Done** / **Save anyway** actions. Reuses `OMatchBadge`, `OChip`,
+  `OLabel`, `CoffeeBagPhoto` and `lib/services/match-score.ts`.
+- **URL-based matching (web-only)** — paste a roastery product-page URL on
+  `/scan` instead of uploading a photo. URL scans always route to `/match`
+  since they are inherently pre-purchase.
+- **`POST /api/match-url`** (`app/api/match-url/route.ts`) — takes
+  `{ url }`, returns the same `ScanResult` JSON shape as `/api/scan`.
+- **`lib/services/match-url.ts`** — server-only helper. Validates the URL
+  (http/https), fetches with the `OriginCoffee/0.2` User-Agent, enforces a
+  **10s timeout** and a **2MB response cap**, strips HTML to text with a
+  dependency-free inline stripper, then calls Claude Opus 4.7 with the same
+  JSON contract as the vision scanner.
+- **Empty state on `/match`** when `TasteProfile` isn't ready (fewer than 5
+  logs) — shows "Log N coffee(s) to unlock match scoring" instead of a
+  bogus 0% score.
+
+### Changed
+
+- `lib/store/coffee-store.ts` — added a transient `pendingScan` slot (not
+  persisted) so **Save anyway** on `/match` can hand off to `/review` with
+  prefilled data.
+- `lib/services/claude-vision.ts` — extracted `ANTHROPIC_ENDPOINT`,
+  `ANTHROPIC_MODEL`, `ANTHROPIC_VERSION`, `extractJSON`, and
+  `buildScanResult` so the URL extractor can reuse them.
+- `components/screens/ScanScreen.tsx` — added the mode toggle, URL input
+  pane, and dual routing (`/match` vs `/review`).
+
+### Notes
+
+- The HTML-to-text conversion is intentionally inline (no `node-html-parser`
+  dependency) — script/style/svg/comments are stripped, common entities are
+  decoded, whitespace is collapsed, and the text is capped before being sent
+  to Claude.
+
+---
+
 ## v0.1.0 — Web port (2026-05-23)
 
 Initial Next.js port of the iOS app with full v1 feature parity.

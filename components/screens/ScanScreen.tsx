@@ -1,5 +1,9 @@
 // Mirrors Origin/Screens/ScanScreen.swift — web v1 uses file upload + drag/drop
 // instead of live camera. Live-camera capture is on the v2 roadmap.
+//
+// v0.2.0: added a top-of-page mode toggle ("Add to library" vs "Check match")
+// and a URL input pane alongside file upload (web-only). Match-mode and URL
+// scans route to /match instead of /review.
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -14,9 +18,11 @@ import type { ScanResult } from "@/lib/types/models";
 
 type ScanState =
   | { kind: "idle" }
-  | { kind: "scanning" }
+  | { kind: "scanning"; source: "photo" | "url" }
   | { kind: "complete"; result: ScanResult; preview: string }
   | { kind: "error"; message: string };
+
+type Mode = "add" | "match";
 
 const MOCK_RESULT: ScanResult = {
   roaster: "Fuglen Coffee Roasters",
@@ -42,15 +48,35 @@ const MOCK_RESULT: ScanResult = {
 
 export function ScanScreen() {
   const router = useRouter();
+  const setPendingScan = useCoffeeStore((s) => s.setPendingScan);
+  const [mode, setMode] = useState<Mode>("add");
   const [state, setState] = useState<ScanState>({ kind: "idle" });
   const [preview, setPreview] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
+  const [urlValue, setUrlValue] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const logs = useCoffeeStore((s) => s.logs);
   const profile = useMemo(
     () => (logs.length >= TasteProfileMinLogs ? computeTasteProfile(logs) : null),
     [logs],
   );
+
+  /** Where this ScanResult should land next — match mode and URL scans always
+   *  go to /match (URL is inherently pre-purchase). */
+  const routeFor = useCallback(
+    (source: "photo" | "url"): "/match" | "/review" =>
+      source === "url" || mode === "match" ? "/match" : "/review",
+    [mode],
+  );
+
+  function attachMatchScore(result: ScanResult): ScanResult {
+    if (!profile) return result;
+    const { score, reason } = computeMatchScore(result, profile);
+    if (score > 0) {
+      return { ...result, matchScore: score, matchReason: reason };
+    }
+    return result;
+  }
 
   const handleFile = useCallback(
     async (file: File) => {
@@ -60,7 +86,7 @@ export function ScanScreen() {
       }
       const dataUrl = await readFileAsDataURL(file);
       setPreview(dataUrl);
-      setState({ kind: "scanning" });
+      setState({ kind: "scanning", source: "photo" });
 
       try {
         const fd = new FormData();
@@ -71,14 +97,10 @@ export function ScanScreen() {
           throw new Error(text || `Scan failed (${resp.status})`);
         }
         const json = (await resp.json()) as ScanResult;
-        const result: ScanResult = { ...json, bagPhotoDataUrl: dataUrl };
-        if (profile) {
-          const { score, reason } = computeMatchScore(result, profile);
-          if (score > 0) {
-            result.matchScore = score;
-            result.matchReason = reason;
-          }
-        }
+        const result: ScanResult = attachMatchScore({
+          ...json,
+          bagPhotoDataUrl: dataUrl,
+        });
         setState({ kind: "complete", result, preview: dataUrl });
       } catch (err) {
         setState({
@@ -90,29 +112,76 @@ export function ScanScreen() {
     [profile],
   );
 
+  const handleUrl = useCallback(
+    async (rawUrl: string) => {
+      const url = rawUrl.trim();
+      if (!url) {
+        setState({ kind: "error", message: "Paste a URL first." });
+        return;
+      }
+      setPreview(null);
+      setState({ kind: "scanning", source: "url" });
+      try {
+        const resp = await fetch("/api/match-url", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url }),
+        });
+        if (!resp.ok) {
+          let msg = `Scan failed (${resp.status})`;
+          try {
+            const j = (await resp.json()) as { error?: string };
+            if (j.error) msg = j.error;
+          } catch {
+            /* ignore */
+          }
+          throw new Error(msg);
+        }
+        const json = (await resp.json()) as ScanResult;
+        const result = attachMatchScore(json);
+        setState({ kind: "complete", result, preview: "" });
+        // URL scans always route to /match — push immediately for snappier UX.
+        stashAndGo(result, "/match");
+      } catch (err) {
+        setState({
+          kind: "error",
+          message: (err as Error).message || "Could not read that URL.",
+        });
+      }
+    },
+    [profile],
+  );
+
   function simulate() {
-    setState({ kind: "scanning" });
+    setState({ kind: "scanning", source: "photo" });
     window.setTimeout(() => {
-      setState({ kind: "complete", result: MOCK_RESULT, preview: "" });
+      const result = attachMatchScore(MOCK_RESULT);
+      setState({ kind: "complete", result, preview: "" });
     }, 1000);
   }
 
   function reset() {
     setPreview(null);
+    setUrlValue("");
     setState({ kind: "idle" });
   }
 
-  function proceedToReview() {
-    if (state.kind !== "complete") return;
+  function stashAndGo(result: ScanResult, route: "/match" | "/review") {
     try {
-      sessionStorage.setItem("origin-web:scan-result", JSON.stringify(state.result));
-      router.push("/review");
+      sessionStorage.setItem("origin-web:scan-result", JSON.stringify(result));
+      setPendingScan(result);
+      router.push(route);
     } catch (err) {
       setState({
         kind: "error",
         message: `Could not stash scan: ${(err as Error).message}`,
       });
     }
+  }
+
+  function proceedFromComplete() {
+    if (state.kind !== "complete") return;
+    stashAndGo(state.result, routeFor("photo"));
   }
 
   // Drag-and-drop handlers on the window so users can drop anywhere
@@ -140,6 +209,8 @@ export function ScanScreen() {
     };
   }, [handleFile]);
 
+  const ctaLabel = mode === "match" ? "See match →" : "Review scan →";
+
   return (
     <main className="min-h-screen relative bg-bg-0 overflow-hidden">
       {/* Background — uploaded preview, otherwise dark canvas */}
@@ -159,7 +230,7 @@ export function ScanScreen() {
         }}
       />
 
-      <div className="relative max-w-3xl mx-auto h-screen flex flex-col">
+      <div className="relative max-w-3xl mx-auto min-h-screen flex flex-col">
         {/* Top bar */}
         <header className="flex items-center justify-between px-s5 pt-[60px]">
           <button
@@ -179,12 +250,32 @@ export function ScanScreen() {
           <div className="w-9 h-9" />
         </header>
 
+        {/* Mode toggle */}
+        <div className="px-s5 pt-s4">
+          <div
+            className="inline-flex p-[3px] rounded-pill bg-black/40 border border-white/10 backdrop-blur"
+            role="tablist"
+            aria-label="Scan mode"
+          >
+            <ModeButton
+              label="Add to library"
+              active={mode === "add"}
+              onClick={() => setMode("add")}
+            />
+            <ModeButton
+              label="Check match"
+              active={mode === "match"}
+              onClick={() => setMode("match")}
+            />
+          </div>
+        </div>
+
         {/* Scan area */}
-        <section className="flex-1 flex flex-col items-center justify-center px-s5 gap-s4">
+        <section className="flex-1 flex flex-col items-center justify-center px-s5 gap-s4 py-s6">
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className={`w-[78%] aspect-[3/4] max-h-[60vh] rounded-r4 border-2 border-dashed flex flex-col items-center justify-center gap-s3 transition-colors ${
+            className={`w-[78%] aspect-[3/4] max-h-[52vh] rounded-r4 border-2 border-dashed flex flex-col items-center justify-center gap-s3 transition-colors ${
               dragOver
                 ? "border-accent bg-accent/10"
                 : "border-white/40 bg-black/30"
@@ -199,7 +290,7 @@ export function ScanScreen() {
               className="font-ui text-[12px] uppercase text-white/80 text-center px-s4"
               style={{ letterSpacing: "0.1em" }}
             >
-              {state.kind === "scanning"
+              {state.kind === "scanning" && state.source === "photo"
                 ? "Reading label…"
                 : "Click or drag a bag photo here"}
             </p>
@@ -214,6 +305,47 @@ export function ScanScreen() {
               if (f) void handleFile(f);
             }}
           />
+
+          {/* URL input pane */}
+          <div className="w-[78%] max-w-md flex flex-col gap-s2">
+            <div
+              className="flex items-center gap-s2 text-white/40 text-[10px] uppercase font-ui"
+              style={{ letterSpacing: "0.1em" }}
+            >
+              <div className="flex-1 h-[0.5px] bg-white/15" />
+              <span>or paste a URL</span>
+              <div className="flex-1 h-[0.5px] bg-white/15" />
+            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                void handleUrl(urlValue);
+              }}
+              className="flex items-stretch gap-s2"
+            >
+              <input
+                type="url"
+                inputMode="url"
+                autoComplete="off"
+                spellCheck={false}
+                placeholder="https://onyxcoffeelab.com/products/…"
+                value={urlValue}
+                onChange={(e) => setUrlValue(e.target.value)}
+                disabled={state.kind === "scanning"}
+                className="flex-1 bg-black/40 border border-white/15 rounded-r2 px-s3 py-s2 text-[13px] text-white placeholder:text-white/30 font-ui"
+              />
+              <button
+                type="submit"
+                disabled={state.kind === "scanning" || !urlValue.trim()}
+                className="font-ui font-medium text-[10px] uppercase text-accent-ink bg-accent rounded-r2 px-s4 disabled:opacity-40"
+                style={{ letterSpacing: "0.1em" }}
+              >
+                {state.kind === "scanning" && state.source === "url"
+                  ? "Reading…"
+                  : "Match"}
+              </button>
+            </form>
+          </div>
 
           {state.kind === "complete" && (
             <DetectedFields result={state.result} />
@@ -233,7 +365,9 @@ export function ScanScreen() {
                   className="font-mono text-[10px] uppercase text-ink-2"
                   style={{ letterSpacing: "0.1em" }}
                 >
-                  Drop or upload a bag photo
+                  {mode === "match"
+                    ? "Check if this coffee matches your palate"
+                    : "Drop, upload, or paste a roastery URL"}
                 </span>
               </div>
               <button
@@ -256,7 +390,9 @@ export function ScanScreen() {
                 Analyzing
               </span>
               <span className="font-ui text-[10px] text-ink-3">
-                Claude is reading the bag label…
+                {state.source === "url"
+                  ? "Claude is reading the roastery page…"
+                  : "Claude is reading the bag label…"}
               </span>
             </div>
           )}
@@ -264,11 +400,11 @@ export function ScanScreen() {
           {state.kind === "complete" && (
             <button
               type="button"
-              onClick={proceedToReview}
+              onClick={proceedFromComplete}
               className="w-full bg-accent text-accent-ink font-ui font-medium text-[12px] uppercase rounded-r2 py-[14px]"
               style={{ letterSpacing: "0.1em" }}
             >
-              Review scan →
+              {ctaLabel}
             </button>
           )}
 
@@ -288,6 +424,31 @@ export function ScanScreen() {
         </footer>
       </div>
     </main>
+  );
+}
+
+function ModeButton({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={active}
+      onClick={onClick}
+      className={`px-s4 py-s2 rounded-pill font-ui font-medium text-[10px] uppercase transition-colors ${
+        active ? "bg-accent text-accent-ink" : "text-white/70"
+      }`}
+      style={{ letterSpacing: "0.1em" }}
+    >
+      {label}
+    </button>
   );
 }
 

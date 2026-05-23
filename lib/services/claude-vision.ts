@@ -12,9 +12,11 @@ import {
 } from "@/lib/types/models";
 import { FlavorTagsAll } from "@/lib/flavor-taxonomy";
 
-const ANTHROPIC_ENDPOINT = "https://api.anthropic.com/v1/messages";
-const MODEL = "claude-opus-4-7";
-const ANTHROPIC_VERSION = "2023-06-01";
+export const ANTHROPIC_ENDPOINT = "https://api.anthropic.com/v1/messages";
+export const ANTHROPIC_MODEL = "claude-opus-4-7";
+export const ANTHROPIC_VERSION = "2023-06-01";
+
+const MODEL = ANTHROPIC_MODEL;
 
 function buildPrompt(): string {
   return `Analyze this specialty coffee bag label and return ONLY a JSON object — no explanation, no markdown, no code fences.
@@ -47,14 +49,14 @@ ${FlavorTagsAll.join(", ")}
 Return ONLY the JSON object.`;
 }
 
-function extractJSON(text: string): string {
+export function extractJSON(text: string): string {
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
   if (start < 0 || end < 0) return text;
   return text.slice(start, end + 1);
 }
 
-function buildScanResult(json: Record<string, unknown>): ScanResult {
+export function buildScanResult(json: Record<string, unknown>): ScanResult {
   const processStr = (json.process as string | undefined) ?? "Other";
   const roastStr = (json.roastLevel as string | undefined) ?? "Medium";
 

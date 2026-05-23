@@ -5,7 +5,7 @@
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import type { CoffeeLog } from "@/lib/types/models";
+import type { CoffeeLog, ScanResult } from "@/lib/types/models";
 import {
   type TasteProfile,
   TasteProfileMinLogs,
@@ -16,6 +16,10 @@ interface CoffeeStoreState {
   logs: CoffeeLog[];
   hydrated: boolean;
 
+  /** Transient scan result used to ferry data between /scan, /match and /review.
+   * Not persisted — re-read from sessionStorage as needed. */
+  pendingScan: ScanResult | null;
+
   // Selectors
   tasteProfile: () => TasteProfile | null;
   getLog: (id: string) => CoffeeLog | undefined;
@@ -25,6 +29,7 @@ interface CoffeeStoreState {
   update: (id: string, patch: Partial<CoffeeLog>) => void;
   remove: (id: string) => void;
   reset: () => void;
+  setPendingScan: (scan: ScanResult | null) => void;
 }
 
 export const useCoffeeStore = create<CoffeeStoreState>()(
@@ -32,6 +37,7 @@ export const useCoffeeStore = create<CoffeeStoreState>()(
     (set, get) => ({
       logs: [],
       hydrated: false,
+      pendingScan: null,
 
       tasteProfile: () => {
         const logs = get().logs;
@@ -52,6 +58,7 @@ export const useCoffeeStore = create<CoffeeStoreState>()(
         set((s) => ({ logs: s.logs.filter((l) => l.id !== id) }));
       },
       reset: () => set({ logs: [] }),
+      setPendingScan: (scan) => set({ pendingScan: scan }),
     }),
     {
       name: "origin-web/v1",
@@ -59,6 +66,7 @@ export const useCoffeeStore = create<CoffeeStoreState>()(
       onRehydrateStorage: () => (state) => {
         if (state) state.hydrated = true;
       },
+      // pendingScan is intentionally excluded — it's transient.
       partialize: (s) => ({ logs: s.logs }),
     },
   ),
