@@ -55,6 +55,13 @@ export type AcidityLevel = (typeof AcidityLevel)[keyof typeof AcidityLevel];
 export interface CoffeeLog {
   id: string;
   createdAt: string; // ISO date
+  /** ISO timestamp — bumped on every local write. Used by Supabase sync
+   *  for last-write-wins conflict resolution. */
+  updatedAt?: string;
+  /** ISO timestamp set on local delete. Soft-deleted rows stay in the local
+   *  cache (so the sync push has something to write) but are filtered out
+   *  of reads. */
+  deletedAt?: string | null;
 
   // Bag-level (AI-extracted from photo)
   roaster: string;
@@ -203,9 +210,12 @@ export function scanResultToCoffeeLog(
 ): CoffeeLog {
   const altitude = result.altitudeMASL.trim();
   const altitudeNum = altitude ? parseInt(altitude, 10) : NaN;
+  const now = new Date().toISOString();
   const log: CoffeeLog = {
     id: crypto.randomUUID(),
-    createdAt: new Date().toISOString(),
+    createdAt: now,
+    updatedAt: now,
+    deletedAt: null,
 
     roaster: result.roaster,
     coffeeName: result.coffeeName,

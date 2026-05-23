@@ -5,6 +5,64 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.3.0 — Cross-device sync via Supabase (2026-05-23)
+
+Wires the web app to a Supabase backend so coffee logs sync across web
+and iOS. Local cache stays the source of truth; the sync layer pushes
+and pulls deltas with last-write-wins conflict resolution.
+
+### Added
+
+- **Supabase client** (`lib/supabase/client.ts`, `lib/supabase/server.ts`)
+  using `@supabase/ssr`. Reads `NEXT_PUBLIC_SUPABASE_URL` and
+  `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Cookies are shared with route handlers
+  + middleware so server components see the active session.
+- **Sync service** (`lib/supabase/sync-service.ts`) — pulls rows newer
+  than `lastSyncAt`, merges into Zustand by `updated_at`, then upserts
+  any local rows newer than `lastPushAt`. Runs on start, sign-in,
+  `focus`, and `visibilitychange`. Every local write also fires an
+  async upsert; failures are silently queued until the next focus.
+- **Magic-link sign-in** at `/sign-in` (`app/sign-in/page.tsx`) with
+  email input, "Send magic link" CTA, and a 30-second resend cooldown.
+- **Auth callback route** at `/auth/callback` (`app/auth/callback/route.ts`)
+  that exchanges the OTP code for a session and redirects to `?next=`
+  (defaults to `/`).
+- **Auth-gating middleware** (`middleware.ts`) — refreshes the Supabase
+  session on every request, redirects unauthenticated users to
+  `/sign-in?next=…`, and bounces signed-in users away from `/sign-in`.
+  `/api/*` stays public.
+- **`SyncBootstrap`** client island mounted in the root layout to call
+  `syncService.start()` once per app load.
+- `.env.example` and `README.md` document the two new env vars and the
+  one-time Supabase **Auth → URL Configuration** step
+  (`https://origin-coffee.fly.dev/auth/callback` +
+  `http://localhost:3000/auth/callback`).
+
+### Changed
+
+- **`CoffeeLog`** gained `updatedAt` (stamped on every write) and
+  `deletedAt` (set on remove). `scanResultToCoffeeLog` initialises
+  both.
+- **`coffee-store.ts`** rewritten around `allLogs` (everything,
+  including tombstones) with a `logs` selector that filters live rows.
+  `save`/`update`/`remove` now stamp `updatedAt`, mark deletes as
+  tombstones, and fire async upserts. A new `setAllFromRemote` action
+  merges pulled rows by last-write-wins. Legacy localStorage payloads
+  (under `logs`) are migrated to `allLogs` on rehydrate.
+
+### Notes
+
+- The publishable key (`sb_publishable_…`) is used in
+  `@supabase/supabase-js` ≥ 2.46 — falls back to the legacy anon JWT if
+  the publishable key is rejected by older SDK builds.
+- **`bag_photo_url` is intentionally skipped** in v1 — bag photos stay
+  in localStorage as data URLs. Cross-device photo sync is a v2
+  follow-up (needs Supabase Storage + image compression).
+- Service-role keys are **never** referenced. Only the publishable /
+  anon key is exposed to the browser; RLS protects per-user data.
+
+---
+
 ## v0.2.0 — Match mode + URL matching (2026-05-23)
 
 Brings the new iOS "match scan" mode to the web and adds a web-only URL-based

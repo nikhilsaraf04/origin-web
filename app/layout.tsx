@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, IBM_Plex_Mono, Shippori_Mincho_B1 } from "next/font/google";
 import "./globals.css";
+import { SyncBootstrap } from "@/components/SyncBootstrap";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -35,7 +36,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${dmSans.variable} ${ibmPlexMono.variable} ${shippori.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SyncBootstrap />
+        {children}
+      </body>
     </html>
   );
 }

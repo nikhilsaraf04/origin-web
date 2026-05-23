@@ -33,8 +33,33 @@ Open <http://localhost:3000>. The library is empty until you scan a bag.
 - `ANTHROPIC_API_KEY` — your Anthropic API key. Used **server-side only** by
   `/api/scan` and `/api/roaster`. It must never reach the client; do not
   prefix it with `NEXT_PUBLIC_`. Get one at <https://console.anthropic.com/>.
+- `NEXT_PUBLIC_SUPABASE_URL` — your Supabase project URL. Safe to expose.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase publishable / anon key. Safe to
+  expose — RLS protects per-user data. **Never** use the service-role key
+  here.
 
 `.env.local` is gitignored. `.env.example` documents the shape.
+
+### Cross-device sync (Supabase)
+
+v0.3.0 wires the app to a Supabase backend so the same library shows on
+web and iOS. The sync layer is **local-first**: Zustand + localStorage
+stays the source of truth for the UI, and `lib/supabase/sync-service.ts`
+pulls/pushes deltas to `public.coffee_logs` on startup, sign-in, and
+every window focus. Conflicts are resolved last-write-wins by
+`updated_at`; deletes are soft (`deleted_at` is set and the tombstone is
+pushed). Auth is Supabase magic-link email.
+
+After deploying for the first time, add both callback URLs to the
+Supabase **Auth → URL Configuration** page so magic links land on the
+right host:
+
+- `https://origin-coffee.fly.dev/auth/callback`
+- `http://localhost:3000/auth/callback`
+
+**v2 follow-up:** `bag_photo_url` is currently skipped — bag photos stay
+local-only as data URLs. Cross-device photo sync needs Supabase Storage
+plus client-side image compression.
 
 ### Scripts
 
