@@ -3,7 +3,7 @@
 // hammer Supabase if the first email goes to spam.
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -16,6 +16,14 @@ type State =
 const RESEND_SECONDS = 30;
 
 export default function SignInPage() {
+  return (
+    <Suspense fallback={null}>
+      <SignInInner />
+    </Suspense>
+  );
+}
+
+function SignInInner() {
   const params = useSearchParams();
   const errorFromQuery = params.get("error");
   const [email, setEmail] = useState("");

@@ -7,7 +7,7 @@
 // /api/scan and /api/roaster need to work for any client we ship later.
 
 import { NextResponse, type NextRequest } from "next/server";
-import { createServerClient } from "@supabase/ssr";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
 const PUBLIC_PATHS = ["/sign-in", "/auth/callback"];
 
@@ -36,7 +36,7 @@ export async function middleware(req: NextRequest) {
       getAll() {
         return req.cookies.getAll();
       },
-      setAll(cookiesToSet) {
+      setAll(cookiesToSet: Array<{ name: string; value: string; options: CookieOptions }>) {
         for (const { name, value } of cookiesToSet) {
           req.cookies.set(name, value);
         }
