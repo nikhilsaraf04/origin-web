@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg-0: #0a0f18;
+  --bg-1: #101828;
+  --bg-2: #182030;
+  --bg-3: #202c3e;
+  --bg-4: #2a3850;
+  --ink-1: #eef2f6;
+  --ink-2: #8fa4b8;
+  --ink-3: #52687a;
+  --ink-4: #2c3d4c;
+  --line-1: #162030;
+  --line-2: #1e2d3e;
+  --line-3: #2c3e52;
+  --accent: #7a90c4;
+  --accent-ink: #0a0f18;
+  --accent-dim: rgba(122, 144, 196, 0.12);
+  --accent-border: rgba(122, 144, 196, 0.3);
+}
+
+html,
+body {
+  background: var(--bg-0);
+  color: var(--ink-1);
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-ui), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scroll thumbs in horizontal nav strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+input,
+textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Range slider — kept minimal */
+input[type="range"] {
+  accent-color: var(--accent);
+}
