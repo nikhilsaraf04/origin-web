@@ -2,10 +2,14 @@
 // instead of live camera. Live-camera capture is on the v2 roadmap.
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCoffeeStore } from "@/lib/store/coffee-store";
 import { computeMatchScore } from "@/lib/services/match-score";
+import {
+  TasteProfileMinLogs,
+  computeTasteProfile,
+} from "@/lib/types/taste-profile";
 import type { ScanResult } from "@/lib/types/models";
 
 type ScanState =
@@ -42,7 +46,11 @@ export function ScanScreen() {
   const [preview, setPreview] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const profile = useCoffeeStore((s) => s.tasteProfile());
+  const logs = useCoffeeStore((s) => s.logs);
+  const profile = useMemo(
+    () => (logs.length >= TasteProfileMinLogs ? computeTasteProfile(logs) : null),
+    [logs],
+  );
 
   const handleFile = useCallback(
     async (file: File) => {

@@ -22,6 +22,7 @@ interface RoasterInfo {
 
 export function DetailScreen({ id }: { id: string }) {
   const router = useRouter();
+  const hydrated = useCoffeeStore((s) => s.hydrated);
   const log = useCoffeeStore((s) => s.logs.find((l) => l.id === id));
   const update = useCoffeeStore((s) => s.update);
   const remove = useCoffeeStore((s) => s.remove);
@@ -61,10 +62,17 @@ export function DetailScreen({ id }: { id: string }) {
   if (!log) {
     return (
       <main className="min-h-screen pt-[80px] px-s5 max-w-3xl mx-auto text-ink-3">
-        <p className="font-ui text-[14px]">No coffee found with that id.</p>
-        <Link href="/" className="text-accent text-[12px] uppercase tracking-[0.1em]">
-          Back to library
-        </Link>
+        <p className="font-ui text-[14px]">
+          {hydrated ? "No coffee found with that id." : "Loading…"}
+        </p>
+        {hydrated && (
+          <Link
+            href="/"
+            className="text-accent text-[12px] uppercase tracking-[0.1em]"
+          >
+            Back to library
+          </Link>
+        )}
       </main>
     );
   }

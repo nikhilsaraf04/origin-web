@@ -1,15 +1,26 @@
 // Mirrors Origin/Screens/YourPaletteScreen.swift
 "use client";
 
+import { useMemo } from "react";
 import { useCoffeeStore } from "@/lib/store/coffee-store";
 import { OBarChart } from "@/components/OBarChart";
 import { OChip } from "@/components/OChip";
 import { OLabel } from "@/components/OLabel";
-import { TasteProfileMinLogs, type RankedItem } from "@/lib/types/taste-profile";
+import {
+  TasteProfileMinLogs,
+  computeTasteProfile,
+  type RankedItem,
+} from "@/lib/types/taste-profile";
 
 export function PaletteScreen() {
   const logs = useCoffeeStore((s) => s.logs);
-  const profile = useCoffeeStore((s) => s.tasteProfile());
+  // Compute the profile in a memo so Zustand's getServerSnapshot stays stable.
+  // (Calling tasteProfile() inside the selector returns a new object every
+  // render and triggers the infinite-loop warning in React 18+.)
+  const profile = useMemo(
+    () => (logs.length >= TasteProfileMinLogs ? computeTasteProfile(logs) : null),
+    [logs],
+  );
 
   return (
     <main className="min-h-screen pb-[112px] max-w-3xl mx-auto">
