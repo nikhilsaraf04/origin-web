@@ -1,6 +1,6 @@
 {
   "name": "origin-web",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Web version of Origin Coffee — Vivino for single-origin beans",
   "scripts": {
@@ -11,14 +11,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.5.2",
-    "@supabase/supabase-js": "^2.46.1",
+    "better-sqlite3": "^11.8.1",
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "zustand": "^5.0.1"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
     "@types/node": "^22.9.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

@@ -1,22 +1,18 @@
-// SyncService — Supabase ↔ Zustand glue.
+// SyncService — REST ↔ Zustand glue. Talks to our own Fly backend
+// (/api/logs) instead of Supabase. Auth is cookie-based on web, so fetch
+// calls just need `credentials: "same-origin"`.
 //
-// Strategy: local-first cache, last-write-wins by `updated_at`.
-//   * On start / sign-in / window-focus: pull rows newer than lastSyncAt,
-//     merge by LWW, then push local rows newer than lastPushAt.
-//   * On every local write: fire async upsert (via the store's
-//     `fireUpsert` hook). Failures are silent — the next focus pass will
-//     pick them up since `updated_at > lastPushAt`.
-//   * Deletes are soft: `deletedAt` is set, the tombstone is pushed, and
-//     reads filter `deletedAt != null`.
+// Strategy is unchanged from the Supabase version: local-first cache,
+// last-write-wins by `updated_at`.
+//   * On start / focus: pull rows newer than lastSyncAt, merge by LWW,
+//     then push local rows newer than lastPushAt.
+//   * On every local write: fire async upsert of the single row.
+//   * Deletes are soft: `deletedAt` set, tombstone pushed, reads filter it.
 //
-// `bag_photo_url` is intentionally skipped — bag photos stay local-only
-// in v1 (data-URLs in localStorage). Cross-device photo sync is a v2
-// follow-up that needs Supabase Storage + image compression.
+// `bag_photo_url` is intentionally skipped — bag photos stay local-only.
 
 "use client";
 
-import type { SupabaseClient } from "@supabase/supabase-js";
-import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useCoffeeStore } from "@/lib/store/coffee-store";
 import type {
   CoffeeLog,
@@ -29,9 +25,8 @@ import type {
 
 const LS_LAST_SYNC = "origin-web:sync:lastSyncAt";
 const LS_LAST_PUSH = "origin-web:sync:lastPushAt";
-const TABLE = "coffee_logs";
 
-/** Snake-case row shape as it lives in Postgres. */
+/** Snake-case row shape as it lives in the backend DB. */
 interface CoffeeLogRow {
   id: string;
   user_id: string;
@@ -95,22 +90,19 @@ function rowToLog(r: CoffeeLogRow): CoffeeLog {
     sourcedFrom: r.sourced_from ?? undefined,
     pricePaid: r.price_paid ?? undefined,
     currency: r.currency ?? undefined,
-    // bag_photo_url intentionally not hydrated — v2.
+    // bag_photo_url intentionally not hydrated — stays local.
     matchScore: r.match_score ?? undefined,
     matchReason: r.match_reason ?? undefined,
   };
 }
 
-/** Build the row payload for an upsert. `user_id` is filled in by the
- *  caller because we only know it after auth. */
-function logToRow(
-  log: CoffeeLog,
-  userId: string,
-): Omit<CoffeeLogRow, "bag_photo_url"> {
+/** Build the row payload for an upsert. `user_id` is set server-side from
+ *  the token, so we send a placeholder the backend overwrites. */
+function logToRow(log: CoffeeLog): Omit<CoffeeLogRow, "bag_photo_url"> {
   const updated = log.updatedAt ?? new Date().toISOString();
   return {
     id: log.id,
-    user_id: userId,
+    user_id: "self",
     created_at: log.createdAt,
     updated_at: updated,
     deleted_at: log.deletedAt ?? null,
@@ -161,30 +153,14 @@ function lsSet(key: string, value: string): void {
 class SyncService {
   private started = false;
   private syncing = false;
-  private client: SupabaseClient | null = null;
-  private cachedUserId: string | null = null;
 
-  private get supabase(): SupabaseClient {
-    if (!this.client) this.client = getSupabaseBrowserClient();
-    return this.client;
-  }
-
-  /** Resolve the current auth user id, or null if signed out. Cached for
-   *  the session lifetime — invalidated when auth state changes. */
-  private async userId(): Promise<string | null> {
-    if (this.cachedUserId) return this.cachedUserId;
-    const { data } = await this.supabase.auth.getUser();
-    const id = data.user?.id ?? null;
-    this.cachedUserId = id;
-    return id;
-  }
-
-  /** Wire up auth + focus listeners. Idempotent. */
+  /** Wire up focus listeners. Idempotent. Auth is a cookie, so there's no
+   *  auth-state subscription to manage — pull/push simply 401 when signed
+   *  out and we swallow it. */
   start(): void {
     if (this.started || typeof window === "undefined") return;
     this.started = true;
 
-    // Initial sync on next tick so the caller can finish mounting.
     void Promise.resolve().then(() => this.syncOnce());
 
     window.addEventListener("focus", () => {
@@ -193,70 +169,50 @@ class SyncService {
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "visible") void this.syncOnce();
     });
-
-    this.supabase.auth.onAuthStateChange((event, session) => {
-      this.cachedUserId = session?.user?.id ?? null;
-      if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
-        void this.syncOnce();
-      } else if (event === "SIGNED_OUT") {
-        // Forget cursors so the next sign-in does a fresh pull. Don't nuke
-        // local logs — the user may sign back into the same account.
-        try {
-          localStorage.removeItem(LS_LAST_SYNC);
-          localStorage.removeItem(LS_LAST_PUSH);
-        } catch {
-          /* ignore */
-        }
-      }
-    });
   }
 
   /** Pull-then-push. Guards against re-entry. */
   async syncOnce(): Promise<void> {
-    if (this.syncing) return;
-    const uid = await this.userId();
-    if (!uid) return;
+    if (this.syncing || typeof window === "undefined") return;
     this.syncing = true;
     try {
-      await this.pull(uid);
-      await this.push(uid);
+      const authed = await this.pull();
+      if (authed) await this.push();
     } catch (err) {
-      // Log but don't throw — sync is best-effort.
       console.warn("[sync] failed:", err);
     } finally {
       this.syncing = false;
     }
   }
 
-  /** Pull rows newer than lastSyncAt and merge into the store. */
-  private async pull(uid: string): Promise<void> {
+  /** Pull rows newer than lastSyncAt and merge into the store.
+   *  Returns false if unauthenticated (so the caller skips push). */
+  private async pull(): Promise<boolean> {
     const since = lsGet(LS_LAST_SYNC) ?? "1970-01-01T00:00:00.000Z";
-    const { data, error } = await this.supabase
-      .from(TABLE)
-      .select("*")
-      .eq("user_id", uid)
-      .gt("updated_at", since)
-      .order("updated_at", { ascending: true });
-    if (error) throw error;
-    const rows = (data ?? []) as CoffeeLogRow[];
-    if (rows.length === 0) return;
+    const res = await fetch(`/api/logs?since=${encodeURIComponent(since)}`, {
+      credentials: "same-origin",
+    });
+    if (res.status === 401) return false;
+    if (!res.ok) throw new Error(`pull ${res.status}`);
+    const body = (await res.json()) as { logs: CoffeeLogRow[] };
+    const rows = body.logs ?? [];
+    if (rows.length === 0) return true;
 
-    const logs = rows.map(rowToLog);
-    useCoffeeStore.getState().setAllFromRemote(logs);
+    useCoffeeStore.getState().setAllFromRemote(rows.map(rowToLog));
 
     const maxUpdated = rows.reduce(
       (acc, r) => (r.updated_at > acc ? r.updated_at : acc),
       since,
     );
     lsSet(LS_LAST_SYNC, maxUpdated);
+    return true;
   }
 
   /** Push every local row whose updatedAt > lastPushAt (includes
-   *  tombstones — soft deletes get propagated this way). */
-  private async push(uid: string): Promise<void> {
+   *  tombstones — soft deletes propagate this way). */
+  private async push(): Promise<void> {
     const since = lsGet(LS_LAST_PUSH) ?? "1970-01-01T00:00:00.000Z";
     const sinceMs = Date.parse(since);
-    // Use allLogs (includes tombstones), not the live `logs` selector.
     const all = useCoffeeStore.getState().allLogs;
     const dirty = all.filter((l) => {
       const t = l.updatedAt ? Date.parse(l.updatedAt) : 0;
@@ -264,34 +220,40 @@ class SyncService {
     });
     if (dirty.length === 0) return;
 
-    const rows = dirty.map((l) => logToRow(l, uid));
-    const { error } = await this.supabase
-      .from(TABLE)
-      .upsert(rows, { onConflict: "id" });
-    if (error) throw error;
+    const res = await fetch(`/api/logs`, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ logs: dirty.map(logToRow) }),
+    });
+    if (res.status === 401) return;
+    if (!res.ok) throw new Error(`push ${res.status}`);
 
     lsSet(LS_LAST_PUSH, new Date().toISOString());
   }
 
-  /** Fire-and-forget upsert of a single row. Called from the store on
-   *  every local write so the user sees their changes propagate without
-   *  waiting for the next focus pass. */
+  /** Fire-and-forget upsert of a single row on every local write. */
   async upsertOne(log: CoffeeLog): Promise<void> {
-    const uid = await this.userId();
-    if (!uid) return; // signed out — next sign-in will catch up via push()
-    const row = logToRow(log, uid);
-    const { error } = await this.supabase
-      .from(TABLE)
-      .upsert(row, { onConflict: "id" });
-    if (error) throw error;
-    // Advance the push cursor so the next push() doesn't re-send this row.
+    if (typeof window === "undefined") return;
+    const res = await fetch(`/api/logs`, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ logs: [logToRow(log)] }),
+    });
+    if (res.status === 401) return; // signed out — next sign-in push catches up
+    if (!res.ok) throw new Error(`upsertOne ${res.status}`);
     lsSet(LS_LAST_PUSH, new Date().toISOString());
   }
 
-  /** Reset auth-derived caches. Call after sign-out if you want to fully
-   *  reset (most callers don't need this). */
-  reset(): void {
-    this.cachedUserId = null;
+  /** Reset sync cursors (called on sign-out). */
+  resetCursors(): void {
+    try {
+      localStorage.removeItem(LS_LAST_SYNC);
+      localStorage.removeItem(LS_LAST_PUSH);
+    } catch {
+      /* ignore */
+    }
   }
 }
 

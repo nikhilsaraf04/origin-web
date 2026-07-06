@@ -5,6 +5,50 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.4.0 — Self-hosted backend on Fly (off Supabase) (2026-07-06)
+
+Supabase (project `tohgsibktcteoghayndt`) was deleted after free-tier
+inactivity, which broke sign-in on both web and iOS. Replaced it with a
+self-hosted backend on the existing Fly app so nothing can pause or
+disappear again. Single-user by design (Nikhil across his devices).
+
+### Added
+
+- **SQLite backend** (`lib/db.ts`) on a Fly volume mounted at `/data`.
+  `coffee_logs` table mirrors the former Supabase schema; array columns
+  stored as JSON text, booleans as 0/1, (de)serialized at the API edge.
+- **Passcode auth** (`lib/auth.ts`, `lib/auth-edge.ts`) — one shared
+  passcode (`ORIGIN_PASSCODE`) exchanged at `POST /api/auth` for an
+  HMAC-signed bearer token (`ORIGIN_TOKEN_SECRET`). No email, no SMTP.
+  Node routes verify via `node:crypto`; middleware verifies via Web
+  Crypto (Edge runtime can't use `node:crypto`).
+- **Sync API** (`app/api/logs/route.ts`) — `GET /api/logs?since=` (pull)
+  and `POST /api/logs` (upsert, last-write-wins on `updated_at`). Auth
+  via bearer header (iOS) or `origin_token` cookie (web).
+
+### Changed
+
+- **Sync service** (`lib/sync-service.ts`) now fetches `/api/logs`
+  instead of the Supabase client. Same pull-then-push + per-write upsert
+  strategy and LWW semantics.
+- **Sign-in** (`app/sign-in/page.tsx`) is now a passcode form that posts
+  to `/api/auth` and sets an httpOnly session cookie.
+- **Middleware** gates on the signed token cookie (no Supabase session
+  refresh).
+- **Dockerfile** builds `better-sqlite3` (native) and runs a full
+  `next start` (non-standalone) so the compiled binary is always
+  present; runs as root to write the volume.
+- **fly.toml** mounts the `origin_data` volume at `/data`; drops the
+  Supabase build args/env.
+
+### Removed
+
+- `@supabase/ssr` + `@supabase/supabase-js`, `lib/supabase/*`, the
+  `/auth/callback` magic-link route, and the `NEXT_PUBLIC_SUPABASE_*`
+  Fly secrets.
+
+---
+
 ## v0.3.0 — Cross-device sync via Supabase (2026-05-23)
 
 Wires the web app to a Supabase backend so coffee logs sync across web

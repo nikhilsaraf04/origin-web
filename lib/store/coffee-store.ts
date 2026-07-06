@@ -170,7 +170,7 @@ export const useCoffeeStore = create<CoffeeStoreState>()(
 async function fireUpsert(log: CoffeeLog): Promise<void> {
   try {
     if (typeof window === "undefined") return;
-    const mod = await import("@/lib/supabase/sync-service");
+    const mod = await import("@/lib/sync-service");
     await mod.syncService.upsertOne(log);
   } catch {
     /* offline / signed-out — queued for next focus */

@@ -1,19 +1,15 @@
-// Magic-link sign-in. Matches the dark-theme look — input + submit + a
-// "check your inbox" state with a 30s resend cooldown so users can't
-// hammer Supabase if the first email goes to spam.
+// Passcode sign-in. Origin is a single-user personal app, so instead of
+// email magic links we ask for one shared passcode, exchange it at
+// /api/auth for an httpOnly session cookie, and bounce home.
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type State =
   | { kind: "idle" }
   | { kind: "sending" }
-  | { kind: "sent"; cooldown: number }
   | { kind: "error"; message: string };
-
-const RESEND_SECONDS = 30;
 
 export default function SignInPage() {
   return (
@@ -24,49 +20,43 @@ export default function SignInPage() {
 }
 
 function SignInInner() {
+  const router = useRouter();
   const params = useSearchParams();
-  const errorFromQuery = params.get("error");
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<State>(
-    errorFromQuery
-      ? { kind: "error", message: prettyError(errorFromQuery) }
-      : { kind: "idle" },
-  );
+  const next = params.get("next") || "/";
+  const [passcode, setPasscode] = useState("");
+  const [state, setState] = useState<State>({ kind: "idle" });
 
-  // Cooldown ticker for the "sent" state.
-  useEffect(() => {
-    if (state.kind !== "sent" || state.cooldown <= 0) return;
-    const t = window.setTimeout(() => {
-      setState((s) =>
-        s.kind === "sent" ? { ...s, cooldown: s.cooldown - 1 } : s,
-      );
-    }, 1000);
-    return () => window.clearTimeout(t);
-  }, [state]);
-
-  async function send(e?: React.FormEvent) {
+  async function submit(e?: React.FormEvent) {
     e?.preventDefault();
-    const trimmed = email.trim();
+    const trimmed = passcode.trim();
     if (!trimmed) {
-      setState({ kind: "error", message: "Enter your email first." });
+      setState({ kind: "error", message: "Enter your passcode." });
       return;
     }
     setState({ kind: "sending" });
     try {
-      const supabase = getSupabaseBrowserClient();
-      const { error } = await supabase.auth.signInWithOtp({
-        email: trimmed,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ passcode: trimmed }),
       });
-      if (error) throw error;
-      setState({ kind: "sent", cooldown: RESEND_SECONDS });
-    } catch (err) {
-      setState({
-        kind: "error",
-        message: (err as Error).message || "Could not send the magic link.",
-      });
+      if (res.status === 401) {
+        setState({ kind: "error", message: "Incorrect passcode." });
+        return;
+      }
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        setState({
+          kind: "error",
+          message: body?.error || "Could not sign in. Try again.",
+        });
+        return;
+      }
+      // Cookie is set by the response; go where they were headed.
+      router.replace(next);
+      router.refresh();
+    } catch {
+      setState({ kind: "error", message: "Network error. Try again." });
     }
   }
 
@@ -81,106 +71,50 @@ function SignInInner() {
             className="font-ui text-[10px] uppercase text-ink-3"
             style={{ letterSpacing: "0.1em" }}
           >
-            Sign in to sync your library
+            Enter passcode to sync your library
           </span>
         </header>
 
-        {state.kind === "sent" ? (
-          <SentPanel
-            email={email}
-            cooldown={state.cooldown}
-            onResend={() => void send()}
-          />
-        ) : (
-          <form onSubmit={send} className="flex flex-col gap-s4">
-            <label className="flex flex-col gap-s2">
-              <span
-                className="font-ui text-[10px] uppercase text-ink-4"
-                style={{ letterSpacing: "0.1em" }}
-              >
-                Email
-              </span>
-              <input
-                type="email"
-                inputMode="email"
-                autoComplete="email"
-                spellCheck={false}
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={state.kind === "sending"}
-                className="bg-bg-2 border border-line-2 rounded-r2 px-s3 py-s3 text-[14px] text-ink-1 placeholder:text-ink-4 font-ui"
-              />
-            </label>
-
-            <button
-              type="submit"
-              disabled={state.kind === "sending" || !email.trim()}
-              className="bg-accent text-accent-ink font-ui font-medium text-[12px] uppercase rounded-r2 py-[14px] disabled:opacity-40"
+        <form onSubmit={submit} className="flex flex-col gap-s4">
+          <label className="flex flex-col gap-s2">
+            <span
+              className="font-ui text-[10px] uppercase text-ink-4"
               style={{ letterSpacing: "0.1em" }}
             >
-              {state.kind === "sending" ? "Sending…" : "Send magic link"}
-            </button>
+              Passcode
+            </span>
+            <input
+              type="password"
+              autoComplete="current-password"
+              spellCheck={false}
+              placeholder="••••••••"
+              value={passcode}
+              onChange={(e) => setPasscode(e.target.value)}
+              disabled={state.kind === "sending"}
+              autoFocus
+              className="bg-bg-2 border border-line-2 rounded-r2 px-s3 py-s3 text-[14px] text-ink-1 placeholder:text-ink-4 font-ui"
+            />
+          </label>
 
-            {state.kind === "error" && (
-              <p className="font-ui text-[12px] text-red-400">
-                {state.message}
-              </p>
-            )}
-          </form>
-        )}
+          <button
+            type="submit"
+            disabled={state.kind === "sending" || !passcode.trim()}
+            className="bg-accent text-accent-ink font-ui font-medium text-[12px] uppercase rounded-r2 py-[14px] disabled:opacity-40"
+            style={{ letterSpacing: "0.1em" }}
+          >
+            {state.kind === "sending" ? "Signing in…" : "Sign in"}
+          </button>
+
+          {state.kind === "error" && (
+            <p className="font-ui text-[12px] text-red-400">{state.message}</p>
+          )}
+        </form>
 
         <p className="font-ui text-[10px] text-ink-4 leading-relaxed">
-          We&apos;ll email you a one-tap link to sign in. No password needed.
-          Sessions sync across web and iOS so your library is the same
-          everywhere.
+          One passcode unlocks sync across web and iOS. No email, no password
+          reset — your library is the same everywhere.
         </p>
       </div>
     </main>
   );
-}
-
-function SentPanel({
-  email,
-  cooldown,
-  onResend,
-}: {
-  email: string;
-  cooldown: number;
-  onResend: () => void;
-}) {
-  return (
-    <div className="flex flex-col gap-s4">
-      <div className="bg-bg-2 border border-line-2 rounded-r4 px-s4 py-s5 flex flex-col gap-s3">
-        <span
-          className="font-ui font-medium text-[10px] uppercase text-accent"
-          style={{ letterSpacing: "0.1em" }}
-        >
-          Check your inbox
-        </span>
-        <p className="font-ui text-[13px] text-ink-1 leading-relaxed">
-          We sent a magic link to{" "}
-          <span className="text-accent">{email}</span>. Tap it to finish
-          signing in.
-        </p>
-        <p className="font-ui text-[11px] text-ink-3">
-          The link expires in 1 hour. If it doesn&apos;t show up, check spam.
-        </p>
-      </div>
-      <button
-        type="button"
-        onClick={onResend}
-        disabled={cooldown > 0}
-        className="font-ui font-medium text-[12px] uppercase text-accent border border-[var(--accent-border)] rounded-r2 py-s3 disabled:opacity-40"
-        style={{ letterSpacing: "0.1em" }}
-      >
-        {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend link"}
-      </button>
-    </div>
-  );
-}
-
-function prettyError(raw: string): string {
-  if (raw === "missing_code") return "Invalid sign-in link — try again.";
-  return decodeURIComponent(raw);
 }
