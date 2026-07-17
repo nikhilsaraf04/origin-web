@@ -5,6 +5,32 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.6.0 — Live camera scanning (2026-07-17)
+
+The web scan screen now has a live rear-camera viewfinder, matching the
+native iOS app: point at a bag, tap the shutter, Claude reads the label.
+Upload, drag-drop, and URL scans remain as fallbacks.
+
+### Added
+
+- **`getUserMedia` viewfinder** in `components/screens/ScanScreen.tsx` —
+  requests the rear camera (`facingMode: environment`), streams into a
+  full-bleed `<video>` (muted + `playsInline` for iOS), and a shutter button
+  grabs the current frame via canvas → JPEG blob → the existing `/api/scan`
+  path. Torch toggle shown only where `MediaTrackCapabilities.torch` exists
+  (Android Chrome; iOS rarely).
+- **Scan frame** — corner-bracket overlay (web analogue of `ScanFrame.swift`)
+  and a "Point camera at bag" idle prompt with shutter + Upload + Simulate.
+
+### Changed
+
+- Camera lifecycle: starts on mount, freezes on capture while Claude reads,
+  resumes on "Try again", and stops on unmount (tracks released).
+- Graceful degradation: permission denied or no device / insecure context
+  falls back to the upload dropzone with a clear prompt.
+
+---
+
 ## v0.5.0 — Installable PWA (2026-07-17)
 
 The web app can now be installed to the iPhone/Android home screen and runs
