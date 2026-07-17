@@ -5,6 +5,35 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.5.0 — Installable PWA (2026-07-17)
+
+The web app can now be installed to the iPhone/Android home screen and runs
+full-screen like a native app — no App Store, no Xcode, no signing. Same
+Fly backend, same passcode login, same synced library.
+
+### Added
+
+- **Web app manifest** (`public/manifest.webmanifest`) — standalone display,
+  Nordic Zen theme/background (`#0C1017`), name/short-name/description.
+- **Icons** (`public/icons/*`, `public/apple-touch-icon.png`) — 192/512 +
+  512 maskable + 180 apple-touch, a slate-blue coffee bean on fjord-night,
+  generated to match the app's design tokens.
+- **Service worker** (`public/sw.js`) — cache-first for static assets,
+  network-first for navigations, and API traffic (`/api/*`) never cached so
+  auth + sync stay live. Registered client-side via
+  `components/PWARegister.tsx`.
+- **PWA metadata** in `app/layout.tsx` — `manifest`, `appleWebApp` (capable,
+  title, status-bar style), icon links, and a `viewport` export with
+  `themeColor` + `viewport-fit: cover`.
+
+### Fixed
+
+- **Dockerfile** now copies `public/` into the runtime image. The prior
+  non-standalone image never shipped `public/`, so any static asset served
+  from it (now the manifest, icons, and service worker) would 404 in prod.
+
+---
+
 ## v0.4.0 — Self-hosted backend on Fly (off Supabase) (2026-07-06)
 
 Supabase (project `tohgsibktcteoghayndt`) was deleted after free-tier
