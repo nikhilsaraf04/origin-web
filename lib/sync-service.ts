@@ -9,7 +9,9 @@
 //   * On every local write: fire async upsert of the single row.
 //   * Deletes are soft: `deletedAt` set, tombstone pushed, reads filter it.
 //
-// `bag_photo_url` is intentionally skipped — bag photos stay local-only.
+// `bag_photo_url` holds a "/api/images/<id>" URL (the bytes live as files on
+// the volume, not in the row) and is synced both ways so photos persist and
+// follow the user across devices.
 
 "use client";
 
@@ -90,7 +92,7 @@ function rowToLog(r: CoffeeLogRow): CoffeeLog {
     sourcedFrom: r.sourced_from ?? undefined,
     pricePaid: r.price_paid ?? undefined,
     currency: r.currency ?? undefined,
-    // bag_photo_url intentionally not hydrated — stays local.
+    bagPhotoUrl: r.bag_photo_url ?? undefined,
     matchScore: r.match_score ?? undefined,
     matchReason: r.match_reason ?? undefined,
   };
@@ -98,7 +100,7 @@ function rowToLog(r: CoffeeLogRow): CoffeeLog {
 
 /** Build the row payload for an upsert. `user_id` is set server-side from
  *  the token, so we send a placeholder the backend overwrites. */
-function logToRow(log: CoffeeLog): Omit<CoffeeLogRow, "bag_photo_url"> {
+function logToRow(log: CoffeeLog): CoffeeLogRow {
   const updated = log.updatedAt ?? new Date().toISOString();
   return {
     id: log.id,
@@ -128,6 +130,7 @@ function logToRow(log: CoffeeLog): Omit<CoffeeLogRow, "bag_photo_url"> {
     date_consumed: log.dateConsumed,
     sourced_from: log.sourcedFrom ?? null,
     currency: log.currency ?? null,
+    bag_photo_url: log.bagPhotoUrl ?? null,
     price_paid: log.pricePaid ?? null,
     match_score: log.matchScore ?? null,
     match_reason: log.matchReason ?? null,

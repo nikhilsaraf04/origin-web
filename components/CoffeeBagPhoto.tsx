@@ -10,6 +10,7 @@ interface CoffeeBagPhotoProps {
   country?: string | null;
   roaster?: string | null;
   photoDataUrl?: string | null;
+  photoUrl?: string | null;
   className?: string;
 }
 
@@ -20,18 +21,22 @@ export function CoffeeBagPhoto({
   country,
   roaster,
   photoDataUrl,
+  photoUrl,
   className,
 }: CoffeeBagPhotoProps) {
   const variant = bagVariantFor(colorIndex);
+  // Prefer the persisted server image; fall back to a fresh local data URL
+  // (e.g. the just-captured preview before it has been uploaded).
+  const src = photoUrl || photoDataUrl;
   return (
     <div
       className={`relative overflow-hidden rounded-r1 ${className ?? ""}`}
       style={{ width, height, background: variant.bg }}
     >
-      {photoDataUrl ? (
+      {src ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={photoDataUrl}
+          src={src}
           alt={country ?? "Coffee bag"}
           className="absolute inset-0 w-full h-full object-cover"
         />

@@ -5,6 +5,39 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.7.0 — Bag photos are saved (2026-07-18)
+
+Captured/uploaded bag photos are now stored on the server and shown on each
+coffee — they survive reloads and sync across devices. Previously the photo
+was local-only and, worse, wiped on the next pull, so it vanished on reload.
+
+### Added
+
+- **Image storage** (`app/api/images/[id]/route.ts`) — `POST` writes the
+  photo as a file on the Fly volume (`/data/images/<id>.jpg`, next to the DB),
+  `GET` serves it (auth via bearer or the same-origin cookie so `<img>` works).
+  UUID-only ids guard against path traversal; 8 MB cap. Dir helper +
+  `IMAGES_DIR`/`ensureImagesDir` in `lib/db.ts`.
+- **Upload helper** (`lib/services/bag-image.ts`) — data URL → blob → POST,
+  returns the stored `/api/images/<id>` URL.
+- `CoffeeLog.bagPhotoUrl` (synced) alongside the transient
+  `bagPhotoDataUrl` (local preview only).
+
+### Changed
+
+- **Sync** (`lib/sync-service.ts`) — `bag_photo_url` is now sent on push and
+  hydrated on pull (was deliberately skipped), so photos persist + follow the
+  user. Bytes stay out of the row: the column holds only the URL.
+- **Save** (`ReviewScreen`) — on save, uploads the photo, stores the URL on
+  the log, and drops the base64 data URL so localStorage doesn't bloat. Falls
+  back to the local copy if the upload fails.
+- **Display** (`CoffeeBagPhoto`) — prefers the server `photoUrl`, falls back
+  to a fresh `photoDataUrl`; Library + Detail pass it through.
+- **Capture** (`ScanScreen`) — frames downscaled to a 1440px long edge at
+  JPEG 0.8 (was full-res 0.92) to keep stored photos light.
+
+---
+
 ## v0.6.0 — Live camera scanning (2026-07-17)
 
 The web scan screen now has a live rear-camera viewfinder, matching the

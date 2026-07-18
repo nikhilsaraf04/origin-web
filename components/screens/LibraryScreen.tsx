@@ -126,6 +126,7 @@ function CoffeeRow({ log }: { log: ReturnType<typeof useCoffeeStore.getState>["l
           country={log.originCountry}
           roaster={log.roaster}
           photoDataUrl={log.bagPhotoDataUrl}
+          photoUrl={log.bagPhotoUrl}
         />
         <div className="flex-1 min-w-0 flex flex-col gap-1">
           <div

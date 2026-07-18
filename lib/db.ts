@@ -8,11 +8,21 @@
 
 import Database from "better-sqlite3";
 import { existsSync, mkdirSync } from "node:fs";
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 
 // In production the Fly volume is mounted at /data. Locally, fall back to a
 // gitignored file in the repo root so `next dev` works without a volume.
 const DB_PATH = process.env.ORIGIN_DB_PATH ?? "/data/origin.db";
+
+// Bag photos live as files next to the DB on the same persistent volume, so
+// the logs table stays small and images survive deploys/restarts.
+export const IMAGES_DIR = join(dirname(DB_PATH), "images");
+
+/** Ensure the images directory exists; returns its path. */
+export function ensureImagesDir(): string {
+  if (!existsSync(IMAGES_DIR)) mkdirSync(IMAGES_DIR, { recursive: true });
+  return IMAGES_DIR;
+}
 
 let cached: Database.Database | null = null;
 

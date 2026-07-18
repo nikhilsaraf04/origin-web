@@ -89,7 +89,8 @@ export interface CoffeeLog {
   sourcedFrom?: string;
   pricePaid?: number;
   currency?: string;
-  bagPhotoDataUrl?: string; // base64 data URL of uploaded bag photo
+  bagPhotoDataUrl?: string; // base64 data URL — transient local preview only
+  bagPhotoUrl?: string; // server-stored bag photo, e.g. "/api/images/<id>" (synced)
 
   // Computed at scan time
   matchScore?: number;

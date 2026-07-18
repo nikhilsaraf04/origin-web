@@ -109,6 +109,7 @@ export function DetailScreen({ id }: { id: string }) {
           country={log.originCountry}
           roaster={log.roaster}
           photoDataUrl={log.bagPhotoDataUrl}
+          photoUrl={log.bagPhotoUrl}
           className="!w-full"
         />
         <div

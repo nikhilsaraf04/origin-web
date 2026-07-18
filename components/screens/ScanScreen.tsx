@@ -217,9 +217,15 @@ export function ScanScreen() {
   const captureAndScan = useCallback(() => {
     const video = videoRef.current;
     if (!video || cameraStatus !== "ready") return;
-    const w = video.videoWidth;
-    const h = video.videoHeight;
-    if (!w || !h) return;
+    const vw = video.videoWidth;
+    const vh = video.videoHeight;
+    if (!vw || !vh) return;
+    // Downscale to a sane long edge — keeps the stored photo small and quick to
+    // load while staying sharp enough for Claude to read the label.
+    const MAX_DIM = 1440;
+    const scale = Math.min(1, MAX_DIM / Math.max(vw, vh));
+    const w = Math.round(vw * scale);
+    const h = Math.round(vh * scale);
     const canvas = document.createElement("canvas");
     canvas.width = w;
     canvas.height = h;
@@ -236,7 +242,7 @@ export function ScanScreen() {
         void handleFile(file);
       },
       "image/jpeg",
-      0.92,
+      0.8,
     );
   }, [cameraStatus, handleFile]);
 

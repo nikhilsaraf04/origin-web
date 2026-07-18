@@ -19,6 +19,7 @@ import {
 } from "@/lib/types/models";
 import { FlavorTagsAll } from "@/lib/flavor-taxonomy";
 import { stringHashIndex } from "@/lib/design-tokens";
+import { uploadBagImage } from "@/lib/services/bag-image";
 
 export function ReviewScreen() {
   const router = useRouter();
@@ -86,7 +87,7 @@ export function ReviewScreen() {
     );
   }
 
-  function handleSave() {
+  async function handleSave() {
     const log = scanResultToCoffeeLog(scan, {
       rating,
       wouldSourceAgain,
@@ -99,6 +100,17 @@ export function ReviewScreen() {
     });
     if (roastDateEnabled) {
       log.roastDate = new Date(roastDate).toISOString();
+    }
+    // Persist the bag photo to the server and reference it by URL so it
+    // survives reloads and syncs across devices. On failure, keep the local
+    // data URL (still shows in this browser until re-synced).
+    if (scan.bagPhotoDataUrl) {
+      try {
+        log.bagPhotoUrl = await uploadBagImage(log.id, scan.bagPhotoDataUrl);
+        log.bagPhotoDataUrl = undefined; // avoid persisting base64 in localStorage
+      } catch (err) {
+        console.warn("[bag-image] upload failed, keeping local copy:", err);
+      }
     }
     save(log);
     try {
@@ -417,7 +429,7 @@ export function ReviewScreen() {
         <div className="max-w-3xl mx-auto px-s5 py-s4">
           <button
             type="button"
-            onClick={handleSave}
+            onClick={() => void handleSave()}
             className="w-full bg-accent text-accent-ink font-ui font-medium text-[12px] uppercase rounded-r2 py-[14px]"
             style={{ letterSpacing: "0.1em" }}
           >
