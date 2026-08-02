@@ -5,6 +5,28 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.9.1 — Roasters ranking recalibrated (2026-08-02)
+
+Rechecked the top of the ranking after feedback that Subko was over-scored on
+the cup. A focused research pass into critical and independent opinion (SCA-style
+cupping guides, mixed reviews, competition credentials) confirmed Subko's cup is
+top-tier but not uniquely best, its lead being carried substantially by brand and
+influence rather than a decisive cup-quality edge.
+
+### Changed
+
+- **Scores** (`lib/data/roasters.ts`):
+  - Subko cup 19 to 16 (reputation kept at 19). Total 92 to 89.
+  - Corridor Seven cup 17 to 18 and reputation 17 to 18, reflecting its
+    national barista championship and independent 92 to 93 point cups. Total
+    78 to 80.
+  - Naivo cup 14 to 16 and reputation 10 to 11, a hidden gem on independent
+    scoring. Total 63 to 66.
+- Net effect: Blue Tokai is now number 1, Subko number 2, and no roaster holds a
+  19 cup score.
+
+---
+
 ## v0.9.0 — Roasters, ranked (2026-08-02)
 
 The Roasters directory is now ranked. Every roaster is scored on a balanced

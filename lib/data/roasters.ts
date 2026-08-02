@@ -95,7 +95,7 @@ export const ROASTERS: Roaster[] = [
     note: "Roaster, bakery and craft micro-lot program obsessed with Indian terroir and processing.",
     website: "https://subko.coffee",
     tags: ["Micro lots", "Craft"],
-    scores: { cup: 19, sourcing: 18, innovation: 19, reputation: 19, influence: 17 },
+    scores: { cup: 16, sourcing: 18, innovation: 19, reputation: 19, influence: 17 },
   },
   {
     name: "Corridor Seven Coffee Roasters",
@@ -104,7 +104,7 @@ export const ROASTERS: Roaster[] = [
     note: "Central India's specialty pioneer, founder is a national barista champion.",
     website: "https://corridorseven.coffee",
     tags: ["Single origin", "Champion roaster"],
-    scores: { cup: 17, sourcing: 16, innovation: 15, reputation: 17, influence: 13 },
+    scores: { cup: 18, sourcing: 16, innovation: 15, reputation: 18, influence: 13 },
   },
   {
     name: "KC Roasters",
@@ -416,7 +416,7 @@ export const ROASTERS: Roaster[] = [
     note: "Family roastery led by a certified Q grader, roasting on Probat and Bühler.",
     website: "https://naivo.in",
     tags: ["Single origin", "Q grader"],
-    scores: { cup: 14, sourcing: 15, innovation: 13, reputation: 10, influence: 11 },
+    scores: { cup: 16, sourcing: 15, innovation: 13, reputation: 11, influence: 11 },
   },
   {
     name: "Kohi Roasters",
