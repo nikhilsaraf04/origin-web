@@ -5,6 +5,32 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.8.0 — Roasters directory (2026-08-02)
+
+A new **Roasters** tab: a curated, hand-picked directory of independent
+specialty coffee roasters in India, to help you find bags worth scanning.
+
+### Added
+
+- **Roasters data** (`lib/data/roasters.ts`) — a typed, static list of
+  independent Indian specialty roasters (name, city, state, founded year,
+  a one-line note, tags, and a link). Helpers derive the region filter
+  (`roasterStates`) and a link that always resolves — the official site
+  when known, else a web search (`roasterLink` / `roasterLinkLabel`).
+- **Roasters screen** (`components/screens/RoastersScreen.tsx`) + route
+  (`app/roasters/page.tsx`) — mirrors the Library header and horizontal
+  filter-tab pattern. Roasters are filterable by region and each row links
+  out to the roaster. A footer notes the list is curated, not exhaustive.
+
+### Changed
+
+- **Tab bar** (`components/OriginTabBar.tsx`) — reworked into a left cluster
+  (Library, Roasters) and a right cluster (Palette) flanking the center scan
+  FAB, so the third tab fits without crowding. Active state now matches on
+  path prefix so `/roasters` highlights correctly.
+
+---
+
 ## v0.7.0 — Bag photos are saved (2026-07-18)
 
 Captured/uploaded bag photos are now stored on the server and shown on each

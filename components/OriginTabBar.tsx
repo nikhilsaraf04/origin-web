@@ -1,19 +1,23 @@
-// Mirrors Origin/Components/OriginTabBar.swift — three nav targets + center scan FAB.
+// Mirrors Origin/Components/OriginTabBar.swift — nav targets flanking a center scan FAB.
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { clsx } from "@/lib/clsx";
 
-const tabs = [
+// Tabs are split into a left and right cluster around the center scan FAB.
+const leftTabs = [
   { label: "Library", href: "/" },
-  { label: "Palette", href: "/palette" },
+  { label: "Roasters", href: "/roasters" },
 ] as const;
+
+const rightTabs = [{ label: "Palette", href: "/palette" }] as const;
 
 export function OriginTabBar() {
   const pathname = usePathname() || "/";
   // Hide tab bar on the scan screen so the camera-like UI fills the viewport.
   if (pathname.startsWith("/scan") || pathname.startsWith("/review")) return null;
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   return (
     <nav
       className="fixed inset-x-0 bottom-0 z-30 border-t border-line-2"
@@ -25,13 +29,15 @@ export function OriginTabBar() {
       }}
     >
       <div className="max-w-3xl mx-auto h-full px-s5 flex items-center justify-between">
-        {tabs.slice(0, 1).map((tab) => (
-          <TabButton key={tab.href} {...tab} active={pathname === tab.href} />
-        ))}
+        <div className="flex items-center">
+          {leftTabs.map((tab) => (
+            <TabButton key={tab.href} {...tab} active={isActive(tab.href)} />
+          ))}
+        </div>
 
         <Link
           href="/scan"
-          className="-mt-6 w-[62px] h-[62px] rounded-pill bg-accent text-accent-ink flex items-center justify-center shadow-lg"
+          className="-mt-6 w-[62px] h-[62px] rounded-pill bg-accent text-accent-ink flex items-center justify-center shadow-lg shrink-0"
           aria-label="Scan a bag"
         >
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -43,9 +49,11 @@ export function OriginTabBar() {
           </svg>
         </Link>
 
-        {tabs.slice(1).map((tab) => (
-          <TabButton key={tab.href} {...tab} active={pathname === tab.href} />
-        ))}
+        <div className="flex items-center">
+          {rightTabs.map((tab) => (
+            <TabButton key={tab.href} {...tab} active={isActive(tab.href)} />
+          ))}
+        </div>
       </div>
     </nav>
   );
