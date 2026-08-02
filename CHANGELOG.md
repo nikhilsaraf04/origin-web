@@ -5,6 +5,34 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.9.0 — Roasters, ranked (2026-08-02)
+
+The Roasters directory is now ranked. Every roaster is scored on a balanced
+five-axis scorecard and the list is ordered best-first, with a rank number
+and a score out of 100 on each card.
+
+### Added
+
+- **Rubric scores** (`lib/data/roasters.ts`) — each roaster carries a
+  `scores` object across five equally weighted axes (cup quality, sourcing,
+  innovation, reputation, influence), each 0-20. `roasterScore` sums them and
+  `rankedRoasters` orders the list, breaking ties on reputation, then cup,
+  then name, so ranks are deterministic. Scores were assigned from a
+  web-research pass (awards, competitions, press, barista esteem) against
+  shared calibration anchors.
+- Scores were informed by research into what the specialty community rates:
+  competition results, awards, and barista/expert opinion.
+
+### Changed
+
+- **Roasters screen** (`components/screens/RoastersScreen.tsx`) — renders the
+  ranked list with a rank badge (top three in accent), a large score-out-of-100
+  badge, and a per-card breakdown of the five axis scores. A footer explains
+  the rubric and its inherent subjectivity. Region filtering keeps each
+  roaster's overall rank.
+
+---
+
 ## v0.8.1 — Roasters directory, deeper (2026-08-02)
 
 Expanded the Roasters directory from 18 to 53 entries, adding the newer

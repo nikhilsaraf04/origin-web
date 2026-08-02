@@ -1,26 +1,28 @@
-// Roasters — a curated directory of independent Indian specialty roasters.
-// Mirrors the header + horizontal filter-tab pattern used by LibraryScreen.
+// Roasters — a curated, ranked directory of independent Indian specialty
+// roasters. Mirrors the header + horizontal filter-tab pattern of LibraryScreen.
 "use client";
 
 import { useMemo, useState } from "react";
 import { OChip } from "@/components/OChip";
 import {
-  ROASTERS,
+  rankedRoasters,
   roasterStates,
   roasterLink,
   roasterLinkLabel,
-  type Roaster,
+  RANK_AXES,
+  type RankedRoaster,
 } from "@/lib/data/roasters";
 
 export function RoastersScreen() {
   const [filter, setFilter] = useState<string>("All");
 
+  const ranked = useMemo(() => rankedRoasters(), []);
   const states = useMemo(() => ["All", ...roasterStates()], []);
 
   const filtered = useMemo(() => {
-    if (filter === "All") return ROASTERS;
-    return ROASTERS.filter((r) => r.state === filter);
-  }, [filter]);
+    if (filter === "All") return ranked;
+    return ranked.filter((r) => r.state === filter);
+  }, [filter, ranked]);
 
   return (
     <main className="min-h-screen pb-[112px]">
@@ -31,10 +33,10 @@ export function RoastersScreen() {
             className="font-ui text-[10px] uppercase text-ink-3"
             style={{ letterSpacing: "0.1em" }}
           >
-            Indian Specialty · Independent
+            Independent · Ranked
           </span>
         </div>
-        <span className="font-mono text-[13px] text-ink-3">{ROASTERS.length}</span>
+        <span className="font-mono text-[13px] text-ink-3">{ranked.length}</span>
       </header>
 
       <div className="max-w-3xl mx-auto">
@@ -59,10 +61,19 @@ export function RoastersScreen() {
         ))}
       </ul>
 
-      <p className="max-w-3xl mx-auto px-s5 pt-s6 font-ui text-[11px] text-ink-4 leading-relaxed">
-        A hand-picked, non-exhaustive list of independent specialty roasters.
-        Spotted one worth adding? It is easy to grow the list.
-      </p>
+      <div className="max-w-3xl mx-auto px-s5 pt-s6 flex flex-col gap-s2">
+        <p className="font-ui text-[11px] text-ink-4 leading-relaxed">
+          Ranked on a balanced scorecard: cup quality, sourcing, innovation,
+          reputation and influence, each scored out of 20 for a total out of 100.
+          Scores come from a research pass across awards, competitions, press and
+          barista esteem, so they are directional and subjective. Newer or smaller
+          roasters can cup beautifully yet rank lower, recognition takes years.
+        </p>
+        <p className="font-ui text-[11px] text-ink-4 leading-relaxed">
+          A hand-picked, non-exhaustive list. Spotted one worth adding? It is easy
+          to grow the list.
+        </p>
+      </div>
     </main>
   );
 }
@@ -94,12 +105,13 @@ function FilterTab({
   );
 }
 
-function RoasterRow({ roaster }: { roaster: Roaster }) {
+function RoasterRow({ roaster }: { roaster: RankedRoaster }) {
   const location = [roaster.city, roaster.state]
     .filter(Boolean)
     // Drop a redundant second entry when city == state (e.g. Puducherry).
     .filter((v, i, a) => a.indexOf(v) === i)
     .join(" · ");
+  const topThree = roaster.rank <= 3;
 
   return (
     <li className="border-b border-line-1">
@@ -107,39 +119,77 @@ function RoasterRow({ roaster }: { roaster: Roaster }) {
         href={roasterLink(roaster)}
         target="_blank"
         rel="noopener noreferrer"
-        className="block px-s5 py-s4 hover:bg-bg-1/40 transition-colors"
+        className="flex items-stretch gap-s4 px-s5 py-s4 hover:bg-bg-1/40 transition-colors"
       >
-        <div className="flex items-baseline justify-between gap-s3">
-          <div className="font-display font-bold text-[20px] text-ink-1 leading-tight">
-            {roaster.name}
+        {/* Rank */}
+        <div className="w-[34px] shrink-0 flex flex-col items-center pt-[3px]">
+          <span
+            className={`font-mono text-[16px] leading-none ${
+              topThree ? "text-accent" : "text-ink-3"
+            }`}
+          >
+            {roaster.rank}
+          </span>
+          <span
+            className="font-ui text-[8px] uppercase text-ink-4 mt-[3px]"
+            style={{ letterSpacing: "0.1em" }}
+          >
+            Rank
+          </span>
+        </div>
+
+        {/* Body */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-s3">
+            <div className="min-w-0">
+              <div className="font-display font-bold text-[20px] text-ink-1 leading-tight">
+                {roaster.name}
+              </div>
+              <div
+                className="font-ui text-[10px] uppercase text-ink-4 mt-1"
+                style={{ letterSpacing: "0.12em" }}
+              >
+                {location}
+                {roaster.founded ? ` · ${roaster.founded}` : ""}
+              </div>
+            </div>
+            <div className="shrink-0 flex flex-col items-end leading-none">
+              <span className="font-mono text-[24px] text-accent">{roaster.score}</span>
+              <span className="font-mono text-[10px] text-ink-4 mt-[2px]">/ 100</span>
+            </div>
           </div>
-          {roaster.founded && (
-            <span className="font-mono text-[12px] text-ink-3 shrink-0">
-              {roaster.founded}
-            </span>
-          )}
-        </div>
 
-        <div
-          className="font-ui text-[11px] uppercase text-ink-4 mt-1"
-          style={{ letterSpacing: "0.12em" }}
-        >
-          {location}
-        </div>
+          <p className="font-ui text-[13px] text-ink-2 mt-s2 leading-relaxed">
+            {roaster.note}
+          </p>
 
-        <p className="font-ui text-[13px] text-ink-2 mt-s2 leading-relaxed">
-          {roaster.note}
-        </p>
-
-        <div className="flex items-center justify-between gap-s3 mt-s3">
-          <div className="flex flex-wrap gap-s2">
-            {roaster.tags.map((t) => (
-              <OChip key={t} text={t} />
+          {/* Score breakdown */}
+          <div className="flex flex-wrap gap-x-s4 gap-y-1 mt-s3">
+            {RANK_AXES.map((axis) => (
+              <span key={axis.key} className="flex items-baseline gap-[5px]">
+                <span
+                  className="font-ui text-[9px] uppercase text-ink-4"
+                  style={{ letterSpacing: "0.08em" }}
+                >
+                  {axis.label}
+                </span>
+                <span className="font-mono text-[11px] text-ink-2">
+                  {roaster.scores[axis.key]}
+                </span>
+              </span>
             ))}
           </div>
-          <span className="font-mono text-[11px] text-accent shrink-0 whitespace-nowrap">
-            {roasterLinkLabel(roaster)} ↗
-          </span>
+
+          <div className="flex items-center justify-between gap-s3 mt-s3">
+            <div className="flex flex-wrap gap-s2">
+              {roaster.tags.map((t) => (
+                <OChip key={t} text={t} />
+              ))}
+            </div>
+            <span className="font-mono text-[11px] text-accent shrink-0 whitespace-nowrap">
+              {roasterLinkLabel(roaster)} ↗
+            </span>
+          </div>
         </div>
       </a>
     </li>
