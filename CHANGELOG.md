@@ -5,6 +5,22 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.8.1 — Roasters directory, deeper (2026-08-02)
+
+Expanded the Roasters directory from 18 to 53 entries, adding the newer
+wave of Indian specialty roasters: D2C and online-first brands, estate
+roasters shipping direct, and regional pioneers well beyond the metros
+(Rajasthan, Goa, Madhya Pradesh, Gujarat, Kerala, Odisha, West Bengal,
+and the Northeast: Nagaland and Meghalaya).
+
+### Changed
+
+- **Roasters data** (`lib/data/roasters.ts`) — 35 new roasters. Region
+  filter now spans 17 states / UTs; entries without a confirmed website
+  fall back to a web-search link, so no card dead-ends.
+
+---
+
 ## v0.8.0 — Roasters directory (2026-08-02)
 
 A new **Roasters** tab: a curated, hand-picked directory of independent
