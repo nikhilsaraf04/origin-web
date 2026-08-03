@@ -27,12 +27,51 @@
 //
 // No em dashes in user-facing copy (house rule); commas and colons only.
 
+import {
+  emptyScanResult,
+  type ScanResult,
+  type CoffeeProcess,
+  type RoastLevel,
+} from "@/lib/types/models";
+
 export interface RoasterScore {
   cup: number; // 0-20
   sourcing: number; // 0-20
   innovation: number; // 0-20
   reputation: number; // 0-20
   influence: number; // 0-20
+}
+
+/** The roaster's flagship / highest-rated whole-bean offering. Attributes use
+ *  the app's enums and flavor taxonomy so the match algorithm can score it
+ *  against the user's taste profile directly. */
+export interface FlagshipCoffee {
+  /** Product name as sold, e.g. "Vienna Roast", "Attikan Estate". */
+  name: string;
+  kind: "single-origin" | "blend";
+  originCountry: string;
+  originRegion?: string;
+  process: CoffeeProcess;
+  roastLevel: RoastLevel;
+  /** Canonical flavor-taxonomy tags (lowercase-with-hyphens). */
+  flavorTags: string[];
+  /** True when we could not confirm a specific flagship and fell back to the
+   *  roaster's typical house bean. */
+  approx?: boolean;
+}
+
+/** Build a ScanResult-shaped object from a flagship so computeMatchScore can
+ *  score it. Only the fields the matcher reads are meaningful. */
+export function flagshipScanResult(f: FlagshipCoffee): ScanResult {
+  return {
+    ...emptyScanResult(),
+    coffeeName: f.name,
+    originCountry: f.originCountry,
+    originRegion: f.originRegion ?? "",
+    process: f.process,
+    roastLevel: f.roastLevel,
+    roasterFlavorTags: f.flavorTags,
+  };
 }
 
 export interface Roaster {
@@ -60,6 +99,8 @@ export interface RankedRoaster extends Roaster {
   rank: number;
   /** Sum of the five axes, out of 100. */
   score: number;
+  /** The roaster's flagship whole-bean coffee, if known. */
+  flagship?: FlagshipCoffee;
 }
 
 /** The five rubric axes, with the short labels used in the UI breakdown. */
@@ -606,12 +647,72 @@ export const ROASTERS: Roaster[] = [
   },
 ];
 
+/** Each roaster's flagship / highest-rated whole-bean offering, keyed by the
+ *  roaster's exact `name`. Compiled from a web-research pass over each
+ *  roaster's shop and reviews; `approx: true` marks a house-bean fallback
+ *  where a specific flagship could not be confirmed. */
+export const FLAGSHIPS: Record<string, FlagshipCoffee> = {
+  "Blue Tokai Coffee Roasters": { name: "Vienna Roast", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Dark", flavorTags: ["dark-chocolate", "cocoa", "caramel"] },
+  "Subko Specialty Coffee": { name: "Kalledevarapura Koji Naturals", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Natural", roastLevel: "Medium-Light", flavorTags: ["rose", "lychee", "passionfruit"] },
+  "Corridor Seven Coffee Roasters": { name: "Baarbara Estate Washed", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["caramel", "apricot", "dark-chocolate"] },
+  "KC Roasters": { name: "Marvahulla Estate", kind: "single-origin", originCountry: "India", originRegion: "Nilgiris", process: "Washed", roastLevel: "Dark", flavorTags: ["dark-chocolate", "molasses", "caramel"] },
+  "Savorworks Roasters": { name: "Boss's Wife", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "caramel", "cocoa"] },
+  "Devans North Indian Coffee & Tea": { name: "Premium Blend", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Medium", flavorTags: ["earth", "dark-chocolate", "malt"] },
+  "Sleepy Owl Coffee": { name: "Original Medium Roast", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "cocoa", "brown-sugar"] },
+  "Black Baza Coffee": { name: "Ficus", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "walnut", "cocoa"] },
+  "Maverick & Farmer Coffee": { name: "Sunkissed", kind: "single-origin", originCountry: "India", originRegion: "Coorg", process: "Honey", roastLevel: "Medium", flavorTags: ["orange", "honey", "apricot"] },
+  "The Flying Squirrel": { name: "Aromatique", kind: "single-origin", originCountry: "India", originRegion: "Coorg", process: "Natural", roastLevel: "Medium-Dark", flavorTags: ["strawberry", "caramel", "wine"] },
+  "Halli Berri": { name: "Kambihalli Estate", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["jasmine", "almond", "honey"] },
+  "Ainmane Coffee": { name: "Plantation Gold", kind: "blend", originCountry: "India", originRegion: "Coorg", process: "Washed", roastLevel: "Medium", flavorTags: ["orange", "caramel"] },
+  "Araku Coffee": { name: "Signature", kind: "blend", originCountry: "India", originRegion: "Araku Valley", process: "Washed", roastLevel: "Medium", flavorTags: ["cocoa", "cherry", "green-tea"] },
+  "Roastery Coffee House": { name: "House single origin", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Washed", roastLevel: "Medium", flavorTags: ["dark-chocolate", "caramel", "almond"], approx: true },
+  "Kapi Kottai": { name: "Mind = Blown", kind: "single-origin", originCountry: "India", originRegion: "Mooleh Manay Estate, Coorg", process: "Carbonic Maceration", roastLevel: "Medium", flavorTags: ["peach", "vanilla", "wine"] },
+  "Seven Beans Co.": { name: "Mishta", kind: "blend", originCountry: "India", originRegion: "Chikmagalur", process: "Natural", roastLevel: "Medium", flavorTags: ["blueberry", "caramel", "brown-sugar"] },
+  "Curious Life Coffee Roasters": { name: "Ratnagiri Estate", kind: "single-origin", originCountry: "India", originRegion: "Ratnagiri Estate, Chikmagalur", process: "Washed", roastLevel: "Light", flavorTags: ["jasmine", "bergamot", "strawberry"] },
+  "Marc's Coffees": { name: "Julien Peak", kind: "single-origin", originCountry: "India", originRegion: "Shevaroy Hills", process: "Washed", roastLevel: "Medium", flavorTags: ["orange", "cinnamon", "molasses"] },
+  "Quick Brown Fox Coffee Roasters": { name: "SLN 5B Natural", kind: "single-origin", originCountry: "India", originRegion: "C&T Estate, Chikmagalur", process: "Anaerobic", roastLevel: "Light", flavorTags: ["plum", "cherry", "blackberry"] },
+  "Rossette Coffee": { name: "Truffle Twilight", kind: "blend", originCountry: "India", originRegion: "Baarbara & Attikan Estates", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "caramel", "fig"] },
+  "Beanly Coffee": { name: "Master Blend", kind: "blend", originCountry: "India", originRegion: "Chikmagalur, Coorg", process: "Washed", roastLevel: "Medium", flavorTags: ["walnut", "orange", "cedar"] },
+  "Cohoma Coffee": { name: "Signature Custom Roast", kind: "single-origin", originCountry: "India", originRegion: "Karnataka", process: "Washed", roastLevel: "Medium", flavorTags: ["dark-chocolate", "lemon", "honey"] },
+  "Kilta Coffee Co": { name: "House Blend", kind: "blend", originCountry: "India", process: "Other", roastLevel: "Medium", flavorTags: ["dark-chocolate", "caramel", "hazelnut"] },
+  "Half Light Coffee Roasters": { name: "MS Estate", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Washed", roastLevel: "Medium", flavorTags: ["blackberry", "peach", "walnut"] },
+  "First Crack Coffee Roasters": { name: "Jodhpur Blend", kind: "blend", originCountry: "India", process: "Other", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "caramel", "almond"] },
+  "Ikkis Coffee": { name: "Morning Mist", kind: "single-origin", originCountry: "India", originRegion: "Ratnagiri Estate, Chikmagalur", process: "Washed", roastLevel: "Light", flavorTags: ["jasmine", "apricot", "wine"] },
+  "Bloom Coffee Roasters": { name: "Signature House Blend", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["cocoa", "caramel", "blueberry"] },
+  "Grey Soul Coffee Roasters": { name: "Roasters Espresso", kind: "blend", originCountry: "India", process: "Other", roastLevel: "Medium-Dark", flavorTags: ["milk-chocolate", "caramel", "brown-sugar"] },
+  "Bombay Island Coffee Company": { name: "Community Blend", kind: "blend", originCountry: "India", originRegion: "Chikmagalur", process: "Other", roastLevel: "Dark", flavorTags: ["dark-chocolate", "cedar", "tobacco"] },
+  "Toffee Coffee Roasters": { name: "Fudge Blend", kind: "blend", originCountry: "India", process: "Other", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "caramel", "toffee"] },
+  "G-Shot Coffee Roastery": { name: "Ratnagiri Estate", kind: "single-origin", originCountry: "India", originRegion: "Ratnagiri Estate, Chikmagalur", process: "Natural", roastLevel: "Medium-Light", flavorTags: ["caramel", "apricot", "milk-chocolate"] },
+  "Siolim Specialty Coffee": { name: "Anjuna Blend", kind: "blend", originCountry: "India", process: "Other", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "raisin", "hazelnut"] },
+  "Kaffa Coffee Roasters": { name: "House Blend", kind: "blend", originCountry: "India", process: "Other", roastLevel: "Medium", flavorTags: ["dark-chocolate", "caramel", "almond"], approx: true },
+  "Genetics Coffee": { name: "House Blend", kind: "blend", originCountry: "India", originRegion: "Karnataka", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "orange", "date"] },
+  "Naivo Coffee Company": { name: "Bold & Beautiful", kind: "blend", originCountry: "India", originRegion: "Karnataka", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "almond", "cedar"] },
+  "Kohi Roasters": { name: "KōHi Standard", kind: "single-origin", originCountry: "India", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "blackberry", "orange"] },
+  "Bili Hu": { name: "Aghora Estate", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Natural", roastLevel: "Medium", flavorTags: ["raisin", "brown-sugar", "caramel", "almond"] },
+  "GB Roasters": { name: "Ekata Estate Natural", kind: "single-origin", originCountry: "India", originRegion: "Ekata Estate", process: "Natural", roastLevel: "Medium-Light", flavorTags: ["raspberry", "cherry", "raisin"] },
+  "Fraction 9 Coffee Roasters": { name: "Kaapi", kind: "blend", originCountry: "India", originRegion: "Chikmagalur", process: "Washed", roastLevel: "Dark", flavorTags: ["hazelnut", "plum", "cocoa"] },
+  "Kerehaklu": { name: "Kerehaklu Estate", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Washed", roastLevel: "Medium", flavorTags: ["plum", "brown-sugar", "orange"] },
+  "Estate Monkeys": { name: "Signature Blend", kind: "blend", originCountry: "India", originRegion: "Coorg", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "apricot", "orange", "almond"] },
+  "Beachville Coffee Roasters": { name: "Nachammai", kind: "single-origin", originCountry: "India", originRegion: "Nachammai Estate", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["dark-chocolate", "jasmine", "cocoa"] },
+  "Kat & Kin Coffee Roasters": { name: "Signature Blend", kind: "blend", originCountry: "India", originRegion: "Chandragiri", process: "Washed", roastLevel: "Medium", flavorTags: ["vanilla", "caramel", "walnut"] },
+  "Ffox Coffee": { name: "Das Fox Kaffee", kind: "single-origin", originCountry: "India", originRegion: "Araku Valley", process: "Natural", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "plum", "caramel"] },
+  "Kapiberry": { name: "Signature", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Light", flavorTags: ["jasmine", "orange", "honey"] },
+  "Black Fuel": { name: "House single origin", kind: "single-origin", originCountry: "India", originRegion: "Araku Valley", process: "Natural", roastLevel: "Medium", flavorTags: ["dark-chocolate", "caramel", "orange"], approx: true },
+  "Native Araku Coffee": { name: "Araku Valley Single Origin", kind: "single-origin", originCountry: "India", originRegion: "Araku Valley", process: "Natural", roastLevel: "Medium", flavorTags: ["milk-chocolate", "honey", "orange"] },
+  "Kruti Coffee": { name: "Select Farm Naturals", kind: "single-origin", originCountry: "India", originRegion: "Koraput", process: "Natural", roastLevel: "Medium-Dark", flavorTags: ["blackberry", "orange", "dark-chocolate"] },
+  "Yours Truly Coffee Roaster": { name: "House single origin", kind: "single-origin", originCountry: "India", originRegion: "Ratnagiri Estate", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "orange"], approx: true },
+  "Été Coffee": { name: "House single origin", kind: "single-origin", originCountry: "India", originRegion: "Nagaland", process: "Natural", roastLevel: "Medium", flavorTags: ["honey", "orange", "milk-chocolate"], approx: true },
+  "Brewed Awakening": { name: "House single origin", kind: "single-origin", originCountry: "India", originRegion: "Nagaland", process: "Washed", roastLevel: "Medium", flavorTags: ["jasmine", "orange", "honey"], approx: true },
+  "7000 Steps Coffee": { name: "Meghalaya Single Origin", kind: "single-origin", originCountry: "India", originRegion: "Meghalaya", process: "Natural", roastLevel: "Medium", flavorTags: ["lime", "grapefruit", "orange"] },
+  "Smoky Falls Tribe Coffee": { name: "House single origin", kind: "single-origin", originCountry: "India", originRegion: "East Khasi Hills", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "almond", "caramel"], approx: true },
+};
+
 /** All roasters ordered best-first, each annotated with rank and total score.
  *  Ties break on reputation, then cup quality, then name, so ranks are stable
  *  and deterministic. */
 export function rankedRoasters(): RankedRoaster[] {
   return [...ROASTERS]
-    .map((r) => ({ ...r, score: roasterScore(r) }))
+    .map((r) => ({ ...r, score: roasterScore(r), flagship: FLAGSHIPS[r.name] }))
     .sort(
       (a, b) =>
         b.score - a.score ||

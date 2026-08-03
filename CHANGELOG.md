@@ -5,6 +5,35 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.10.0 — Flagship beans + taste match (2026-08-03)
+
+Each roaster now shows its flagship whole-bean coffee (a single origin or a
+signature blend), and scores that bean against your own taste profile. Sort the
+directory by rubric rank or by personal match.
+
+### Added
+
+- **Flagship data** (`lib/data/roasters.ts`) — a `FLAGSHIPS` map keyed by
+  roaster name, holding each roaster's top whole-bean offering with attributes
+  in the app's own vocabulary (process and roast enums, canonical flavor
+  taxonomy tags). Compiled from a web-research pass over each roaster's shop and
+  reviews; a `~` marks a house-bean fallback where a specific flagship could not
+  be confirmed. `flagshipScanResult` adapts a flagship into the shape
+  `computeMatchScore` consumes, and `rankedRoasters` attaches the flagship.
+- **Taste match** (`components/screens/RoastersScreen.tsx`) — computes your
+  taste profile from your logged coffees and runs each flagship through the
+  existing match-score algorithm. Each card shows the flagship (name, kind,
+  process, roast, region, flavor tags) and a personal match percentage with a
+  short reason. A Rank / Match sort toggle reorders the list by personal match
+  (enabled once you have logged at least 5 coffees; a hint shows otherwise).
+
+### Deploy
+
+- **`.github/workflows/deploy.yml`** — deploys to Fly on push to `main` (and via
+  manual dispatch). Inert until a `FLY_API_TOKEN` repo secret is added.
+
+---
+
 ## v0.9.1 — Roasters ranking recalibrated (2026-08-02)
 
 Rechecked the top of the ranking after feedback that Subko was over-scored on

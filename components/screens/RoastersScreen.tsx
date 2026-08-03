@@ -1,32 +1,75 @@
 // Roasters — a curated, ranked directory of independent Indian specialty
-// roasters. Mirrors the header + horizontal filter-tab pattern of LibraryScreen.
+// roasters, each with its flagship whole-bean coffee matched to your taste.
 "use client";
 
 import { useMemo, useState } from "react";
 import { OChip } from "@/components/OChip";
+import { OLabel } from "@/components/OLabel";
+import { useCoffeeStore } from "@/lib/store/coffee-store";
+import {
+  computeTasteProfile,
+  isProfileReady,
+  TasteProfileMinLogs,
+} from "@/lib/types/taste-profile";
+import { computeMatchScore, type MatchScore } from "@/lib/services/match-score";
 import {
   rankedRoasters,
   roasterStates,
   roasterLink,
   roasterLinkLabel,
+  flagshipScanResult,
   RANK_AXES,
   type RankedRoaster,
 } from "@/lib/data/roasters";
 
+type SortKey = "rank" | "match";
+
 export function RoastersScreen() {
+  const logs = useCoffeeStore((s) => s.logs);
   const [filter, setFilter] = useState<string>("All");
+  const [sort, setSort] = useState<SortKey>("rank");
 
   const ranked = useMemo(() => rankedRoasters(), []);
   const states = useMemo(() => ["All", ...roasterStates()], []);
 
+  // Taste profile from the user's own logged coffees (needs >= 5 logs).
+  const profile = useMemo(
+    () => (logs.length >= TasteProfileMinLogs ? computeTasteProfile(logs) : null),
+    [logs],
+  );
+  const profileReady = isProfileReady(profile);
+
+  // Match each roaster's flagship against the taste profile.
+  const matches = useMemo(() => {
+    const m = new Map<string, MatchScore | null>();
+    for (const r of ranked) {
+      m.set(
+        r.name,
+        r.flagship && isProfileReady(profile)
+          ? computeMatchScore(flagshipScanResult(r.flagship), profile)
+          : null,
+      );
+    }
+    return m;
+  }, [ranked, profile]);
+
+  const effectiveSort: SortKey = sort === "match" && profileReady ? "match" : "rank";
+
   const filtered = useMemo(() => {
-    if (filter === "All") return ranked;
-    return ranked.filter((r) => r.state === filter);
-  }, [filter, ranked]);
+    const base = filter === "All" ? ranked : ranked.filter((r) => r.state === filter);
+    if (effectiveSort === "match") {
+      return [...base].sort(
+        (a, b) =>
+          (matches.get(b.name)?.score ?? -1) - (matches.get(a.name)?.score ?? -1) ||
+          a.rank - b.rank,
+      );
+    }
+    return base;
+  }, [filter, ranked, effectiveSort, matches]);
 
   return (
     <main className="min-h-screen pb-[112px]">
-      <header className="pt-[60px] pb-s4 px-s5 max-w-3xl mx-auto flex items-end justify-between">
+      <header className="pt-[60px] pb-s4 px-s5 max-w-3xl mx-auto flex items-end justify-between gap-s4">
         <div className="flex flex-col gap-[2px]">
           <h1 className="font-display text-[36px] text-ink-1 leading-none">Roasters</h1>
           <span
@@ -36,7 +79,7 @@ export function RoastersScreen() {
             Independent · Ranked
           </span>
         </div>
-        <span className="font-mono text-[13px] text-ink-3">{ranked.length}</span>
+        <SortToggle sort={effectiveSort} matchEnabled={profileReady} onChange={setSort} />
       </header>
 
       <div className="max-w-3xl mx-auto">
@@ -55,26 +98,79 @@ export function RoastersScreen() {
         <div className="h-[0.5px] bg-line-2" />
       </div>
 
+      {!profileReady && (
+        <div className="max-w-3xl mx-auto px-s5 pt-s3">
+          <p className="font-ui text-[11px] text-ink-4 leading-relaxed">
+            {logs.length === 0
+              ? "Scan and rate 5 coffees to unlock your taste match on each roaster's flagship."
+              : `Log ${TasteProfileMinLogs - logs.length} more ${
+                  TasteProfileMinLogs - logs.length === 1 ? "coffee" : "coffees"
+                } to unlock your taste match.`}
+          </p>
+        </div>
+      )}
+
       <ul className="max-w-3xl mx-auto">
         {filtered.map((r) => (
-          <RoasterRow key={r.name} roaster={r} />
+          <RoasterRow key={r.name} roaster={r} match={matches.get(r.name) ?? null} />
         ))}
       </ul>
 
       <div className="max-w-3xl mx-auto px-s5 pt-s6 flex flex-col gap-s2">
         <p className="font-ui text-[11px] text-ink-4 leading-relaxed">
           Ranked on a balanced scorecard: cup quality, sourcing, innovation,
-          reputation and influence, each scored out of 20 for a total out of 100.
-          Scores come from a research pass across awards, competitions, press and
-          barista esteem, so they are directional and subjective. Newer or smaller
-          roasters can cup beautifully yet rank lower, recognition takes years.
+          reputation and influence, each out of 20 for a total out of 100. The
+          match score compares each roaster's flagship bean to your own taste
+          profile, so it is personal to your logged coffees.
         </p>
         <p className="font-ui text-[11px] text-ink-4 leading-relaxed">
-          A hand-picked, non-exhaustive list. Spotted one worth adding? It is easy
-          to grow the list.
+          Scores are directional and subjective. Flagship picks marked with ~ are
+          the roaster's house style where a specific top bean was not confirmed.
         </p>
       </div>
     </main>
+  );
+}
+
+function SortToggle({
+  sort,
+  matchEnabled,
+  onChange,
+}: {
+  sort: SortKey;
+  matchEnabled: boolean;
+  onChange: (s: SortKey) => void;
+}) {
+  return (
+    <div className="flex items-center gap-[2px] shrink-0">
+      {(["rank", "match"] as const).map((key) => {
+        const active = sort === key;
+        const disabled = key === "match" && !matchEnabled;
+        return (
+          <button
+            key={key}
+            type="button"
+            disabled={disabled}
+            onClick={() => onChange(key)}
+            className="font-ui text-[10px] uppercase px-s3 py-[6px] rounded-r2 border transition-colors"
+            style={{
+              letterSpacing: "0.1em",
+              borderWidth: "0.5px",
+              borderColor: active ? "var(--accent-border)" : "var(--line-2)",
+              background: active ? "var(--accent-dim)" : "transparent",
+              color: disabled
+                ? "var(--ink-4)"
+                : active
+                  ? "var(--accent)"
+                  : "var(--ink-3)",
+              cursor: disabled ? "not-allowed" : "pointer",
+            }}
+          >
+            {key}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 
@@ -105,13 +201,33 @@ function FilterTab({
   );
 }
 
-function RoasterRow({ roaster }: { roaster: RankedRoaster }) {
+function prettyTag(tag: string): string {
+  return tag.replace(/-/g, " ");
+}
+
+function RoasterRow({
+  roaster,
+  match,
+}: {
+  roaster: RankedRoaster;
+  match: MatchScore | null;
+}) {
   const location = [roaster.city, roaster.state]
     .filter(Boolean)
-    // Drop a redundant second entry when city == state (e.g. Puducherry).
     .filter((v, i, a) => a.indexOf(v) === i)
     .join(" · ");
   const topThree = roaster.rank <= 3;
+  const f = roaster.flagship;
+  const meta = f
+    ? [
+        f.kind === "single-origin" ? "Single origin" : "Blend",
+        f.process,
+        f.roastLevel,
+        f.originRegion,
+      ]
+        .filter(Boolean)
+        .join(" · ")
+    : "";
 
   return (
     <li className="border-b border-line-1">
@@ -163,7 +279,49 @@ function RoasterRow({ roaster }: { roaster: RankedRoaster }) {
             {roaster.note}
           </p>
 
-          {/* Score breakdown */}
+          {/* Flagship bean + taste match */}
+          {f && (
+            <div className="mt-s3 rounded-r4 border border-line-2 bg-bg-1/40 p-s3">
+              <div className="flex items-start justify-between gap-s3">
+                <div className="min-w-0">
+                  <OLabel text="Top bean" variant="accent" />
+                  <div className="font-ui font-medium text-[14px] text-ink-1 mt-[3px] truncate">
+                    {f.approx ? "~ " : ""}
+                    {f.name}
+                  </div>
+                  <div className="font-ui text-[11px] text-ink-3 mt-[2px]">{meta}</div>
+                </div>
+                <div className="shrink-0 flex flex-col items-end leading-none pl-s2">
+                  {match ? (
+                    <span className="font-mono text-[22px] text-accent">
+                      {match.score}
+                      <span className="text-[12px] text-ink-3">%</span>
+                    </span>
+                  ) : (
+                    <span className="font-mono text-[22px] text-ink-4">—</span>
+                  )}
+                  <span
+                    className="font-ui text-[8px] uppercase text-ink-4 mt-[3px]"
+                    style={{ letterSpacing: "0.12em" }}
+                  >
+                    Match
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-s2 mt-s2">
+                {f.flavorTags.map((t) => (
+                  <OChip key={t} text={prettyTag(t)} />
+                ))}
+              </div>
+              {match?.reason && (
+                <div className="font-ui text-[11px] text-ink-3 mt-s2 leading-snug">
+                  {match.reason}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Ranking breakdown */}
           <div className="flex flex-wrap gap-x-s4 gap-y-1 mt-s3">
             {RANK_AXES.map((axis) => (
               <span key={axis.key} className="flex items-baseline gap-[5px]">
@@ -181,10 +339,8 @@ function RoasterRow({ roaster }: { roaster: RankedRoaster }) {
           </div>
 
           <div className="flex items-center justify-between gap-s3 mt-s3">
-            <div className="flex flex-wrap gap-s2">
-              {roaster.tags.map((t) => (
-                <OChip key={t} text={t} />
-              ))}
+            <div className="font-ui text-[10px] uppercase text-ink-4" style={{ letterSpacing: "0.1em" }}>
+              {roaster.tags[0]}
             </div>
             <span className="font-mono text-[11px] text-accent shrink-0 whitespace-nowrap">
               {roasterLinkLabel(roaster)} ↗
