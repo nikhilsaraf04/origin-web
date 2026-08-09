@@ -77,9 +77,13 @@ export function flagshipScanResult(f: FlagshipCoffee): ScanResult {
 export interface Roaster {
   /** Roaster name as it appears on the bag. */
   name: string;
+  /** Country the roastery is based in. Ranking is computed WITHIN a country,
+   *  never across them: the rubric is calibrated against national peers, so a
+   *  92 in India and a 92 in Norway are not the same claim. */
+  country: string;
   /** Roastery / home base city. */
   city: string;
-  /** State or union territory, used for the region filter. */
+  /** State, region or union territory, used for the second-level filter. */
   state: string;
   /** Year founded, where reliably known. */
   founded?: number;
@@ -90,6 +94,10 @@ export interface Roaster {
   website?: string;
   /** Short descriptive chips, e.g. "Estate grown", "Single origin". */
   tags: string[];
+  /** Placement on the r/IndiaCoffee crowdsourced tier list, where the roaster
+   *  appears on it. Community signal, not an editorial verdict: it skews
+   *  toward roasters visible in online specialty circles. India only. */
+  communityTier?: "S" | "A" | "B";
   /** Five-axis rubric scores (each 0-20). Total is derived, never stored. */
   scores: RoasterScore;
 }
@@ -121,6 +129,7 @@ export function roasterScore(r: Roaster): number {
 export const ROASTERS: Roaster[] = [
   {
     name: "Blue Tokai Coffee Roasters",
+    country: "India",
     city: "New Delhi",
     state: "Delhi NCR",
     founded: 2013,
@@ -131,6 +140,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Subko Specialty Coffee",
+    country: "India",
     city: "Mumbai",
     state: "Maharashtra",
     note: "Roaster, bakery and craft micro-lot program obsessed with Indian terroir and processing.",
@@ -140,15 +150,18 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Corridor Seven Coffee Roasters",
+    country: "India",
     city: "Nagpur",
     state: "Maharashtra",
     note: "Central India's specialty pioneer, founder is a national barista champion.",
     website: "https://corridorseven.coffee",
     tags: ["Single origin", "Champion roaster"],
+    communityTier: "A",
     scores: { cup: 18, sourcing: 16, innovation: 15, reputation: 18, influence: 13 },
   },
   {
     name: "KC Roasters",
+    country: "India",
     city: "Mumbai",
     state: "Maharashtra",
     note: "Koinonia coffee: small-batch roasting with a strong espresso and filter focus.",
@@ -158,14 +171,17 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Savorworks Roasters",
+    country: "India",
     city: "Gurugram",
     state: "Delhi NCR",
     note: "Roaster and café group known for a considered filter and espresso lineup.",
     tags: ["Filter", "Café roaster"],
+    communityTier: "B",
     scores: { cup: 16, sourcing: 14, innovation: 14, reputation: 13, influence: 9 },
   },
   {
     name: "Devans North Indian Coffee & Tea",
+    country: "India",
     city: "New Delhi",
     state: "Delhi NCR",
     founded: 1962,
@@ -175,6 +191,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Sleepy Owl Coffee",
+    country: "India",
     city: "New Delhi",
     state: "Delhi NCR",
     note: "Best known for cold brew and easy-brew formats, alongside roasted whole-bean lines.",
@@ -183,6 +200,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Black Baza Coffee",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     note: "Conservation-first coffee, shade grown in the Western Ghats and tied to biodiversity.",
@@ -192,6 +210,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Maverick & Farmer Coffee",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     note: "Estate-owning roaster experimenting with unusual ferments and varietals from Coorg.",
@@ -201,6 +220,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "The Flying Squirrel",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     note: "Grows and roasts its own estate coffee from the hills of Coorg.",
@@ -210,6 +230,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Halli Berri",
+    country: "India",
     city: "Chikmagalur",
     state: "Karnataka",
     note: "Small, all-woman estate roaster from the Baba Budan hills, prized for a clean, sweet cup.",
@@ -218,6 +239,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Ainmane Coffee",
+    country: "India",
     city: "Kodagu",
     state: "Karnataka",
     note: "Family estate coffee from Coorg, roasted in small batches.",
@@ -226,15 +248,18 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Araku Coffee",
+    country: "India",
     city: "Araku Valley",
     state: "Andhra Pradesh",
     note: "Organic, tribal-grown coffee from the Eastern Ghats, an international award winner.",
     website: "https://arakucoffee.in",
     tags: ["Organic", "Cooperative"],
+    communityTier: "A",
     scores: { cup: 16, sourcing: 18, innovation: 15, reputation: 18, influence: 16 },
   },
   {
     name: "Roastery Coffee House",
+    country: "India",
     city: "Hyderabad",
     state: "Telangana",
     note: "Café and roaster spotlighting Indian single origins, now expanding abroad.",
@@ -243,14 +268,17 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Kapi Kottai",
+    country: "India",
     city: "Kodaikanal",
     state: "Tamil Nadu",
     note: "Micro-roaster championing South Indian single origins, a cult barista favourite.",
     tags: ["Micro roaster", "Single origin"],
+    communityTier: "S",
     scores: { cup: 18, sourcing: 17, innovation: 15, reputation: 17, influence: 13 },
   },
   {
     name: "Seven Beans Co.",
+    country: "India",
     city: "Puducherry",
     state: "Puducherry",
     note: "Boutique roaster and café on the southeast coast, Indian beans to Italian profiles.",
@@ -259,6 +287,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Curious Life Coffee Roasters",
+    country: "India",
     city: "Pune",
     state: "Maharashtra",
     note: "Independent roaster and café with a rotating single-origin menu.",
@@ -267,6 +296,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Marc's Coffees",
+    country: "India",
     city: "Pune",
     state: "Maharashtra",
     note: "Q-grader-led direct trade from an early Indian-specialty pioneer out of Auroville.",
@@ -280,6 +310,7 @@ export const ROASTERS: Roaster[] = [
   // Delhi NCR
   {
     name: "Quick Brown Fox Coffee Roasters",
+    country: "India",
     city: "New Delhi",
     state: "Delhi NCR",
     founded: 2017,
@@ -290,6 +321,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Rossette Coffee",
+    country: "India",
     city: "New Delhi",
     state: "Delhi NCR",
     founded: 2022,
@@ -300,6 +332,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Beanly Coffee",
+    country: "India",
     city: "Gurugram",
     state: "Delhi NCR",
     founded: 2018,
@@ -310,6 +343,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Cohoma Coffee",
+    country: "India",
     city: "Ghaziabad",
     state: "Delhi NCR",
     founded: 2019,
@@ -320,6 +354,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Kilta Coffee Co",
+    country: "India",
     city: "New Delhi",
     state: "Delhi NCR",
     founded: 2020,
@@ -332,6 +367,7 @@ export const ROASTERS: Roaster[] = [
   // Rajasthan
   {
     name: "Half Light Coffee Roasters",
+    country: "India",
     city: "Jaipur",
     state: "Rajasthan",
     founded: 2018,
@@ -342,6 +378,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "First Crack Coffee Roasters",
+    country: "India",
     city: "Jodhpur",
     state: "Rajasthan",
     founded: 2021,
@@ -354,6 +391,7 @@ export const ROASTERS: Roaster[] = [
   // Chandigarh
   {
     name: "Ikkis Coffee",
+    country: "India",
     city: "Chandigarh",
     state: "Chandigarh",
     founded: 2020,
@@ -364,6 +402,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Bloom Coffee Roasters",
+    country: "India",
     city: "Chandigarh",
     state: "Chandigarh",
     founded: 2020,
@@ -376,16 +415,19 @@ export const ROASTERS: Roaster[] = [
   // Maharashtra
   {
     name: "Grey Soul Coffee Roasters",
+    country: "India",
     city: "Pune",
     state: "Maharashtra",
     founded: 2021,
     note: "Pour-over-focused roaster, first to process and roast Nagaland lots, now with cafés.",
     website: "https://greysoul.coffee",
     tags: ["Pour over", "Single origin"],
+    communityTier: "S",
     scores: { cup: 16, sourcing: 15, innovation: 16, reputation: 13, influence: 12 },
   },
   {
     name: "Bombay Island Coffee Company",
+    country: "India",
     city: "Mumbai",
     state: "Maharashtra",
     founded: 2018,
@@ -396,6 +438,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Toffee Coffee Roasters",
+    country: "India",
     city: "Mumbai",
     state: "Maharashtra",
     note: "Online-first roaster promising beans soon after roast, with strong mainstream press.",
@@ -407,6 +450,7 @@ export const ROASTERS: Roaster[] = [
   // Goa
   {
     name: "G-Shot Coffee Roastery",
+    country: "India",
     city: "North Goa",
     state: "Goa",
     founded: 2018,
@@ -419,6 +463,7 @@ export const ROASTERS: Roaster[] = [
   // Madhya Pradesh
   {
     name: "Siolim Specialty Coffee",
+    country: "India",
     city: "Indore",
     state: "Madhya Pradesh",
     founded: 2022,
@@ -431,6 +476,7 @@ export const ROASTERS: Roaster[] = [
   // Gujarat
   {
     name: "Kaffa Coffee Roasters",
+    country: "India",
     city: "Ahmedabad",
     state: "Gujarat",
     note: "Ahmedabad live roastery where guests pick the beans and the brew method.",
@@ -442,6 +488,7 @@ export const ROASTERS: Roaster[] = [
   // Karnataka
   {
     name: "Genetics Coffee",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     note: "Small-batch Bengaluru roastery sourcing traceable Indian and world single origins.",
@@ -451,6 +498,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Naivo Coffee Company",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     founded: 2016,
@@ -461,6 +509,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Kohi Roasters",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     founded: 2018,
@@ -471,16 +520,19 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Bili Hu",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     founded: 2016,
     note: "Named after the white coffee flower, UV-screened Chikmagalur lots served at top hotels.",
     website: "https://bilihu.in",
     tags: ["Single origin", "Traceable"],
+    communityTier: "S",
     scores: { cup: 16, sourcing: 15, innovation: 14, reputation: 15, influence: 13 },
   },
   {
     name: "GB Roasters",
+    country: "India",
     city: "Bengaluru",
     state: "Karnataka",
     note: "Q-grader-run micro-roastery of single origins, rare varietals and microlots, with education.",
@@ -490,6 +542,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Fraction 9 Coffee Roasters",
+    country: "India",
     city: "Chikmagalur",
     state: "Karnataka",
     note: "Farm-to-cup roaster from the family-run Kalyan Cool Estate, shipping direct from the farm.",
@@ -499,6 +552,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Kerehaklu",
+    country: "India",
     city: "Chikmagalur",
     state: "Karnataka",
     note: "Renowned estate whose experimental-ferment lots are roasted by top roasters worldwide.",
@@ -508,6 +562,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Estate Monkeys",
+    country: "India",
     city: "Kodagu",
     state: "Karnataka",
     note: "Single-origin Coorg estate roaster that roasts and grinds to order.",
@@ -519,6 +574,7 @@ export const ROASTERS: Roaster[] = [
   // Tamil Nadu
   {
     name: "Beachville Coffee Roasters",
+    country: "India",
     city: "Chennai",
     state: "Tamil Nadu",
     founded: 2018,
@@ -529,6 +585,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Kat & Kin Coffee Roasters",
+    country: "India",
     city: "Chennai",
     state: "Tamil Nadu",
     founded: 2020,
@@ -541,6 +598,7 @@ export const ROASTERS: Roaster[] = [
   // Kerala
   {
     name: "Ffox Coffee",
+    country: "India",
     city: "Kochi",
     state: "Kerala",
     founded: 2019,
@@ -551,6 +609,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Kapiberry",
+    country: "India",
     city: "Kochi",
     state: "Kerala",
     note: "Kerala micro-batch roaster of single-origin and blended specialty coffees.",
@@ -562,6 +621,7 @@ export const ROASTERS: Roaster[] = [
   // Telangana
   {
     name: "Black Fuel",
+    country: "India",
     city: "Hyderabad",
     state: "Telangana",
     note: "Jubilee Hills micro-roastery and café sourcing direct from small South Indian farms.",
@@ -573,6 +633,7 @@ export const ROASTERS: Roaster[] = [
   // Andhra Pradesh
   {
     name: "Native Araku Coffee",
+    country: "India",
     city: "Visakhapatnam",
     state: "Andhra Pradesh",
     note: "D2C brand selling hand-picked roasted Araku Valley coffee via farmer producer groups.",
@@ -584,6 +645,7 @@ export const ROASTERS: Roaster[] = [
   // Odisha
   {
     name: "Kruti Coffee",
+    country: "India",
     city: "Bhubaneswar",
     state: "Odisha",
     founded: 2013,
@@ -596,6 +658,7 @@ export const ROASTERS: Roaster[] = [
   // West Bengal
   {
     name: "Yours Truly Coffee Roaster",
+    country: "India",
     city: "Kolkata",
     state: "West Bengal",
     note: "Bean-to-brew roastery and café-bakery in a heritage Kolkata bungalow.",
@@ -607,6 +670,7 @@ export const ROASTERS: Roaster[] = [
   // Nagaland
   {
     name: "Été Coffee",
+    country: "India",
     city: "Dimapur",
     state: "Nagaland",
     founded: 2016,
@@ -617,6 +681,7 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Brewed Awakening",
+    country: "India",
     city: "Kohima",
     state: "Nagaland",
     note: "Works directly with small growers in Nagaland and Arunachal, small-batch roasts.",
@@ -628,6 +693,7 @@ export const ROASTERS: Roaster[] = [
   // Meghalaya
   {
     name: "7000 Steps Coffee",
+    country: "India",
     city: "Shillong",
     state: "Meghalaya",
     founded: 2019,
@@ -638,12 +704,428 @@ export const ROASTERS: Roaster[] = [
   },
   {
     name: "Smoky Falls Tribe Coffee",
+    country: "India",
     city: "Shillong",
     state: "Meghalaya",
     founded: 2015,
     note: "Woman-founded Meghalaya roaster and social enterprise supplying cafés across the Northeast.",
     tags: ["Small batch", "Northeast origins"],
     scores: { cup: 13, sourcing: 15, innovation: 11, reputation: 11, influence: 13 },
+  },
+  {
+    name: "Tulum Coffee",
+    country: "India",
+    city: "Mumbai",
+    state: "Maharashtra",
+    note: "Estate-owned Mumbai roaster with a filter-forward, experimental range.",
+    website: "https://tulumcoffee.com",
+    tags: ["Estate owned", "Filter focused"],
+    communityTier: "A",
+    scores: { cup: 16, sourcing: 16, innovation: 15, reputation: 13, influence: 11 },
+  },
+  {
+    name: "Caarabi Coffee",
+    country: "India",
+    city: "New Delhi",
+    state: "Delhi NCR",
+    note: "Deep online-only catalog spanning single origin, micro-lot and experimental ranges.",
+    website: "https://caarabi.com",
+    tags: ["Micro lots", "Online first"],
+    scores: { cup: 15, sourcing: 13, innovation: 15, reputation: 11, influence: 9 },
+  },
+  {
+    name: "Saltoro Coffee Roasters",
+    country: "India",
+    city: "Noida",
+    state: "Uttar Pradesh",
+    note: "NCR roaster working single estates from the Western Ghats, espresso and filter.",
+    website: "https://saltorocoffee.com",
+    tags: ["Single estate", "Espresso"],
+    scores: { cup: 14, sourcing: 13, innovation: 12, reputation: 11, influence: 9 },
+  },
+  {
+    name: "7 Elements Coffee",
+    country: "India",
+    city: "Pune",
+    state: "Maharashtra",
+    note: "Small Pune roastery with a rotating single-origin lineup.",
+    tags: ["Small batch", "Single origin"],
+    scores: { cup: 14, sourcing: 12, innovation: 12, reputation: 10, influence: 8 },
+  },
+  {
+    name: "Third Wave Coffee",
+    country: "India",
+    city: "Bangalore",
+    state: "Karnataka",
+    founded: 2016,
+    note: "Fast-growing specialty café chain that normalised third-wave coffee well beyond the metros.",
+    website: "https://thirdwavecoffee.in",
+    tags: ["Café chain", "Pan-India"],
+    scores: { cup: 13, sourcing: 13, innovation: 11, reputation: 15, influence: 16 },
+  },
+
+  // ---------------------------------------------------------------------
+  // NORWAY
+  // ---------------------------------------------------------------------
+  {
+    name: "Tim Wendelboe",
+    country: "Norway",
+    city: "Oslo",
+    state: "Oslo",
+    founded: 2007,
+    note: "World Barista Champion turned micro-roaster; the reference point for the Nordic light-roast school.",
+    website: "https://timwendelboe.no",
+    tags: ["Nordic light", "Direct trade"],
+    scores: { cup: 20, sourcing: 20, innovation: 17, reputation: 20, influence: 20 },
+  },
+  {
+    name: "Jacu Coffee Roastery",
+    country: "Norway",
+    city: "Ålesund",
+    state: "Møre og Romsdal",
+    founded: 2010,
+    note: "West-coast roastery with a competition pedigree and a clean, fruit-forward house style.",
+    website: "https://jacu.no",
+    tags: ["Nordic light", "Competition"],
+    scores: { cup: 18, sourcing: 17, innovation: 16, reputation: 16, influence: 14 },
+  },
+  {
+    name: "Supreme Roastworks",
+    country: "Norway",
+    city: "Oslo",
+    state: "Oslo",
+    founded: 2011,
+    note: "Roaster-bar in Grünerløkka run by national brewing and barista champions.",
+    website: "https://supremeroastworks.com",
+    tags: ["Nordic light", "Competition"],
+    scores: { cup: 18, sourcing: 16, innovation: 16, reputation: 17, influence: 15 },
+  },
+  {
+    name: "Fuglen Coffee Roasters",
+    country: "Norway",
+    city: "Oslo",
+    state: "Oslo",
+    founded: 1963,
+    note: "Mid-century Oslo institution turned roaster, with an outsized influence on Tokyo's coffee scene.",
+    website: "https://fuglencoffee.no",
+    tags: ["Nordic light", "Oslo to Tokyo"],
+    scores: { cup: 17, sourcing: 16, innovation: 15, reputation: 17, influence: 17 },
+  },
+  {
+    name: "Solberg & Hansen",
+    country: "Norway",
+    city: "Oslo",
+    state: "Oslo",
+    founded: 1879,
+    note: "Norway's oldest roaster, still setting the commercial benchmark for Nordic specialty.",
+    website: "https://solberghansen.no",
+    tags: ["Heritage", "Seasonal"],
+    scores: { cup: 16, sourcing: 17, innovation: 14, reputation: 16, influence: 18 },
+  },
+  {
+    name: "Kaffa",
+    country: "Norway",
+    city: "Oslo",
+    state: "Oslo",
+    founded: 2005,
+    note: "Sustainability-led Oslo roaster, early to transparent sourcing and producer relationships.",
+    website: "https://kaffa.no",
+    tags: ["Direct trade", "Sustainability"],
+    scores: { cup: 16, sourcing: 17, innovation: 14, reputation: 15, influence: 16 },
+  },
+
+  // ---------------------------------------------------------------------
+  // FINLAND
+  // ---------------------------------------------------------------------
+  {
+    name: "Kaffa Roastery",
+    country: "Finland",
+    city: "Helsinki",
+    state: "Uusimaa",
+    founded: 2007,
+    note: "Helsinki's defining specialty roaster and the engine of Finland's third wave.",
+    website: "https://kaffaroastery.fi",
+    tags: ["Nordic light", "Direct trade"],
+    scores: { cup: 17, sourcing: 17, innovation: 16, reputation: 18, influence: 19 },
+  },
+  {
+    name: "Good Life Coffee",
+    country: "Finland",
+    city: "Helsinki",
+    state: "Uusimaa",
+    founded: 2011,
+    note: "Kallio café and roaster with a purist light-roast filter programme.",
+    website: "https://goodlifecoffee.fi",
+    tags: ["Nordic light", "Filter focused"],
+    scores: { cup: 18, sourcing: 16, innovation: 15, reputation: 16, influence: 15 },
+  },
+  {
+    name: "Lehmus Roastery",
+    country: "Finland",
+    city: "Lahti",
+    state: "Päijät-Häme",
+    founded: 2015,
+    note: "Lahti micro-roastery known for experimental lots and a strong competition record.",
+    website: "https://lehmusroastery.com",
+    tags: ["Experimental", "Micro lots"],
+    scores: { cup: 17, sourcing: 16, innovation: 17, reputation: 15, influence: 13 },
+  },
+  {
+    name: "Cafetoria Roastery",
+    country: "Finland",
+    city: "Kirkkonummi",
+    state: "Uusimaa",
+    note: "One of Finland's original third-wave trendsetters, still roasting seasonally.",
+    website: "https://cafetoria.fi",
+    tags: ["Nordic light", "Seasonal"],
+    scores: { cup: 16, sourcing: 15, innovation: 14, reputation: 15, influence: 16 },
+  },
+
+  // ---------------------------------------------------------------------
+  // SOUTH AFRICA
+  // ---------------------------------------------------------------------
+  {
+    name: "Rosetta Roastery",
+    country: "South Africa",
+    city: "Cape Town",
+    state: "Western Cape",
+    founded: 2012,
+    note: "Cape Town micro-roaster with a precise, fruit-forward style and deep African sourcing.",
+    website: "https://rosettaroastery.com",
+    tags: ["African origins", "Micro lots"],
+    scores: { cup: 18, sourcing: 17, innovation: 17, reputation: 17, influence: 16 },
+  },
+  {
+    name: "Truth Coffee Roasting",
+    country: "South Africa",
+    city: "Cape Town",
+    state: "Western Cape",
+    founded: 2009,
+    note: "Steampunk roastery-café that put Cape Town on the global coffee map.",
+    website: "https://truth.coffee",
+    tags: ["Roastery café", "Landmark"],
+    scores: { cup: 17, sourcing: 16, innovation: 16, reputation: 19, influence: 18 },
+  },
+  {
+    name: "Origin Coffee Roasting",
+    country: "South Africa",
+    city: "Cape Town",
+    state: "Western Cape",
+    founded: 2006,
+    note: "De Waterkant pioneer supplying much of the country's top restaurant trade.",
+    website: "https://originroasting.co.za",
+    tags: ["Pioneer", "Wholesale"],
+    scores: { cup: 16, sourcing: 16, innovation: 14, reputation: 16, influence: 18 },
+  },
+  {
+    name: "Father Coffee",
+    country: "South Africa",
+    city: "Johannesburg",
+    state: "Gauteng",
+    founded: 2013,
+    note: "Braamfontein roaster driving Johannesburg's specialty scene.",
+    website: "https://fathercoffee.co.za",
+    tags: ["Espresso", "City roaster"],
+    scores: { cup: 17, sourcing: 15, innovation: 15, reputation: 16, influence: 14 },
+  },
+  {
+    name: "Bean There Coffee Company",
+    country: "South Africa",
+    city: "Johannesburg",
+    state: "Gauteng",
+    founded: 2005,
+    note: "Africa's first certified fair-trade roaster, sourcing exclusively from the continent.",
+    website: "https://beanthere.co.za",
+    tags: ["African origins", "Fair trade"],
+    scores: { cup: 15, sourcing: 18, innovation: 13, reputation: 15, influence: 17 },
+  },
+
+  // ---------------------------------------------------------------------
+  // SINGAPORE
+  // ---------------------------------------------------------------------
+  {
+    name: "PPP Coffee",
+    country: "Singapore",
+    city: "Singapore",
+    state: "Singapore",
+    founded: 2009,
+    note: "Formerly Papa Palheta; the roaster that seeded much of Singapore's specialty trade.",
+    website: "https://pppcoffee.com",
+    tags: ["Pioneer", "Direct trade"],
+    scores: { cup: 17, sourcing: 16, innovation: 16, reputation: 17, influence: 18 },
+  },
+  {
+    name: "Nylon Coffee Roasters",
+    country: "Singapore",
+    city: "Singapore",
+    state: "Singapore",
+    founded: 2012,
+    note: "Everton Park micro-roaster, relentless about traceability and seasonal single origins.",
+    website: "https://nyloncoffee.sg",
+    tags: ["Direct trade", "Single origin"],
+    scores: { cup: 18, sourcing: 17, innovation: 15, reputation: 17, influence: 16 },
+  },
+  {
+    name: "Common Man Coffee Roasters",
+    country: "Singapore",
+    city: "Singapore",
+    state: "Singapore",
+    founded: 2013,
+    note: "Roastery, café group and training academy anchoring the city's coffee education.",
+    website: "https://commonmancoffeeroasters.com",
+    tags: ["Roastery café", "Training"],
+    scores: { cup: 15, sourcing: 15, innovation: 13, reputation: 16, influence: 15 },
+  },
+  {
+    name: "Tiong Hoe Specialty Coffee",
+    country: "Singapore",
+    city: "Singapore",
+    state: "Singapore",
+    founded: 1980,
+    note: "Second-generation family roaster bridging Singapore's old and new coffee cultures.",
+    website: "https://tionghoecoffee.com",
+    tags: ["Heritage", "Family run"],
+    scores: { cup: 16, sourcing: 14, innovation: 13, reputation: 14, influence: 14 },
+  },
+
+  // ---------------------------------------------------------------------
+  // THAILAND
+  // ---------------------------------------------------------------------
+  {
+    name: "Roots Coffee",
+    country: "Thailand",
+    city: "Bangkok",
+    state: "Bangkok",
+    founded: 2012,
+    note: "Bangkok's most influential specialty roaster, deeply invested in northern Thai producers.",
+    website: "https://rootsbkk.com",
+    tags: ["Thai origins", "Direct trade"],
+    scores: { cup: 18, sourcing: 17, innovation: 17, reputation: 17, influence: 17 },
+  },
+  {
+    name: "Akha Ama Coffee",
+    country: "Thailand",
+    city: "Chiang Mai",
+    state: "Chiang Mai",
+    founded: 2010,
+    note: "Akha community-owned roaster taking its village's coffee direct to the cup.",
+    website: "https://akhaama.com",
+    tags: ["Community owned", "Thai origins"],
+    scores: { cup: 17, sourcing: 18, innovation: 14, reputation: 17, influence: 17 },
+  },
+  {
+    name: "Brave Roasters",
+    country: "Thailand",
+    city: "Bangkok",
+    state: "Bangkok",
+    founded: 2015,
+    note: "Design-led Bangkok roaster with a bright, approachable house profile.",
+    website: "https://braveroasters.com",
+    tags: ["Design led", "Espresso"],
+    scores: { cup: 17, sourcing: 16, innovation: 16, reputation: 16, influence: 15 },
+  },
+  {
+    name: "Pacamara Coffee Roasters",
+    country: "Thailand",
+    city: "Bangkok",
+    state: "Bangkok",
+    founded: 2011,
+    note: "Long-running roaster and barista school with a wide competition footprint.",
+    website: "https://pacamaracoffee.com",
+    tags: ["Training", "Competition"],
+    scores: { cup: 16, sourcing: 15, innovation: 15, reputation: 16, influence: 16 },
+  },
+
+  // ---------------------------------------------------------------------
+  // UNITED STATES
+  // ---------------------------------------------------------------------
+  {
+    name: "Onyx Coffee Lab",
+    country: "United States",
+    city: "Rogers",
+    state: "Arkansas",
+    founded: 2012,
+    note: "Competition powerhouse with obsessive process transparency and a stacked awards shelf.",
+    website: "https://onyxcoffeelab.com",
+    tags: ["Competition", "Experimental"],
+    scores: { cup: 20, sourcing: 18, innovation: 19, reputation: 19, influence: 16 },
+  },
+  {
+    name: "George Howell Coffee",
+    country: "United States",
+    city: "Acton",
+    state: "Massachusetts",
+    founded: 2005,
+    note: "The elder statesman of American specialty; founded Cup of Excellence.",
+    website: "https://georgehowellcoffee.com",
+    tags: ["Terroir", "Pioneer"],
+    scores: { cup: 18, sourcing: 19, innovation: 15, reputation: 17, influence: 19 },
+  },
+  {
+    name: "Counter Culture Coffee",
+    country: "United States",
+    city: "Durham",
+    state: "North Carolina",
+    founded: 1995,
+    note: "Sustainability and education leader, with published transparency reports since 2008.",
+    website: "https://counterculturecoffee.com",
+    tags: ["Transparency", "Education"],
+    scores: { cup: 17, sourcing: 18, innovation: 15, reputation: 17, influence: 19 },
+  },
+  {
+    name: "Verve Coffee Roasters",
+    country: "United States",
+    city: "Santa Cruz",
+    state: "California",
+    founded: 2007,
+    note: "California roaster with a farm-level sourcing programme and a polished retail arm.",
+    website: "https://vervecoffee.com",
+    tags: ["Direct trade", "California"],
+    scores: { cup: 17, sourcing: 16, innovation: 16, reputation: 17, influence: 16 },
+  },
+  {
+    name: "Sightglass Coffee",
+    country: "United States",
+    city: "San Francisco",
+    state: "California",
+    founded: 2009,
+    note: "SoMa roastery whose cathedral-like space defined a generation of café design.",
+    website: "https://sightglasscoffee.com",
+    tags: ["Roastery café", "San Francisco"],
+    scores: { cup: 16, sourcing: 16, innovation: 15, reputation: 17, influence: 16 },
+  },
+  {
+    name: "Saint Frank Coffee",
+    country: "United States",
+    city: "San Francisco",
+    state: "California",
+    founded: 2013,
+    note: "Relationship-coffee specialist working a tight, deeply documented producer list.",
+    website: "https://saintfrankcoffee.com",
+    tags: ["Direct trade", "San Francisco"],
+    scores: { cup: 17, sourcing: 17, innovation: 14, reputation: 16, influence: 14 },
+  },
+  {
+    name: "Ritual Coffee Roasters",
+    country: "United States",
+    city: "San Francisco",
+    state: "California",
+    founded: 2005,
+    note: "Mission-district original that helped launch the American third wave.",
+    website: "https://ritualcoffee.com",
+    tags: ["Pioneer", "San Francisco"],
+    scores: { cup: 16, sourcing: 15, innovation: 14, reputation: 16, influence: 18 },
+  },
+  {
+    name: "Stumptown Coffee Roasters",
+    country: "United States",
+    city: "Portland",
+    state: "Oregon",
+    founded: 1999,
+    note: "Portland institution that wrote the playbook for direct trade in the US.",
+    website: "https://stumptowncoffee.com",
+    tags: ["Direct trade", "Pioneer"],
+    scores: { cup: 16, sourcing: 16, innovation: 14, reputation: 17, influence: 19 },
   },
 ];
 
@@ -652,6 +1134,44 @@ export const ROASTERS: Roaster[] = [
  *  roaster's shop and reviews; `approx: true` marks a house-bean fallback
  *  where a specific flagship could not be confirmed. */
 export const FLAGSHIPS: Record<string, FlagshipCoffee> = {
+  // Norway
+  "Tim Wendelboe": { name: "Finca Tamana", kind: "single-origin", originCountry: "Colombia", originRegion: "Huila", process: "Washed", roastLevel: "Light", flavorTags: ["blackberry", "lime", "caramel"] },
+  "Jacu Coffee Roastery": { name: "House single origin", kind: "single-origin", originCountry: "Ethiopia", process: "Washed", roastLevel: "Light", flavorTags: ["jasmine", "peach", "bergamot"], approx: true },
+  "Supreme Roastworks": { name: "House filter", kind: "single-origin", originCountry: "Ethiopia", process: "Natural", roastLevel: "Light", flavorTags: ["blueberry", "strawberry", "green-tea"], approx: true },
+  "Fuglen Coffee Roasters": { name: "House filter", kind: "single-origin", originCountry: "Ethiopia", process: "Washed", roastLevel: "Light", flavorTags: ["lemon", "jasmine", "honey"], approx: true },
+  "Solberg & Hansen": { name: "Seasonal filter", kind: "single-origin", originCountry: "Kenya", process: "Washed", roastLevel: "Light", flavorTags: ["blackberry", "grapefruit", "brown-sugar"], approx: true },
+  "Kaffa": { name: "House filter", kind: "single-origin", originCountry: "Ethiopia", process: "Washed", roastLevel: "Light", flavorTags: ["bergamot", "peach", "green-tea"], approx: true },
+  // Finland
+  "Kaffa Roastery": { name: "House filter", kind: "single-origin", originCountry: "Ethiopia", process: "Washed", roastLevel: "Light", flavorTags: ["jasmine", "lemon", "apricot"], approx: true },
+  "Good Life Coffee": { name: "House filter", kind: "single-origin", originCountry: "Kenya", process: "Washed", roastLevel: "Light", flavorTags: ["blackberry", "grapefruit", "hibiscus"], approx: true },
+  "Lehmus Roastery": { name: "Experimental lot", kind: "single-origin", originCountry: "Colombia", process: "Anaerobic", roastLevel: "Light", flavorTags: ["strawberry", "wine", "lychee"], approx: true },
+  "Cafetoria Roastery": { name: "Seasonal filter", kind: "single-origin", originCountry: "Ethiopia", process: "Natural", roastLevel: "Light", flavorTags: ["blueberry", "cocoa", "raspberry"], approx: true },
+  // South Africa
+  "Rosetta Roastery": { name: "Seasonal African single origin", kind: "single-origin", originCountry: "Ethiopia", process: "Natural", roastLevel: "Medium-Light", flavorTags: ["strawberry", "apricot", "cocoa"], approx: true },
+  "Truth Coffee Roasting": { name: "Resurrection", kind: "blend", originCountry: "Ethiopia, Brazil", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "caramel", "hazelnut"] },
+  "Origin Coffee Roasting": { name: "House espresso", kind: "blend", originCountry: "Ethiopia, Brazil", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "orange"], approx: true },
+  "Father Coffee": { name: "House espresso", kind: "blend", originCountry: "Ethiopia, Colombia", process: "Washed", roastLevel: "Medium", flavorTags: ["cocoa", "caramel", "cherry"], approx: true },
+  "Bean There Coffee Company": { name: "Ethiopia Yirgacheffe", kind: "single-origin", originCountry: "Ethiopia", originRegion: "Yirgacheffe", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["lemon", "jasmine", "honey"] },
+  // Singapore
+  "PPP Coffee": { name: "Terra espresso", kind: "blend", originCountry: "Brazil, Ethiopia", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "almond"], approx: true },
+  "Nylon Coffee Roasters": { name: "Seasonal single origin", kind: "single-origin", originCountry: "Colombia", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["caramel", "orange", "cherry"], approx: true },
+  "Common Man Coffee Roasters": { name: "House blend", kind: "blend", originCountry: "Brazil, Colombia", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "hazelnut"], approx: true },
+  "Tiong Hoe Specialty Coffee": { name: "House filter", kind: "single-origin", originCountry: "Ethiopia", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["orange", "honey", "green-tea"], approx: true },
+  // Thailand
+  "Roots Coffee": { name: "Doi Chang single origin", kind: "single-origin", originCountry: "Thailand", originRegion: "Doi Chang", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["orange", "caramel", "cocoa"], approx: true },
+  "Akha Ama Coffee": { name: "Mae Jan Tai", kind: "single-origin", originCountry: "Thailand", originRegion: "Chiang Rai", process: "Washed", roastLevel: "Medium", flavorTags: ["cocoa", "orange", "caramel"] },
+  "Brave Roasters": { name: "House espresso", kind: "blend", originCountry: "Thailand, Brazil", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "orange"], approx: true },
+  "Pacamara Coffee Roasters": { name: "Seasonal single origin", kind: "single-origin", originCountry: "Thailand", process: "Natural", roastLevel: "Medium-Light", flavorTags: ["cherry", "cocoa", "brown-sugar"], approx: true },
+  // United States
+  "Onyx Coffee Lab": { name: "Southern Weather", kind: "blend", originCountry: "Colombia, Ethiopia", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["milk-chocolate", "raspberry", "orange"] },
+  "George Howell Coffee": { name: "Alchemy", kind: "blend", originCountry: "Colombia, Ethiopia", process: "Washed", roastLevel: "Light", flavorTags: ["cherry", "caramel", "orange"] },
+  "Counter Culture Coffee": { name: "Hologram", kind: "blend", originCountry: "Ethiopia, Colombia", process: "Washed", roastLevel: "Medium-Light", flavorTags: ["raspberry", "milk-chocolate", "orange"] },
+  "Verve Coffee Roasters": { name: "Streetlevel", kind: "blend", originCountry: "Guatemala, Ethiopia", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "orange"] },
+  "Sightglass Coffee": { name: "Owl's Howl Espresso", kind: "blend", originCountry: "Brazil, Guatemala", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "toffee", "walnut"] },
+  "Saint Frank Coffee": { name: "Big Sur", kind: "blend", originCountry: "Colombia, Ethiopia", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "caramel", "cherry"] },
+  "Ritual Coffee Roasters": { name: "Sweetheart", kind: "blend", originCountry: "Colombia, Ethiopia", process: "Washed", roastLevel: "Medium", flavorTags: ["cocoa", "caramel", "orange"] },
+  "Stumptown Coffee Roasters": { name: "Hair Bender", kind: "blend", originCountry: "Indonesia, Ethiopia", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["dark-chocolate", "cherry", "toffee"] },
+  // India
   "Blue Tokai Coffee Roasters": { name: "Vienna Roast", kind: "blend", originCountry: "India", process: "Washed", roastLevel: "Dark", flavorTags: ["dark-chocolate", "cocoa", "caramel"] },
   "Subko Specialty Coffee": { name: "Kalledevarapura Koji Naturals", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Natural", roastLevel: "Medium-Light", flavorTags: ["rose", "lychee", "passionfruit"] },
   "Corridor Seven Coffee Roasters": { name: "Baarbara Estate Washed", kind: "single-origin", originCountry: "India", originRegion: "Chikmagalur", process: "Washed", roastLevel: "Medium-Dark", flavorTags: ["caramel", "apricot", "dark-chocolate"] },
@@ -707,26 +1227,67 @@ export const FLAGSHIPS: Record<string, FlagshipCoffee> = {
   "Smoky Falls Tribe Coffee": { name: "House single origin", kind: "single-origin", originCountry: "India", originRegion: "East Khasi Hills", process: "Washed", roastLevel: "Medium", flavorTags: ["milk-chocolate", "almond", "caramel"], approx: true },
 };
 
-/** All roasters ordered best-first, each annotated with rank and total score.
- *  Ties break on reputation, then cup quality, then name, so ranks are stable
- *  and deterministic. */
+/** All roasters, each annotated with total score and its rank WITHIN its own
+ *  country. Ranking is deliberately national, not global: the rubric is
+ *  calibrated against national peers, so cross-country totals are not
+ *  comparable and a single worldwide list would imply a precision the scores
+ *  do not have. Ties break on reputation, then cup quality, then name, so
+ *  ranks are stable and deterministic.
+ *
+ *  Order: countries with the most entries first, then alphabetically, and
+ *  best-first within each country. */
 export function rankedRoasters(): RankedRoaster[] {
-  return [...ROASTERS]
-    .map((r) => ({ ...r, score: roasterScore(r), flagship: FLAGSHIPS[r.name] }))
-    .sort(
+  const scored = ROASTERS.map((r) => ({
+    ...r,
+    score: roasterScore(r),
+    flagship: FLAGSHIPS[r.name],
+  }));
+
+  const byCountry = new Map<string, typeof scored>();
+  for (const r of scored) {
+    const list = byCountry.get(r.country);
+    if (list) list.push(r);
+    else byCountry.set(r.country, [r]);
+  }
+
+  const out: RankedRoaster[] = [];
+  for (const country of roasterCountries()) {
+    const list = (byCountry.get(country) ?? []).sort(
       (a, b) =>
         b.score - a.score ||
         b.scores.reputation - a.scores.reputation ||
         b.scores.cup - a.scores.cup ||
         a.name.localeCompare(b.name),
-    )
-    .map((r, i) => ({ ...r, rank: i + 1 }));
+    );
+    list.forEach((r, i) => out.push({ ...r, rank: i + 1 }));
+  }
+  return out;
 }
 
-/** Distinct states in display order: most-represented first, then alphabetical. */
-export function roasterStates(): string[] {
+/** Distinct countries in display order: most-represented first, then
+ *  alphabetical. */
+export function roasterCountries(): string[] {
   const counts = new Map<string, number>();
-  for (const r of ROASTERS) counts.set(r.state, (counts.get(r.state) ?? 0) + 1);
+  for (const r of ROASTERS) counts.set(r.country, (counts.get(r.country) ?? 0) + 1);
+  return Array.from(counts.keys()).sort((a, b) => {
+    const diff = (counts.get(b) ?? 0) - (counts.get(a) ?? 0);
+    return diff !== 0 ? diff : a.localeCompare(b);
+  });
+}
+
+/** Number of roasters listed for a country. */
+export function roasterCountryCount(country: string): number {
+  return ROASTERS.filter((r) => r.country === country).length;
+}
+
+/** Distinct states / regions, optionally scoped to one country, ordered
+ *  most-represented first then alphabetical. */
+export function roasterStates(country?: string): string[] {
+  const counts = new Map<string, number>();
+  for (const r of ROASTERS) {
+    if (country && r.country !== country) continue;
+    counts.set(r.state, (counts.get(r.state) ?? 0) + 1);
+  }
   return Array.from(counts.keys()).sort((a, b) => {
     const diff = (counts.get(b) ?? 0) - (counts.get(a) ?? 0);
     return diff !== 0 ? diff : a.localeCompare(b);
@@ -736,8 +1297,62 @@ export function roasterStates(): string[] {
 /** A link that always resolves: the official site when known, else a search. */
 export function roasterLink(r: Roaster): string {
   if (r.website) return r.website;
-  const q = encodeURIComponent(`${r.name} coffee roasters India`);
+  const q = encodeURIComponent(`${r.name} coffee roasters ${r.country}`);
   return `https://www.google.com/search?q=${q}`;
+}
+
+/** Normalised roaster name, for matching a directory entry against the name
+ *  the AI pulled off a bag (which varies: "Kaffa" vs "Kaffa Roastery", stray
+ *  whitespace, punctuation, case). */
+export function normalizeRoasterName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(
+      /\b(coffee|coffees|roasters|roaster|roastery|roasting|roastworks|specialty|speciality|company|co|the)\b/g,
+      "",
+    )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** Loose key for an exact-ish comparison: case and spacing only. */
+function exactRoasterKey(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+/** Given the roaster names off the user's own logs, the set of DIRECTORY
+ *  roaster names they have tasted.
+ *
+ *  Two passes, because stripping suffixes is lossy: three unrelated roasters
+ *  are named Kaffa (India, Norway, Finland) and all reduce to the same key.
+ *  So an exact name match wins first, and a stripped match only counts when
+ *  it is unambiguous. An ambiguous stripped key marks nothing, which is the
+ *  safe failure: a missing badge beats crediting the wrong roastery. */
+export function tastedRoasterNames(loggedNames: string[]): Set<string> {
+  const byExact = new Map<string, string>();
+  const byStripped = new Map<string, string[]>();
+  for (const r of ROASTERS) {
+    byExact.set(exactRoasterKey(r.name), r.name);
+    const k = normalizeRoasterName(r.name);
+    const list = byStripped.get(k);
+    if (list) list.push(r.name);
+    else byStripped.set(k, [r.name]);
+  }
+
+  const out = new Set<string>();
+  for (const raw of loggedNames) {
+    if (!raw || !raw.trim()) continue;
+    const exact = byExact.get(exactRoasterKey(raw));
+    if (exact) {
+      out.add(exact);
+      continue;
+    }
+    const candidates = byStripped.get(normalizeRoasterName(raw));
+    if (candidates && candidates.length === 1) out.add(candidates[0]);
+  }
+  return out;
 }
 
 /** The label shown for the link: the bare domain, or a search affordance. */

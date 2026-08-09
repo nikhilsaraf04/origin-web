@@ -5,6 +5,51 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.11.0 — The directory goes global (2026-08-09)
+
+The Roasters directory is no longer India-only. It now carries roasters from
+every country in the library, is ranked within each country rather than across
+them, and marks the roasters already logged as tasted.
+
+The prompt for this was the library itself: of 24 logged roasters only about
+six are Indian. The rest are Oslo, Helsinki, Cape Town, San Francisco,
+Singapore and Bangkok. A directory of Indian roasters could not describe the
+coffee actually being drunk.
+
+### Added
+
+- **Countries** (`lib/data/roasters.ts`) — `Roaster.country`, backfilled to
+  India across the existing 53, plus 32 new entries across Norway, Finland,
+  South Africa, Singapore, Thailand and the United States, seeded from the
+  countries the library already draws on. Flagship beans added for all of
+  them, so taste match works outside India too.
+- **Five more Indian roasters** — Tulum, Caarabi, Saltoro, 7 Elements and
+  Third Wave, from a research pass over the r/IndiaCoffee crowdsourced tier
+  list and the ICB directory.
+- **Community tier** — `Roaster.communityTier` carries S/A/B placement from
+  the r/IndiaCoffee tier list, shown as a badge. Community signal, not an
+  audit: it skews toward roasters visible online, and the UI says so.
+- **Tasted marking** (`tastedRoasterNames`) — roasters already in the library
+  carry a Tasted badge, with a count in the header. Matching is two-pass:
+  exact name first, then a suffix-stripped key, and an ambiguous stripped key
+  marks nothing. Three unrelated roasters are named Kaffa (India, Norway,
+  Finland), so a single-pass match would have credited all three for one log.
+- **Country-scoped helpers** — `roasterCountries`, `roasterCountryCount`, and
+  `roasterStates(country?)`.
+
+### Changed
+
+- **Ranking is now per country, not global** (`rankedRoasters`). The rubric was
+  calibrated against national peers, so a cross-country list would imply a
+  precision the scores do not have. Blue Tokai is #1 in India, Tim Wendelboe
+  #1 in Norway, Onyx #1 in the US, and the two numbers are not comparable.
+- **Roasters screen** — country chips above the existing region tabs, region
+  tabs scoped to the selected country and hidden when a country has only one
+  region, header count reading "N in Country · M tasted". Footer states the
+  within-country ranking rule and the tier-badge caveat.
+
+---
+
 ## v0.10.0 — Flagship beans + taste match (2026-08-03)
 
 Each roaster now shows its flagship whole-bean coffee (a single origin or a

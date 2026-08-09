@@ -1,8 +1,9 @@
-// Roasters — a curated, ranked directory of independent Indian specialty
-// roasters, each with its flagship whole-bean coffee matched to your taste.
+// Roasters — a curated directory of independent specialty roasters, ranked
+// within each country, each with its flagship whole-bean coffee matched to
+// your taste. Roasters you have already logged are marked as tasted.
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { OChip } from "@/components/OChip";
 import { OLabel } from "@/components/OLabel";
 import { useCoffeeStore } from "@/lib/store/coffee-store";
@@ -14,10 +15,12 @@ import {
 import { computeMatchScore, type MatchScore } from "@/lib/services/match-score";
 import {
   rankedRoasters,
+  roasterCountries,
   roasterStates,
   roasterLink,
   roasterLinkLabel,
   flagshipScanResult,
+  tastedRoasterNames,
   RANK_AXES,
   type RankedRoaster,
 } from "@/lib/data/roasters";
@@ -26,11 +29,25 @@ type SortKey = "rank" | "match";
 
 export function RoastersScreen() {
   const logs = useCoffeeStore((s) => s.logs);
+  const countries = useMemo(() => roasterCountries(), []);
+  const [country, setCountry] = useState<string>(() => countries[0] ?? "India");
   const [filter, setFilter] = useState<string>("All");
   const [sort, setSort] = useState<SortKey>("rank");
 
   const ranked = useMemo(() => rankedRoasters(), []);
-  const states = useMemo(() => ["All", ...roasterStates()], []);
+  const states = useMemo(() => ["All", ...roasterStates(country)], [country]);
+
+  // Roasters already in the library, so the directory shows what you have
+  // actually tasted rather than treating every entry as undiscovered.
+  const tasted = useMemo(
+    () => tastedRoasterNames(logs.map((l) => l.roaster)),
+    [logs],
+  );
+
+  // Switching country invalidates the region filter (states do not overlap).
+  useEffect(() => {
+    setFilter("All");
+  }, [country]);
 
   // Taste profile from the user's own logged coffees (needs >= 5 logs).
   const profile = useMemo(
@@ -56,7 +73,9 @@ export function RoastersScreen() {
   const effectiveSort: SortKey = sort === "match" && profileReady ? "match" : "rank";
 
   const filtered = useMemo(() => {
-    const base = filter === "All" ? ranked : ranked.filter((r) => r.state === filter);
+    const inCountry = ranked.filter((r) => r.country === country);
+    const base =
+      filter === "All" ? inCountry : inCountry.filter((r) => r.state === filter);
     if (effectiveSort === "match") {
       return [...base].sort(
         (a, b) =>
@@ -65,7 +84,12 @@ export function RoastersScreen() {
       );
     }
     return base;
-  }, [filter, ranked, effectiveSort, matches]);
+  }, [country, filter, ranked, effectiveSort, matches]);
+
+  const tastedHere = useMemo(
+    () => filtered.filter((r) => tasted.has(r.name)).length,
+    [filtered, tasted],
+  );
 
   return (
     <main className="min-h-screen pb-[112px]">
@@ -76,25 +100,52 @@ export function RoastersScreen() {
             className="font-ui text-[10px] uppercase text-ink-3"
             style={{ letterSpacing: "0.1em" }}
           >
-            Independent · Ranked
+            {filtered.length} in {country}
+            {tastedHere > 0 ? ` · ${tastedHere} tasted` : ""}
           </span>
         </div>
         <SortToggle sort={effectiveSort} matchEnabled={profileReady} onChange={setSort} />
       </header>
 
+      {/* Country, then region within that country. */}
       <div className="max-w-3xl mx-auto">
         <div className="overflow-x-auto no-scrollbar">
-          <div className="flex px-s5 min-w-max">
-            {states.map((opt) => (
-              <FilterTab
-                key={opt}
-                label={opt}
-                active={filter === opt}
-                onClick={() => setFilter(opt)}
-              />
-            ))}
+          <div className="flex px-s5 min-w-max gap-s2 pb-s3">
+            {countries.map((c) => {
+              const active = c === country;
+              return (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => setCountry(c)}
+                  className="font-ui text-[11px] px-s3 py-[6px] rounded-r2 border whitespace-nowrap transition-colors"
+                  style={{
+                    borderWidth: "0.5px",
+                    borderColor: active ? "var(--accent-border)" : "var(--line-2)",
+                    background: active ? "var(--accent-dim)" : "transparent",
+                    color: active ? "var(--accent)" : "var(--ink-3)",
+                  }}
+                >
+                  {c}
+                </button>
+              );
+            })}
           </div>
         </div>
+        {states.length > 2 && (
+          <div className="overflow-x-auto no-scrollbar">
+            <div className="flex px-s5 min-w-max">
+              {states.map((opt) => (
+                <FilterTab
+                  key={opt}
+                  label={opt}
+                  active={filter === opt}
+                  onClick={() => setFilter(opt)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
         <div className="h-[0.5px] bg-line-2" />
       </div>
 
@@ -112,7 +163,12 @@ export function RoastersScreen() {
 
       <ul className="max-w-3xl mx-auto">
         {filtered.map((r) => (
-          <RoasterRow key={r.name} roaster={r} match={matches.get(r.name) ?? null} />
+          <RoasterRow
+            key={r.name}
+            roaster={r}
+            match={matches.get(r.name) ?? null}
+            tasted={tasted.has(r.name)}
+          />
         ))}
       </ul>
 
@@ -124,8 +180,16 @@ export function RoastersScreen() {
           profile, so it is personal to your logged coffees.
         </p>
         <p className="font-ui text-[11px] text-ink-4 leading-relaxed">
+          Ranks are within a country, not across them. The rubric is calibrated
+          against national peers, so a 90 in India and a 90 in Norway are not
+          the same claim and the two lists should not be read as one.
+        </p>
+        <p className="font-ui text-[11px] text-ink-4 leading-relaxed">
           Scores are directional and subjective. Flagship picks marked with ~ are
           the roaster's house style where a specific top bean was not confirmed.
+          Tier badges come from the r/IndiaCoffee crowdsourced tier list, which
+          is community signal rather than an audit and skews toward roasters
+          visible online.
         </p>
       </div>
     </main>
@@ -208,9 +272,11 @@ function prettyTag(tag: string): string {
 function RoasterRow({
   roaster,
   match,
+  tasted,
 }: {
   roaster: RankedRoaster;
   match: MatchScore | null;
+  tasted: boolean;
 }) {
   const location = [roaster.city, roaster.state]
     .filter(Boolean)
@@ -258,8 +324,24 @@ function RoasterRow({
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-s3">
             <div className="min-w-0">
-              <div className="font-display font-bold text-[20px] text-ink-1 leading-tight">
-                {roaster.name}
+              <div className="flex items-center gap-s2 flex-wrap">
+                <span className="font-display font-bold text-[20px] text-ink-1 leading-tight">
+                  {roaster.name}
+                </span>
+                {tasted && <OLabel text="Tasted" variant="accent" />}
+                {roaster.communityTier && (
+                  <span
+                    className="font-mono text-[9px] px-[5px] py-[1px] rounded-r2 border"
+                    style={{
+                      borderWidth: "0.5px",
+                      borderColor: "var(--line-2)",
+                      color: "var(--ink-3)",
+                    }}
+                    title="r/IndiaCoffee crowdsourced tier"
+                  >
+                    {roaster.communityTier}-tier
+                  </span>
+                )}
               </div>
               <div
                 className="font-ui text-[10px] uppercase text-ink-4 mt-1"
