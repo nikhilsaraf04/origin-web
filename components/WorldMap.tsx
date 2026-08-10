@@ -76,15 +76,25 @@ function arcPath(from: [number, number], to: [number, number]): string {
 
 /** Country geometry is polygons -> rings -> points, so both levels have to be
  *  walked. Flattening only one level projects a whole ring as if it were a
- *  single point and yields NaN. */
+ *  single point and yields NaN.
+ *
+ *  Rings that cross the antimeridian (Russia, Fiji, Antarctica) contain a step
+ *  from +179 to -180. Projected naively that is a line straight across the
+ *  whole map, which showed up as full-width horizontal streaks. Break the
+ *  subpath at any step wider than half the world instead of drawing it. */
 function shapePath(polys: number[][][][]): string {
   let d = "";
   for (const rings of polys) {
     for (const ring of rings) {
       if (ring.length < 4) continue;
+      let penDown = false;
       for (let i = 0; i < ring.length; i++) {
+        const lon = ring[i][0];
+        const wrapped = i > 0 && Math.abs(lon - ring[i - 1][0]) > 180;
         const [x, y] = project(ring[i] as [number, number]);
-        d += `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)} `;
+        const cmd = !penDown || wrapped ? "M" : "L";
+        d += `${cmd} ${x.toFixed(1)} ${y.toFixed(1)} `;
+        penDown = true;
       }
       d += "Z ";
     }
