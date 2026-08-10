@@ -92,8 +92,10 @@ function shapePath(polys: number[][][][]): string {
         const lon = ring[i][0];
         const wrapped = i > 0 && Math.abs(lon - ring[i - 1][0]) > 180;
         const [x, y] = project(ring[i] as [number, number]);
-        const cmd = !penDown || wrapped ? "M" : "L";
-        d += `${cmd} ${x.toFixed(1)} ${y.toFixed(1)} `;
+        // Close the run before jumping the date line, otherwise the fill rule
+        // bridges the gap and draws a diagonal across the break.
+        if (wrapped && penDown) d += "Z ";
+        d += `${!penDown || wrapped ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)} `;
         penDown = true;
       }
       d += "Z ";

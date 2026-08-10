@@ -5,6 +5,20 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.13.1 — Map streak fix (2026-08-10)
+
+### Fixed
+
+- **Full-width streaks across the world map** (`components/WorldMap.tsx`).
+  Rings that cross the antimeridian (Russia, Fiji, Antarctica) step straight
+  from +179 to -180. Projected naively that is a line across the entire map,
+  which rendered as horizontal bars over the Atlantic and the equator. The
+  subpath now breaks at any step wider than half the world, and closes before
+  it jumps, since leaving the run open let the fill rule bridge the gap and
+  draw a diagonal across Siberia instead.
+
+---
+
 ## v0.13.0 — World: the passport view (2026-08-10)
 
 A map at `/world` of where your coffee grew and where you drank it. Origins
