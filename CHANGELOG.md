@@ -5,6 +5,49 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.13.0 — World: the passport view (2026-08-10)
+
+A map at `/world` of where your coffee grew and where you drank it. Origins
+glow by how many coffees came from them, visited cities are pinned, and an arc
+runs from an origin to the city you had it in.
+
+### Added
+
+- **`components/WorldMap.tsx`** — inline SVG, equirectangular, no map library
+  and no tile server, so it works offline in the PWA. Arcs are quadratic
+  beziers bowed perpendicular to the chord, so a long hop reads as a flight
+  path rather than a chord across the plate. Antarctica and the high Arctic
+  are cropped: dead space on a coffee map.
+- **`lib/data/world-geo.json`** (62 KB) plus the generator that produced it,
+  `scripts/build-world-geo.mjs`. Natural Earth 110m countries, rounded to 1dp
+  and Douglas-Peucker simplified at 0.35°, which cut it from 135 KB with no
+  visible difference at the size this renders. Centroids are computed from the
+  unfiltered geometry so a country whose shape is too small to draw still has
+  a point: Singapore has no polygon at 110m at all and is hand-placed.
+- **`lib/data/geo.ts`** — country-name resolution and a hand-kept city table.
+  Natural Earth says "United States of America" and "Central African Rep.";
+  bags and people say "United States". Everything resolves through
+  `resolveCountry` so the rest of the app keeps using ordinary names.
+  `splitOrigins` splits blends, so a bag logged as "Brazil, Colombia" counts
+  as two origins instead of inventing a country. Unknown cities fall back to
+  the country centroid and are drawn as a dashed ring to mark the imprecision.
+- **`lib/data/producers.ts`** — 58 coffee-growing countries, as a denominator
+  for "origins tasted". Curated, not an official register, and the UI says so.
+- **`components/screens/WorldScreen.tsx`** and `/world`, linked from Places.
+  Stat row (origins, producers tasted, countries drunk in, cities), an origins
+  leaderboard with counts and mean ratings, and a legend.
+
+### Notes
+
+- Arcs only come from visits. A bag records where the coffee grew but not
+  where you drank it, so bags shade the map without drawing a line. The screen
+  says this rather than inventing the missing end.
+- Coverage gaps are surfaced, not hidden: the count of coffees with no origin
+  recorded, and any origin string that could not be resolved, are both printed
+  under the map.
+
+---
+
 ## v0.12.0 — Places: the cups you did not bring home (2026-08-10)
 
 A new **Places** tab for coffee had at a roastery or café without buying a

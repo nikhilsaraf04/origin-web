@@ -41,13 +41,22 @@ export function PlacesScreen() {
             Cups had, not bags bought
           </span>
         </div>
-        <Link
-          href="/places/new"
-          className="font-ui text-[11px] px-s4 py-[8px] rounded-r2 shrink-0"
-          style={{ background: "var(--accent)", color: "var(--accent-ink)" }}
-        >
-          Log a visit
-        </Link>
+        <div className="flex items-center gap-s2 shrink-0">
+          <Link
+            href="/world"
+            className="font-ui text-[11px] px-s3 py-[8px] rounded-r2 border text-ink-2"
+            style={{ borderWidth: "0.5px", borderColor: "var(--line-2)" }}
+          >
+            World
+          </Link>
+          <Link
+            href="/places/new"
+            className="font-ui text-[11px] px-s4 py-[8px] rounded-r2"
+            style={{ background: "var(--accent)", color: "var(--accent-ink)" }}
+          >
+            Log a visit
+          </Link>
+        </div>
       </header>
 
       {visits.length > 0 && (
