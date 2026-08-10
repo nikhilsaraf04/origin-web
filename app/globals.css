@@ -62,3 +62,22 @@ button {
 input[type="range"] {
   accent-color: var(--accent);
 }
+
+/* Boxed text input. The bag flow uses borderless inputs inside bordered rows
+   because a scan pre-fills it; the visit form is typed from scratch, so each
+   field gets a visible target. */
+.o-input {
+  border: 0.5px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--bg-1);
+  padding: 10px 12px;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--ink-1);
+}
+.o-input::placeholder {
+  color: var(--ink-4);
+}
+.o-input:focus {
+  border-color: var(--accent-border);
+}

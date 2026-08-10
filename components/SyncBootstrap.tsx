@@ -5,10 +5,12 @@
 
 import { useEffect } from "react";
 import { syncService } from "@/lib/sync-service";
+import { placeSyncService } from "@/lib/place-sync-service";
 
 export function SyncBootstrap() {
   useEffect(() => {
     syncService.start();
+    placeSyncService.start();
   }, []);
   return null;
 }

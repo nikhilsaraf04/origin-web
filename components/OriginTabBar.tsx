@@ -8,15 +8,24 @@ import { clsx } from "@/lib/clsx";
 // Tabs are split into a left and right cluster around the center scan FAB.
 const leftTabs = [
   { label: "Library", href: "/" },
-  { label: "Roasters", href: "/roasters" },
+  { label: "Places", href: "/places" },
 ] as const;
 
-const rightTabs = [{ label: "Palette", href: "/palette" }] as const;
+const rightTabs = [
+  { label: "Roasters", href: "/roasters" },
+  { label: "Palette", href: "/palette" },
+] as const;
 
 export function OriginTabBar() {
   const pathname = usePathname() || "/";
   // Hide tab bar on the scan screen so the camera-like UI fills the viewport.
-  if (pathname.startsWith("/scan") || pathname.startsWith("/review")) return null;
+  if (
+    pathname.startsWith("/scan") ||
+    pathname.startsWith("/review") ||
+    pathname.startsWith("/places/new") ||
+    pathname.startsWith("/places/edit")
+  )
+    return null;
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   return (
     <nav
@@ -72,7 +81,7 @@ function TabButton({
     <Link
       href={href}
       className={clsx(
-        "uppercase font-ui font-medium text-[10px] tracking-[0.1em] px-s4 py-s2",
+        "uppercase font-ui font-medium text-[10px] tracking-[0.1em] px-s3 py-s2",
         active ? "text-ink-1" : "text-ink-3",
       )}
     >

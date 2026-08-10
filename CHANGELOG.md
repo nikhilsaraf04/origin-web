@@ -5,6 +5,48 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.12.0 — Places: the cups you did not bring home (2026-08-10)
+
+A new **Places** tab for coffee had at a roastery or café without buying a
+bag. Logged by hand, rated on the same 0-100 scale as bags, and totted up into
+an exploration count: places, cities, countries.
+
+### Added
+
+- **`PlaceVisit`** (`lib/types/place.ts`) — a separate entity from
+  `CoffeeLog`, not a `kind` flag on it. The two barely overlap: a bag carries
+  roast date, altitude, variety and process; a visit carries a room, a city
+  and a date you were there. Merging them would leave most columns null on
+  both sides and let the taste-profile maths read records it should ignore.
+  What they share is the rating scale and the flavour taxonomy, so visits can
+  feed the same aggregate views.
+- **`computeExplorationStats`** — places, cities, countries, roasteries,
+  average rating, best cup, and a trailing-365-day count. Cities are keyed on
+  city+country, because there is more than one Cambridge.
+- **Table + API** — `place_visits` on the same Fly volume, and
+  `/api/visits` (GET since-cursor, POST upsert) mirroring `/api/logs`
+  exactly, including last-write-wins on `updated_at`.
+- **Store + sync** — `lib/store/place-store.ts` and
+  `lib/place-sync-service.ts`, mirroring the coffee-log pair with their own
+  cursors so one falling behind never stalls the other. Soft deletes push as
+  tombstones. Visits sort by date visited, not write time, so a backdated
+  visit lands in the right place in the history.
+- **Screens** — `/places` (stat row, filter, list), `/places/new` and
+  `/places/edit/[id]`. Full create, edit and delete, with delete behind a
+  confirm step. Typing a place name suggests directory roasters and links the
+  visit to one, filling city and country.
+- **`.o-input`** (`app/globals.css`) — a boxed text input. The bag flow uses
+  borderless inputs inside bordered rows because a scan pre-fills it; the
+  visit form is typed from scratch, so each field gets a visible target.
+
+### Changed
+
+- **Tab bar** — four destinations in two clusters around the scan FAB:
+  Library and Places on the left, Roasters and Palette on the right. Hidden
+  on the visit form, as it already is on scan and review.
+
+---
+
 ## v0.11.0 — The directory goes global (2026-08-09)
 
 The Roasters directory is no longer India-only. It now carries roasters from

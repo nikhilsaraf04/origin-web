@@ -86,6 +86,33 @@ function init(db: Database.Database): void {
 
     CREATE INDEX IF NOT EXISTS idx_coffee_logs_user_updated
       ON coffee_logs (user_id, updated_at);
+
+    CREATE TABLE IF NOT EXISTS place_visits (
+      id             TEXT PRIMARY KEY,
+      user_id        TEXT NOT NULL,
+      created_at     TEXT NOT NULL,
+      updated_at     TEXT NOT NULL,
+      deleted_at     TEXT,
+
+      name           TEXT NOT NULL DEFAULT '',
+      kind           TEXT NOT NULL DEFAULT '',
+      city           TEXT NOT NULL DEFAULT '',
+      country        TEXT NOT NULL DEFAULT '',
+      roaster_name   TEXT,
+
+      date_visited   TEXT NOT NULL,
+      drink          TEXT NOT NULL DEFAULT '',
+      origin_country TEXT,
+      flavor_tags    TEXT NOT NULL DEFAULT '[]',
+
+      rating         INTEGER NOT NULL DEFAULT 0,
+      would_return   INTEGER NOT NULL DEFAULT 0,
+      notes          TEXT NOT NULL DEFAULT '',
+      photo_url      TEXT
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_place_visits_user_updated
+      ON place_visits (user_id, updated_at);
   `);
 }
 
@@ -101,32 +128,63 @@ const ARRAY_COLS = [
 
 const BOOL_COLS = ["would_source_again"] as const;
 
+const PLACE_ARRAY_COLS = ["flavor_tags"] as const;
+const PLACE_BOOL_COLS = ["would_return"] as const;
+
 /** DB row (arrays as JSON text, bools as 0/1) -> API row (arrays, bools). */
-export function deserializeRow(raw: Record<string, unknown>): Record<string, unknown> {
+function deserialize(
+  raw: Record<string, unknown>,
+  arrayCols: readonly string[],
+  boolCols: readonly string[],
+): Record<string, unknown> {
   const out: Record<string, unknown> = { ...raw };
-  for (const c of ARRAY_COLS) {
+  for (const c of arrayCols) {
     try {
       out[c] = raw[c] ? JSON.parse(raw[c] as string) : [];
     } catch {
       out[c] = [];
     }
   }
-  for (const c of BOOL_COLS) {
+  for (const c of boolCols) {
     out[c] = !!raw[c];
   }
   return out;
 }
 
 /** API row -> DB bind object (arrays -> JSON text, bools -> 0/1). */
-export function serializeRow(row: Record<string, unknown>): Record<string, unknown> {
+function serialize(
+  row: Record<string, unknown>,
+  arrayCols: readonly string[],
+  boolCols: readonly string[],
+): Record<string, unknown> {
   const out: Record<string, unknown> = { ...row };
-  for (const c of ARRAY_COLS) {
+  for (const c of arrayCols) {
     out[c] = JSON.stringify(Array.isArray(row[c]) ? row[c] : []);
   }
-  for (const c of BOOL_COLS) {
+  for (const c of boolCols) {
     out[c] = row[c] ? 1 : 0;
   }
   return out;
+}
+
+export function deserializeRow(raw: Record<string, unknown>): Record<string, unknown> {
+  return deserialize(raw, ARRAY_COLS, BOOL_COLS);
+}
+
+export function serializeRow(row: Record<string, unknown>): Record<string, unknown> {
+  return serialize(row, ARRAY_COLS, BOOL_COLS);
+}
+
+export function deserializePlaceRow(
+  raw: Record<string, unknown>,
+): Record<string, unknown> {
+  return deserialize(raw, PLACE_ARRAY_COLS, PLACE_BOOL_COLS);
+}
+
+export function serializePlaceRow(
+  row: Record<string, unknown>,
+): Record<string, unknown> {
+  return serialize(row, PLACE_ARRAY_COLS, PLACE_BOOL_COLS);
 }
 
 export const LOG_COLUMNS = [
@@ -161,4 +219,25 @@ export const LOG_COLUMNS = [
   "price_paid",
   "match_score",
   "match_reason",
+] as const;
+
+export const PLACE_COLUMNS = [
+  "id",
+  "user_id",
+  "created_at",
+  "updated_at",
+  "deleted_at",
+  "name",
+  "kind",
+  "city",
+  "country",
+  "roaster_name",
+  "date_visited",
+  "drink",
+  "origin_country",
+  "flavor_tags",
+  "rating",
+  "would_return",
+  "notes",
+  "photo_url",
 ] as const;
