@@ -1,0 +1,3812 @@
+{
+ "generated": "2026-09-22",
+ "source": "theworlds100bestcoffeeshops.com",
+ "editions": [
+  "world",
+  "europe",
+  "north",
+  "south"
+ ],
+ "shops": [
+  {
+   "slug": "onyx-coffee-lab",
+   "name": "Onyx Coffee LAB",
+   "country": "USA",
+   "editions": {
+    "world": 1,
+    "north": 1
+   },
+   "id": "onyxcoffeelab",
+   "city": "Rogers",
+   "blurb": "Onyx Coffee Lab is a specialty coffee roastery, located in Rogers, Arkansas. The headquarter is located in an historic building in Downtown Rogers, where every part of their supply chain is showcased."
+  },
+  {
+   "slug": "tim-wendelboe",
+   "name": "Tim Wendelboe",
+   "country": "Norway",
+   "editions": {
+    "world": 2,
+    "europe": 1
+   },
+   "id": "timwendelboe",
+   "city": "Oslo",
+   "blurb": "Located at Grünersgate 1 at Grünerløkka in Oslo, this espresso bar is visited by locals and tourists from all over the world. Tim Wendelboe is perceived as a coffee showroom where people can be inspired to try something new, or see the world of coffee in a different light."
+  },
+  {
+   "slug": "alquimia-coffee",
+   "name": "Alquimia Coffee",
+   "country": "El Salvador",
+   "editions": {
+    "world": 3,
+    "north": 2
+   },
+   "id": "alquimiacoffee",
+   "city": null,
+   "blurb": "ALQUIMIA COFFEE is a world-class specialty coffee shop and roastery in El Salvador, founded by Federico Bolaños, the most successful coach in the history of the World Barista Championship. The purpose of ALQUIMIA COFFEE is to be THE DEFINITIVE COFFEE EXPERIENCE."
+  },
+  {
+   "slug": "only-coffee-project-crows-nest",
+   "name": "Only Coffee Project Crows Nest",
+   "country": "Australia",
+   "editions": {
+    "world": 4
+   },
+   "id": "onlycoffeeprojectcrowsnest",
+   "city": "Crows Nest",
+   "blurb": "Only Coffee Project in Crows Nest is a minimalist espresso bar renowned for its purist approach to specialty coffee, recently recognized as a finalist for Best Coffee in the Good Food 2025 awards. Located at Shop 2/118 Willoughby Rd, Crows Nest, the shop operates Monday to Sunday from 6:30 AM to 3:0"
+  },
+  {
+   "slug": "tobbys-estate",
+   "name": "Toby’s Estate Coffee Roasters",
+   "country": "Australia",
+   "editions": {
+    "world": 5
+   },
+   "id": "tobysestatecoffeeroasters",
+   "city": "Chippendale",
+   "blurb": "Toby’s Estate Flagship Café in Chippendale is an experiential-based venue that focuses on the customer experience and educating people in their coffee journey. Unlike traditional cafes, the Chippendale Flagship breaks down the barriers between the customer and barista."
+  },
+  {
+   "slug": "apartment-coffee",
+   "name": "Apartment Coffee",
+   "country": "Singapore",
+   "editions": {
+    "world": 6
+   },
+   "id": "apartmentcoffee",
+   "city": "Singapore",
+   "blurb": "Born from their belief that anyone can enjoy a good cup of coffee, Apartment Coffee is a Singapore-based coffee studio that is dedicated to sharing exceptional coffee experiences. When it comes to their coffee, their menu mostly offers pour-over options made with single-origin beans from Costa Rica,"
+  },
+  {
+   "slug": "gota-coffee-experts",
+   "name": "Gota Coffee Experts",
+   "country": "Austria",
+   "editions": {
+    "world": 7,
+    "europe": 2
+   },
+   "id": "gotacoffeeexperts",
+   "city": "Vienna",
+   "blurb": "Gota Coffee is a specialty coffee roastery, located in Vienna, Austria. Whether you are looking for a place to have breakfast, for that perfect espresso to start your day or to experience coffee like never before, you are in the right place."
+  },
+  {
+   "slug": "story-of-ono",
+   "name": "Story of Ono",
+   "country": "Malaysia",
+   "editions": {
+    "world": 8
+   },
+   "id": "storyofono",
+   "city": null,
+   "blurb": "ONO is a the World’s First specialty coffee & matcha café that offers a curated selection of premium coffee and matcha, expertly sourced and crafted for a unique, flavorful experience. With a focus on quality and innovation, ONO blends tradition with modern techniques to deliver exceptional beverage"
+  },
+  {
+   "slug": "tropicalia-coffee",
+   "name": "Tropicalia Coffee",
+   "country": "Colombia",
+   "editions": {
+    "world": 9,
+    "south": 6
+   },
+   "id": "tropicaliacoffee",
+   "city": null,
+   "blurb": "By chance, genetics, or magical realism, Arabica coffee chose the Tropics to be planted, and at Tropicalia they chose it to be roasted. They seek the best coffees from the Tropics to roast and serve them in a very special place that evokes all the biodiversity and warmth of this region, highlighting"
+  },
+  {
+   "slug": "tanat",
+   "name": "Tanat",
+   "country": "France",
+   "editions": {
+    "europe": 4,
+    "world": 10
+   },
+   "id": "tanat",
+   "city": null,
+   "blurb": "TANAT Coffee was founded in 2016 with a goal to share the rich experience of specialty coffee with the world. The brand has dedicated itself to perfecting coffee flavours and experimenting with new methods, ultimately developing a roasting style that highlights vibrant, fruity notes."
+  },
+  {
+   "slug": "fankor",
+   "name": "FANKØR",
+   "country": "Ecuador",
+   "editions": {
+    "world": 11,
+    "south": 2
+   },
+   "id": "fankr",
+   "city": null,
+   "blurb": "FANKØR is a specialty coffee roastery and café, accompanied by its own gastronomic offering, which includes cuisine, bakery, and pastry. In every area, they champion the origin and care of the ingredients to guarantee quality, traceability, and a memorable experience."
+  },
+  {
+   "slug": "arcane-estate-coffee",
+   "name": "Arcane Estate Coffee",
+   "country": "USA",
+   "editions": {
+    "world": 12,
+    "north": 3
+   },
+   "id": "arcaneestatecoffee",
+   "city": "New York City",
+   "blurb": "Arcane is the result of a decade of exploration in Panamanian coffee, motivated by their desire to shorten the distance between the harvest and the cup. Their founder, Edgar Acosta-Masferrer, realized that his family’s land sat at the center of this movement; located in the western province of Chiri"
+  },
+  {
+   "slug": "beta-coffee",
+   "name": "Beta Coffee",
+   "country": "Australia",
+   "editions": {
+    "world": 13
+   },
+   "id": "betacoffee",
+   "city": null,
+   "blurb": "At Beta Coffee, they are pushing the boundaries of coffee, community, and hospitality by challenging traditional coffee service models. They are exploring how technology and innovation can enhance the quality and consistency of coffee, while creating space for baristas to focus on making every custo"
+  },
+  {
+   "slug": "nomadic-specialty-coffee",
+   "name": "Nomadic Specialty Coffee",
+   "country": "Egypt",
+   "editions": {
+    "world": 14
+   },
+   "id": "nomadicspecialtycoffee",
+   "city": "Cairo",
+   "blurb": "Nomadic Specialty Coffee is a cornerstone of Cairo’s evolving specialty coffee scene. Driven by a passion for exploration and discovery, they operate as both a high-end roastery and a community-focused café, dedicated to bringing global coffee standards to the heart of Egypt."
+  },
+  {
+   "slug": "nemesis-coffee",
+   "name": "Nemesis Coffee",
+   "country": "Canada",
+   "editions": {
+    "world": 15,
+    "north": 4
+   },
+   "id": "nemesiscoffee",
+   "city": null,
+   "blurb": "Nemesis is a hospitality driven, specialty coffee company composed of highly dedicated baristas, chefs, and creatives. They utilise their pursuit of passion, and the spaces they explore them in, as a catalyst to build community and create culture."
+  },
+  {
+   "slug": "nomad-frutas-selectas",
+   "name": "Nomad Frutas Selectas",
+   "country": "Spain",
+   "editions": {
+    "world": 16,
+    "europe": 3
+   },
+   "id": "nomadfrutasselectas",
+   "city": "Poblenou",
+   "blurb": "Located in the heart of Poblenou, Frutas Selectas by Nomad Coffee is more than just a café—it’s a space designed to celebrate specialty coffee at its finest. With a strong focus on quality and traceability, they serve carefully selected and in-house roasted coffee."
+  },
+  {
+   "slug": "kafi-wasi-cafe-tostaduria",
+   "name": "Kafi Wasi Café Tostaduría",
+   "country": "Peru",
+   "editions": {
+    "world": 17,
+    "south": 5
+   },
+   "id": "kafiwasicaftostadura",
+   "city": "Arequipa",
+   "blurb": "Kafi Wasi is a specialty coffee shop that celebrates coffee culture in the heart of Arequipa, just a few blocks from the Plaza de Armas. Founded in 2017 by Diego Cisneros and Pamela Reymer, it combines passion and tradition in every cup, offering a unique experience for coffee lovers."
+  },
+  {
+   "slug": "benchmark-coffee",
+   "name": "Benchmark Coffee",
+   "country": "UAE",
+   "editions": {
+    "world": 18
+   },
+   "id": "benchmarkcoffee",
+   "city": "Sharjah",
+   "blurb": "Benchmark Coffee redefines the specialty café experience in Sharjah’s new heart, Al Jada. Located on East Boulevard and Naseej South, this all-comers’ community hotspot offers excellent coffee in a relaxed atmosphere."
+  },
+  {
+   "slug": "hola-coffee-lagasca",
+   "name": "Hola Coffee Lagasca",
+   "country": "Spain",
+   "editions": {
+    "world": 19
+   },
+   "id": "holacoffeelagasca",
+   "city": null,
+   "blurb": "Hola Coffee Lagasca stands out for its minimalist but colorful design, offering their own roasted coffee with expert and friendly service. Their selection of filter coffees and signature drinks showcases a high level of innovation and quality."
+  },
+  {
+   "slug": "blendin-coffee-club",
+   "name": "BlendIn Coffee Club",
+   "country": "USA",
+   "editions": {
+    "world": 20,
+    "north": 7
+   },
+   "id": "blendincoffeeclub",
+   "city": "Houston",
+   "blurb": "Blendin Coffee Club is a Houston based specialty coffee company dedicated to sourcing, roasting, and serving some of the world’s most exceptional coffees. Through direct producer partnerships and a hospitality driven café experience, Blendin connects coffee communities from origin to cup."
+  },
+  {
+   "slug": "holaste-specialty-coffee",
+   "name": "Holaste! Specialty Coffee",
+   "country": "Chile",
+   "editions": {
+    "world": 21,
+    "south": 30
+   },
+   "id": "holastespecialtycoffee",
+   "city": "Puerto Natales",
+   "blurb": "Holaste! is a specialty coffee shop and roastery located in the city center of Puerto Natales, Magallanes Region, one of the southernmost regions in the world!"
+  },
+  {
+   "slug": "momos-coffee-flagship-store",
+   "name": "Momos Coffee Flagship Store",
+   "country": "Republic of Korea",
+   "editions": {
+    "world": 22
+   },
+   "id": "momoscoffeeflagshipstore",
+   "city": "Busan",
+   "blurb": "MOMOS Coffee is a specialty coffee roastery founded in Busan, South Korea, in 2007. Guided by their mission to deeply understand the essence of coffee, they pursue ethical and honest practices that create shared happiness for everyone involved — from producers and makers to those who enjoy the final"
+  },
+  {
+   "slug": "monotono-specialty-coffee",
+   "name": "Monotono Specialty Coffee",
+   "country": "Peru",
+   "editions": {
+    "world": 23,
+    "south": 10
+   },
+   "id": "monotonospecialtycoffee",
+   "city": "Barranco",
+   "blurb": "Monótono Specialty Coffee is a minimalist specialty coffee shop nestled in the heart of Barranco, Lima. Known for its smooth espresso and filter brews — including Geisha from San Ignacio — Monótono combines precision brewing with a calm, focused atmosphere."
+  },
+  {
+   "slug": "ult-coffee",
+   "name": "Ult Coffee",
+   "country": "Japan",
+   "editions": {
+    "world": 24
+   },
+   "id": "ultcoffee",
+   "city": "Osaka",
+   "blurb": "The ULT Coffee Roaster store is located in Osaka, Japan, and was founded by World Barista Champion Boram Um. ULT is a Japan-based specialty coffee brand focused on competition-level coffees and carefully selected micro-lots, inviting customers into a terroir-driven coffee experience."
+  },
+  {
+   "slug": "el-injerto",
+   "name": "El Injerto",
+   "country": "Guatemala",
+   "editions": {
+    "world": 25,
+    "north": 5
+   },
+   "id": "elinjerto",
+   "city": null,
+   "blurb": "In the mountains of the western highlands, where cloud forests and unique microclimates create exceptional conditions, lies Finca El Injerto, a coffee farm with over 150 years of history that has taken Guatemala’s name to the pinnacle of specialty coffee. Founded in 1874 by Jesús Aguirre Panamá, the"
+  },
+  {
+   "slug": "three-monkeys-coffee",
+   "name": "Three Monkeys Coffee",
+   "country": "Peru",
+   "editions": {
+    "world": 26
+   },
+   "id": "threemonkeyscoffee",
+   "city": "Cusco",
+   "blurb": "Three Monkeys Coffee in Cusco redefines specialty coffee with an innovative and technical approach in their processes. Located centrally, their café blends tradition with avant-garde, emphasizing quality control from their precision-cultivated farm."
+  },
+  {
+   "slug": "proud-mary-coffee",
+   "name": "Proud Mary Coffee",
+   "country": "Australia",
+   "editions": {
+    "world": 27
+   },
+   "id": "proudmarycoffee",
+   "city": "Melbourne",
+   "blurb": "Proud Mary Café in Melbourne is a pioneer in the Australian coffee scene and a must-visit for coffee lovers and food enthusiasts. Known for its exceptional coffee program, the café takes pride in sourcing high quality coffees through longstanding producer relationships, delivering magic in every cup"
+  },
+  {
+   "slug": "koffee-mameya-kakeru",
+   "name": "Koffee Mameya Kakeru",
+   "country": "Japan",
+   "editions": {
+    "world": 28
+   },
+   "id": "koffeemameyakakeru",
+   "city": null,
+   "blurb": "KOFFEE MAMEYA Kakeru provides an extraordinary coffee experience. It is unlike the style of ordinary coffee shop offerings of the past, their experience is as if you went to a restaurant to enjoy the chef’s carefully selected ingredients and techniques."
+  },
+  {
+   "slug": "coffee-anthology",
+   "name": "Coffee Anthology",
+   "country": "Australia",
+   "editions": {
+    "world": 29
+   },
+   "id": "coffeeanthology",
+   "city": "Brisbane",
+   "blurb": "Coffee Anthology is a specialty coffee shop located in Brisbane, Australia. Customers claim it’s the best spot to enjoy a great breakfast in Brisbane."
+  },
+  {
+   "slug": "7g-roaster",
+   "name": "7g Roaster",
+   "country": "Portugal",
+   "editions": {
+    "world": 30,
+    "europe": 13
+   },
+   "id": "7groaster",
+   "city": null,
+   "blurb": "7 Gaia Roaster, established in 2017, has become a reference specialty coffee roaster, democratizing traceable and ethically sourced coffee. Their name, «7», reflects the number of apartments within their space, while «Gaia» denotes their location near the Gaia quay."
+  },
+  {
+   "slug": "espresso-alchemy",
+   "name": "Espresso Alchemy",
+   "country": "China",
+   "editions": {
+    "world": 31
+   },
+   "id": "espressoalchemy",
+   "city": "Hong Kong",
+   "blurb": "Espresso Alchemy is a specialty coffee roastery and café chain in Hong Kong, China. Known for sourcing exceptional beans directly from award-winning producers in Brazil, Colombia, Ethiopia, and Indonesia, the brand fosters ethical and sustainable coffee production within their direct trade program."
+  },
+  {
+   "slug": "coffeewerk-press",
+   "name": "Coffeewerk + Press",
+   "country": "Ireland",
+   "editions": {
+    "europe": 5,
+    "world": 32
+   },
+   "id": "coffeewerkpress",
+   "city": "Copenhagen",
+   "blurb": "Since opening their little yellow door in 2015, coffee has been at the heart of everything they do at Coffeewerk + Press. As a multi-roaster café, they’ve had the privilege of collaborating with over 80 local and international coffee roasters."
+  },
+  {
+   "slug": "typica-cafe",
+   "name": "Typica Café",
+   "country": "Bolivia",
+   "editions": {
+    "world": 33,
+    "south": 25
+   },
+   "id": "typicacaf",
+   "city": "La Paz",
+   "blurb": "Typica Café is a specialty coffee roastery located in La Paz, Bolivia. Typica Tostaduría is the space where this company focuses on seeking out coffee growers committed to producing the finest Bolivian specialty coffees and to continually enhancing the value of the national product."
+  },
+  {
+   "slug": "yardstick",
+   "name": "Yardstick",
+   "country": "Philippines",
+   "editions": {
+    "world": 34
+   },
+   "id": "yardstick",
+   "city": null,
+   "blurb": "Yardstick has been a specialty coffee roaster since 2013. They create spaces and experiences for everyone to enjoy the coffee that they roast."
+  },
+  {
+   "slug": "historico",
+   "name": "Histórico",
+   "country": "Mexico",
+   "editions": {
+    "world": 35,
+    "north": 11
+   },
+   "id": "histrico",
+   "city": null,
+   "blurb": "Histórico café y tostador is a space dedicated to Chiapas coffee from its origin. Located in San Cristóbal de las Casas, it is part of Finca Hamburgo (founded in 1888) and represents the urban continuity of its coffee legacy, connecting land, history, and cup in a single experience."
+  },
+  {
+   "slug": "coffee-sind",
+   "name": "Coffee Sind",
+   "country": "Taiwan",
+   "editions": {
+    "world": 36
+   },
+   "id": "coffeesind",
+   "city": "Taipei",
+   "blurb": "Located in Taipei, Coffee Sind is devoted to serving high-quality coffee in a lifestyle-inspired way, offering every coffee lover a truly great cup. Friendliness, simplicity, and convenience define Coffee Sind’s unique character amid the fast-paced rhythm of Taipei."
+  },
+  {
+   "slug": "delafinca-specialty-coffee",
+   "name": "DeLafinca Specialty Coffee",
+   "country": "Nicaragua",
+   "editions": {
+    "world": 37,
+    "north": 12
+   },
+   "id": "delafincaspecialtycoffee",
+   "city": null,
+   "blurb": "Delafinca Specialty Coffee is a Nicaraguan coffee brand born from a passion for quality and a commitment to sustainability. Founded in 2012, Delafinca Specialty Coffee cultivates its beans in the mountains of San Juan de Río Coco, Madriz, ensuring comprehensive control from seed to cup."
+  },
+  {
+   "slug": "ottoman-coffee-house",
+   "name": "Ottoman Coffee House",
+   "country": "United Kingdom",
+   "editions": {
+    "world": 38,
+    "europe": 6
+   },
+   "id": "ottomancoffeehouse",
+   "city": "Glasgow",
+   "blurb": "A multi-roaster coffee sanctuary in Glasgow’s West End, featuring a rotating lineup of the best roasters and a full spectrum of brew methods, from rich Ibrik and espresso beverages to meticulously crafted pour-overs. Founded in 2015 by two siblings after a decade mastering Istanbul’s ancient traditi"
+  },
+  {
+   "slug": "casa-canela",
+   "name": "Casa Canela",
+   "country": "Venezuela",
+   "editions": {
+    "world": 39,
+    "south": 20
+   },
+   "id": "casacanela",
+   "city": "Caracas",
+   "blurb": "Casa Canela is a specialty coffee shop in Caracas, Venezuela, that began as an innovative business concept during the Pandemic, initially focused on baking supplies. However, their passion for coffee led them to transform into a haven for specialty coffee lovers."
+  },
+  {
+   "slug": "espresso-lab",
+   "name": "Espresso LAB",
+   "country": "South Africa",
+   "editions": {
+    "world": 40
+   },
+   "id": "espressolab",
+   "city": "Cape Town",
+   "blurb": "Espressolab is a specialty coffee roastery based in Cape Town, South Africa. They have been roasting small boutique batches of coffee since 2009, and were one of the pioneers of the specialty coffee movement both locally and internationally."
+  },
+  {
+   "slug": "seven-mystery",
+   "name": "Seven Mystery",
+   "country": "Canada",
+   "editions": {
+    "world": 41,
+    "north": 6
+   },
+   "id": "sevenmystery",
+   "city": "Toronto",
+   "blurb": "SEVEN MYSTERY is a specialty coffee roastery based in Toronto, Canada. Founded on a commitment to quality, precision, and long-term consistency, they work closely with cafés and partners through their roasting facility, offering thoughtfully developed coffees and refined roasting solutions."
+  },
+  {
+   "slug": "faro",
+   "name": "Faro",
+   "country": "Italy",
+   "editions": {
+    "world": 42,
+    "europe": 7
+   },
+   "id": "faro",
+   "city": null,
+   "blurb": "Faro – Caffè Specialty was founded in 2016 with the desire to spread the culture of specialty coffee, enhancing its supply chain and consumption methods. From the beginning, their goal has been to offer an authentic experience, bringing traceable, sustainable, and carefully processed coffee to Rome "
+  },
+  {
+   "slug": "domestique",
+   "name": "Domestique",
+   "country": "USA",
+   "editions": {
+    "world": 43,
+    "north": 38
+   },
+   "id": "domestique",
+   "city": "Birmingham",
+   "blurb": "Domestique Coffee is a specialty coffee roastery located in Birmingham, Alabama, USA. Domestique is a coffee, hospitality, and lifestyle company that offers cultural experiences centered around coffee."
+  },
+  {
+   "slug": "harvest-coffee",
+   "name": "Harvest Coffee",
+   "country": "Qatar",
+   "editions": {
+    "world": 44
+   },
+   "id": "harvestcoffee",
+   "city": "Doha",
+   "blurb": "Harvest Coffee is an award-winning, Qatar-born specialty coffee house, founded in Doha in 2019. They are known for leading innovative coffee experiences; where every detail is intentional, from the cup to the space."
+  },
+  {
+   "slug": "origen-tostadores-de-cafe",
+   "name": "Origen Tostadores de Café",
+   "country": "Peru",
+   "editions": {
+    "world": 45,
+    "south": 19
+   },
+   "id": "origentostadoresdecaf",
+   "city": null,
+   "blurb": "Origen Tostadores de Café has proudly served Peru for twelve years, maintaining a strong commitment to their founding principles. Every year, they prioritize direct engagement with their coffee producers by closing their shops and taking their team to the farms."
+  },
+  {
+   "slug": "keep-coffee-roastery",
+   "name": "KEEP Coffee Roastery",
+   "country": "Taiwan",
+   "editions": {
+    "world": 46
+   },
+   "id": "keepcoffeeroastery",
+   "city": "Kaohsiung",
+   "blurb": "KEEP Coffee Roastery is a community-focused coffee roastery and group of cafés in Kaohsiung, Taiwan. They prioritize sweetness in coffee, with a dedicated focus on maintaining a clean cup—qualities that can be found in both their beans and their brewed coffee."
+  },
+  {
+   "slug": "meet-lab-coffee",
+   "name": "Meet LAB Coffee",
+   "country": "Turkey",
+   "editions": {
+    "world": 47,
+    "europe": 9
+   },
+   "id": "meetlabcoffee",
+   "city": "Istanbul",
+   "blurb": "Founded in Istanbul in 2016, Meet Lab Coffee blends quality coffee with exceptional service, enhancing coffee culture through unique experiences. They create a warm, minimalist atmosphere, fostering connection among coffee lovers."
+  },
+  {
+   "slug": "mulano-coffee-shop",
+   "name": "Mulano Coffee Shop",
+   "country": "Ecuador",
+   "editions": {
+    "world": 48,
+    "south": 94
+   },
+   "id": "mulanocoffeeshop",
+   "city": null,
+   "blurb": "Eli Romero, a professional SCA barista, founded and inaugurated Mulano Coffee Shop in 2022. This café is located in the south of Ecuador in a city of 25,000 inhabitants called Piñas, making it the first specialty coffee shop in the Province of El Oro."
+  },
+  {
+   "slug": "la-cabra",
+   "name": "La Cabra",
+   "country": "Denmark",
+   "editions": {
+    "world": 49,
+    "europe": 10
+   },
+   "id": "lacabra",
+   "city": "Copenhagen",
+   "blurb": "La Cabra Coffee is a modern coffee company, located in Copenhagen, Denmark. Curious about what lay further down the coffee chain, they threw themselves into sourcing and roasting their own coffee, their own way, in 2013."
+  },
+  {
+   "slug": "birch-coffee",
+   "name": "Birch Coffee",
+   "country": "United Kingdom",
+   "editions": {
+    "world": 50,
+    "europe": 15
+   },
+   "id": "birchcoffee",
+   "city": null,
+   "blurb": "Birch is a specialty coffee shop, bakery, and brunch spot based in Portree on the Isle of Skye, with a second location in Inverness. Founded by Niall Munro in 2020, Birch focuses on locally sourced produce from the Scottish Highlands and Islands, served alongside a rotating selection of coffees with"
+  },
+  {
+   "slug": "ruli-coffee",
+   "name": "Ruli Coffee",
+   "country": "Republic of Korea",
+   "editions": {
+    "world": 51
+   },
+   "id": "rulicoffee",
+   "city": "Myeong-dong",
+   "blurb": "RULICOFFEE is a specialty coffee shop located near Myeong-dong, Seoul, offering over 100 high-end Panamanian coffees. They consistently carry more than 20 ultra-premium auction lots, including selections from Best of Panama (BOP)."
+  },
+  {
+   "slug": "atte-for-coffee",
+   "name": "Atte For Coffee",
+   "country": "Guatemala",
+   "editions": {
+    "world": 52
+   },
+   "id": "atteforcoffee",
+   "city": null,
+   "blurb": "Atte Coffee is a Slow Coffee Bar—gratitude in the form of a cup… and also in the form of a shared table. They believe in the value of things well done: carefully selected coffees, prepared with respect, and homemade desserts born from their culinary training and love for the craft."
+  },
+  {
+   "slug": "single-o",
+   "name": "Single O",
+   "country": "Australia",
+   "editions": {
+    "world": 53
+   },
+   "id": "singleo",
+   "city": "Surry Hills",
+   "blurb": "Single O is a pioneer of the Australian specialty coffee scene, located in the heart of Surry Hills, Sydney. Since 2003, they have been at the forefront of sourcing and roasting, driven by a mission to celebrate the distinct «single origin» characteristics of every bean."
+  },
+  {
+   "slug": "rubia-coffee-roasters",
+   "name": "Rubia Coffee Roasters",
+   "country": "Rwanda",
+   "editions": {
+    "world": 54
+   },
+   "id": "rubiacoffeeroasters",
+   "city": "Kigali",
+   "blurb": "Rubia Coffee Roasters is a specialty coffee roastery, café and education hub in Kigali, Rwanda, founded in 2016 by Mbonyi Kalisa Mathias. Its mission: to champion specialty coffee culture at origin — in the country where the coffee grows."
+  },
+  {
+   "slug": "bob-coffee-lab",
+   "name": "Bob Coffee Lab",
+   "country": "Romania",
+   "editions": {
+    "world": 55,
+    "europe": 11
+   },
+   "id": "bobcoffeelab",
+   "city": "Bucharest",
+   "blurb": "BOB Coffee has set the standard in the Romanian specialty coffee market with its roastery and a chain of coffee shops in Bucharest. With an excellent, award-winning product, roasted by world champion Alex Niculae in 2016, BOB Coffee is one of the hottest coffee locations in Europe."
+  },
+  {
+   "slug": "unfiltered-coffee",
+   "name": "Unfiltered coffee",
+   "country": "Ireland",
+   "editions": {
+    "world": 56,
+    "europe": 16
+   },
+   "id": "unfilteredcoffee",
+   "city": "Dublin",
+   "blurb": "Founded in 2019, Unfiltered Coffee in Dublin is a study in precision and restraint. A small, minimalist space devoted entirely to craft, they approach coffee with the philosophy of fine dining — where every variable is intentional and every detail matters."
+  },
+  {
+   "slug": "tomorrow-coffee-roasters",
+   "name": "Tomorrow Coffee Roasters",
+   "country": "Taiwan",
+   "editions": {
+    "world": 57
+   },
+   "id": "tomorrowcoffeeroasters",
+   "city": "Taichung",
+   "blurb": "Tomorrow Coffee Roasters is a specialty coffee studio from Taichung, Taiwan, born from a fashion buyer-store and design background. They curate rare single-origin coffees from global award-winning farms and express them through precise roasting, refined brewing, and minimalist visual storytelling."
+  },
+  {
+   "slug": "ca-passe-creme",
+   "name": "Ca Passe Creme",
+   "country": "Switzerland",
+   "editions": {
+    "world": 58,
+    "europe": 27
+   },
+   "id": "capassecreme",
+   "city": "Lausanne",
+   "blurb": "Founded in 2018 by Davide & Steeve, two alumni of the École hôtelière de Lausanne, ÇA PASSE CRÈME is a key pioneer of specialty coffee in Lausanne and Switzerland, blending high-end hospitality with technical excellence.\u0003 They have partnered with Bonanza Coffee Roasters since 2019, serving world-cla"
+  },
+  {
+   "slug": "eco-mapu",
+   "name": "Eco Mapu",
+   "country": "Chile",
+   "editions": {
+    "world": 59
+   },
+   "id": "ecomapu",
+   "city": "Southern Chile",
+   "blurb": "Ecomapu Coffee is an innovative and experimental specialty coffee shop. They fuse high-quality coffee with traditional flavors from Southern Chile, offering a unique and creative experience."
+  },
+  {
+   "slug": "43-12-coffee",
+   "name": "43.12 Coffee",
+   "country": "Bulgaria",
+   "editions": {
+    "world": 60,
+    "europe": 22
+   },
+   "id": "4312coffee",
+   "city": "Varna",
+   "blurb": "43.12 Câfe is a specialty coffee and brunch spot located in the heart of Varna. The name comes from the câfe’s coordinates, 43-12."
+  },
+  {
+   "slug": "fika-co-cafe",
+   "name": "Fika & Co. Cafe",
+   "country": "Thailand",
+   "editions": {
+    "world": 61
+   },
+   "id": "fikacocafe",
+   "city": "Bangkok",
+   "blurb": "Fika & Co. is a prominent Bangkok-based coffee shop and roastery, operating branches at the Singha Complex and Sukhumvit 62."
+  },
+  {
+   "slug": "ditta-artigianale-specialty-coffee-roasters",
+   "name": "Ditta Artigianale Specialty Coffee Roasters",
+   "country": "Italy",
+   "editions": {
+    "world": 62,
+    "europe": 19
+   },
+   "id": "dittaartigianalespecialtycoffeeroasters",
+   "city": "Milan",
+   "blurb": "The first Ditta Artigianale coffee shop in Milan — a specialty café in the heart of the city where you can experience high-quality coffee in a warm and contemporary setting. Their mission at Ditta Artigianale is to bring exceptional coffee to Italy and share its story in a new and transparent way."
+  },
+  {
+   "slug": "cafe-nativo",
+   "name": "Café Nativo",
+   "country": "Honduras",
+   "editions": {
+    "world": 63
+   },
+   "id": "cafnativo",
+   "city": null,
+   "blurb": "Café Nativo & Roastery is a 100% Honduran company with 9 years in the coffee industry, dedicated to preserving heritage while embracing innovation. From sourcing the finest beans directly from local farmers to expert roasting and distribution, they oversee the entire value chain to ensure exceptiona"
+  },
+  {
+   "slug": "caferatto",
+   "name": "Caferatto",
+   "country": "Colombia",
+   "editions": {
+    "world": 64
+   },
+   "id": "caferatto",
+   "city": null,
+   "blurb": ""
+  },
+  {
+   "slug": "kross-coffee-roasters",
+   "name": "Kross Coffee Roasters",
+   "country": "Greece",
+   "editions": {
+    "world": 65,
+    "europe": 14
+   },
+   "id": "krosscoffeeroasters",
+   "city": "August",
+   "blurb": "Kross Coffee Roasters is the first of 6 Kross locations. They opened doors in August 2015, adjacently to one of the two historic mosques in the old town of Chania."
+  },
+  {
+   "slug": "prevail-coffee",
+   "name": "Prevail Coffee",
+   "country": "USA",
+   "editions": {
+    "world": 66,
+    "north": 9
+   },
+   "id": "prevailcoffee",
+   "city": "Montgomery",
+   "blurb": "Prevail Coffee is a craft coffee roaster and micro-importer located in the heart of the Deep South. They strive to be a quality connector for authentic community, and they are honored to do so alongside their talented producers and friends from around the globe."
+  },
+  {
+   "slug": "mok-coffee",
+   "name": "MOK Coffee",
+   "country": "Belgium",
+   "editions": {
+    "world": 67,
+    "europe": 20
+   },
+   "id": "mokcoffee",
+   "city": null,
+   "blurb": "Founded in 2012 by Jens Crabbé, MOK COFFEE is both a roastery and a café. They are proud to have two-time Belgian Cuptasters champions on their team, and this year, Marlies, one of their baristas, won the Brewers Cup."
+  },
+  {
+   "slug": "azura-the-coffee-company",
+   "name": "Azura – The Coffee Company",
+   "country": "Oman",
+   "editions": {
+    "world": 68
+   },
+   "id": "azurathecoffeecompany",
+   "city": null,
+   "blurb": "Azura is a specialty coffee brand from Oman built on the foundation of hospitality. In their culture, welcoming someone means offering your best, and that philosophy shapes everything they do."
+  },
+  {
+   "slug": "puku-puku",
+   "name": "Puku Puku",
+   "country": "Peru",
+   "editions": {
+    "world": 69,
+    "south": 40
+   },
+   "id": "pukupuku",
+   "city": null,
+   "blurb": "Puku Puku is a 100% Peruvian specialty coffee chain that originated as a sustainable and everyday space for seeking an escape from urban life. Everything they do revolves around coffee and small entrepreneurs."
+  },
+  {
+   "slug": "the-golden-pig",
+   "name": "The Golden Pig",
+   "country": "Honduras",
+   "editions": {
+    "world": 70,
+    "north": 13
+   },
+   "id": "thegoldenpig",
+   "city": null,
+   "blurb": "At The Golden Pig, every cup of coffee they serve tells a story. They work closely with producers from the best coffee-growing regions, ensuring quality in every bean that is roasted by them."
+  },
+  {
+   "slug": "little-victories-coffee",
+   "name": "Little Victories Coffee",
+   "country": "Canada",
+   "editions": {
+    "world": 71,
+    "north": 18
+   },
+   "id": "littlevictoriescoffee",
+   "city": "Ottawa",
+   "blurb": "Little Victories Coffee is a small, independent specialty coffee roaster based in Ottawa, Ontario, Canada that was co-founded by two coffee professionals – one roaster and one barista. The company operates 3 cafés and a bustling wholesale & web operation."
+  },
+  {
+   "slug": "push-x-pull",
+   "name": "Push Pull",
+   "country": "USA",
+   "editions": {
+    "world": 72,
+    "north": 20
+   },
+   "id": "pushpull",
+   "city": null,
+   "blurb": "PUSH PULL focuses on naturals, honeys, anaerobics, and the most experimental and fruity coffees they can find. What they do and who they are is about people."
+  },
+  {
+   "slug": "galani-coffee",
+   "name": "Galani Coffee",
+   "country": "Ethiopia",
+   "editions": {
+    "world": 73
+   },
+   "id": "galanicoffee",
+   "city": null,
+   "blurb": "Wanting to bring the future and the past together, Galani coffee combined the excellence of Ethiopian coffee with the modern understanding and setting. GALANI means blue in Greek and Ocean in Oromifa."
+  },
+  {
+   "slug": "wake-up",
+   "name": "Wake up",
+   "country": "Chile",
+   "editions": {
+    "world": 74
+   },
+   "id": "wakeup",
+   "city": "From Punta Arenas",
+   "blurb": "From Punta Arenas, Chile, at the end of the world, Wake Up Coffee takes the passion for specialty coffee to another level. Founded in 2017, Wake Up strives and works to offer an experience with a global character, where every detail counts and every cup has a story."
+  },
+  {
+   "slug": "bouche",
+   "name": "Bouche",
+   "country": "Belgium",
+   "editions": {
+    "world": 75,
+    "europe": 23
+   },
+   "id": "bouche",
+   "city": null,
+   "blurb": "Bouche is a specialty coffee brand dedicated to sharing great coffee with local and international communities in Brussels. They are committed to quality in every aspect of their business and have challenged themselves to doing things in their own way."
+  },
+  {
+   "slug": "cafe-de-reyes",
+   "name": "Café de Reyes",
+   "country": "Guatemala",
+   "editions": {
+    "world": 76,
+    "north": 16
+   },
+   "id": "cafdereyes",
+   "city": "Quetzaltenango",
+   "blurb": "Café de Reyes, located in Quetzaltenango, Guatemala, offers specialty coffee accompanied by signature drinks and a menu featuring sourdough bread and desserts. Its open bar allows you to learn about the coffee process, while the space provides cozy environments to enjoy and share."
+  },
+  {
+   "slug": "savaya-coffee-market",
+   "name": "Savaya Coffee Market",
+   "country": "USA",
+   "editions": {
+    "world": 77,
+    "north": 24
+   },
+   "id": "savayacoffeemarket",
+   "city": null,
+   "blurb": "Savaya has cultivated strong relationships with leading coffee professionals, from researchers to farmers and roasters, emphasizing both innovation and respect for coffee’s rich history. They are committed to direct sourcing, building personal connections with the farms that provide their beans."
+  },
+  {
+   "slug": "coffee-stopover-black",
+   "name": "Coffee Stopover Black",
+   "country": "Taiwan",
+   "editions": {
+    "world": 78
+   },
+   "id": "coffeestopoverblack",
+   "city": "Taichung",
+   "blurb": "Coffee Stopover, located in Taichung, Taiwan, is a specialty coffee brand dedicated to the craft of roasting. Established in 2015."
+  },
+  {
+   "slug": "fuku",
+   "name": "Fuku",
+   "country": "Netherlands",
+   "editions": {
+    "world": 79,
+    "europe": 93
+   },
+   "id": "fuku",
+   "city": "Amsterdam",
+   "blurb": "FUKU Café is a specialty coffee shop located in Amsterdam, The Netherlands. Open 7 days a week, Fuku defines itself as a place where there’s always great coffee, friendly people, and sometimes even natural wine."
+  },
+  {
+   "slug": "the-miners-coffee",
+   "name": "The Miners Coffee",
+   "country": "Czech Republic",
+   "editions": {
+    "world": 80,
+    "europe": 21
+   },
+   "id": "theminerscoffee",
+   "city": "Prague",
+   "blurb": "From Prague, shaping coffee culture globally. At The Miners, coffee fuels ambition."
+  },
+  {
+   "slug": "cupping-cafe",
+   "name": "Cupping Café",
+   "country": "Brazil",
+   "editions": {
+    "world": 81,
+    "south": 89
+   },
+   "id": "cuppingcaf",
+   "city": "Vila Madalena",
+   "blurb": "In the heart of Vila Madalena, São Paulo, Cupping Café is the perfect spot for those who love taking a moment to enjoy a real cup of coffee! Since 2017, their mission has been serving the best coffee, made with carefully selected beans from all over Brazil, signature roasting, and perfect grinding."
+  },
+  {
+   "slug": "coffea-guatemala",
+   "name": "Coffea Guatemala",
+   "country": "Guatemala",
+   "editions": {
+    "world": 82,
+    "north": 19
+   },
+   "id": "coffeaguatemala",
+   "city": "Antigua Guatemala",
+   "blurb": "Coffea Cafes Especiales is a specialty coffee shop & roastery located in the heart of Antigua Guatemala. Coffea sources coffee from small local farmers through all the regions of Guatemala."
+  },
+  {
+   "slug": "dorigen-coffee-roasters-barcelona",
+   "name": "D•Origen Coffee Roasters Barcelona",
+   "country": "Spain",
+   "editions": {
+    "europe": 24,
+    "world": 83
+   },
+   "id": "dorigencoffeeroastersbarcelona",
+   "city": "Barcelona",
+   "blurb": "D·Origen is undoubtedly a gem in the heart of Barcelona’s Eixample district. They approached the renovation of their premises with great responsibility, as it’s located on the ground floor of the Casa Calvet Building, designed and built by the famous architect Antoni Gaudí, for which he received his"
+  },
+  {
+   "slug": "coffee-stain",
+   "name": "Coffee Stain",
+   "country": "Malaysia",
+   "editions": {
+    "world": 84
+   },
+   "id": "coffeestain",
+   "city": null,
+   "blurb": "Since 2012, Coffee Stain Malaysia has been redefining the coffee experience. Every cup reflects careful sourcing, innovative processing, and precise brewing, guided by a deep respect for the bean’s origin."
+  },
+  {
+   "slug": "the-dude-specialty-coffee",
+   "name": "The Dude Specialty Coffee",
+   "country": "Macedonia",
+   "editions": {
+    "world": 85,
+    "europe": 30
+   },
+   "id": "thedudespecialtycoffee",
+   "city": null,
+   "blurb": "The Dude is one of the pioneers of Macedonia’s budding specialty coffee scene which has featured coffee from multiple roasters over the past few years. This cozy coffee shop near Skopje’s bustling city center is located in a restored house, where each room has a unique atmosphere."
+  },
+  {
+   "slug": "story-and-soil-coffee",
+   "name": "Story and Soil Coffee",
+   "country": "USA",
+   "editions": {
+    "world": 86,
+    "north": 35
+   },
+   "id": "storyandsoilcoffee",
+   "city": null,
+   "blurb": "At Story and Soil Coffee, they love coffee and its capacity to bring out the best in people. They enjoy showcasing exceptional coffees and roasters that highlight the work of producers, farmers, and baristas."
+  },
+  {
+   "slug": "exploradores",
+   "name": "Exploradores",
+   "country": "Mexico",
+   "editions": {
+    "world": 87,
+    "north": 23
+   },
+   "id": "exploradores",
+   "city": null,
+   "blurb": "Unlike traditional cafés that primarily focus on atmosphere or brewing technique, Exploradores de Café was born from a passion for the science and sustainability of coffee production. Here, specialty coffee is not just served — it is explained, experienced, and honored."
+  },
+  {
+   "slug": "the-folks",
+   "name": "The Folks",
+   "country": "Portugal",
+   "editions": {
+    "world": 88,
+    "europe": 34
+   },
+   "id": "thefolks",
+   "city": "Lisbon",
+   "blurb": "Established in Lisbon in 2022, The Folks has rapidly grown into a network of six inviting cafés across Portugal, complemented by their own dedicated roastery, also located in Lisbon. They offer a delightful fusion of breakfast and brunch experiences, seamlessly paired with expertly crafted specialty"
+  },
+  {
+   "slug": "casa-barista-co-casco-historico",
+   "name": "Casa Barista & Co.,Casco Historico",
+   "country": "Dominican Republic",
+   "editions": {
+    "world": 89,
+    "north": 21
+   },
+   "id": "casabaristacocascohistorico",
+   "city": "Barahona",
+   "blurb": "Casa Barista & Co. was founded in 2018 in the Dominican Republic with the mission of driving and transforming specialty coffee culture in the country."
+  },
+  {
+   "slug": "cypher-urban-roastery",
+   "name": "Cypher Urban Roastery",
+   "country": "UAE",
+   "editions": {
+    "world": 90
+   },
+   "id": "cypherurbanroastery",
+   "city": null,
+   "blurb": "Cypher Urban Roastery is a specialty coffee house and roasting lab built on precision, passion, and personality. From sourcing exceptional green coffees to profiling and roasting in-house, Cypher is dedicated to delivering bold, clean, and expressive cups that showcase origin at its finest."
+  },
+  {
+   "slug": "cafetano-coffee-roasters",
+   "name": "Cafetano Coffee Roasters",
+   "country": "Honduras",
+   "editions": {
+    "world": 91
+   },
+   "id": "cafetanocoffeeroasters",
+   "city": null,
+   "blurb": "Located in the heart of Honduras, Cafetano is more than just a coffee shop; it’s a tribute to Honduran coffee and its local producers. With a careful selection of 100% Honduran beans from the best coffee-growing regions, Cafetano offers a unique sensory experience, where each cup reflects the effort"
+  },
+  {
+   "slug": "coffee-five",
+   "name": "Coffee Five",
+   "country": "Brazil",
+   "editions": {
+    "world": 92,
+    "south": 62
+   },
+   "id": "coffeefive",
+   "city": null,
+   "blurb": "Since 2018, Coffee Five has been serving specialty coffee on Rua da Quitanda, in the heart of downtown Rio. It was founded by Emerson and Rafaela Nascimento, a couple with almost two decades of experience in the coffee world."
+  },
+  {
+   "slug": "kima-coffee",
+   "name": "Kima Coffee",
+   "country": "Spain",
+   "editions": {
+    "world": 93,
+    "europe": 38
+   },
+   "id": "kimacoffee",
+   "city": "Malaga",
+   "blurb": "Kima Coffee is a specialty coffee shop and roastery in Malaga, dedicated to providing an exceptional experience for lovers of good coffee. They carefully select the best single-origin Arabica coffee beans, which they roast with precision to highlight their most complex and refined flavor profiles."
+  },
+  {
+   "slug": "negro",
+   "name": "Negro",
+   "country": "Argentina",
+   "editions": {
+    "world": 94
+   },
+   "id": "negro",
+   "city": null,
+   "blurb": "Negro Cueva de Café was founded in 2015 with the purpose of providing a new and pleasant experience to the Buenos Aires public, becoming the first specialty coffee bar in the downtown area of Buenos Aires. Their coffee is prepared and served by trained and certified baristas, who guide their custome"
+  },
+  {
+   "slug": "metric",
+   "name": "Metric",
+   "country": "Illinois (USA)",
+   "editions": {
+    "world": 95,
+    "north": 30
+   },
+   "id": "metric",
+   "city": "Chicago",
+   "blurb": "Metric is a specialty coffee roastery based in Chicago, Illinois. Its headquarters houses the core of the company’s work—green coffee sourcing and evaluation, sample roasting, full-scale production roasting, quality control, and education—under one roof."
+  },
+  {
+   "slug": "el-terrible-juan-cafe",
+   "name": "El Terrible Juan Café",
+   "country": "México",
+   "editions": {
+    "world": 96,
+    "north": 28
+   },
+   "id": "elterriblejuancaf",
+   "city": null,
+   "blurb": "El Terrible Juan Café was founded in 2015 with the firm intention of showcasing the quality of Mexican coffee in every cup. It’s a coffee shop focused on high-quality coffees, where they also serve baked goods and pastries."
+  },
+  {
+   "slug": "flat-white-specialty-coffee",
+   "name": "Flat White Specialty Coffee",
+   "country": "Qatar",
+   "editions": {
+    "world": 97
+   },
+   "id": "flatwhitespecialtycoffee",
+   "city": "Doha",
+   "blurb": "Flat White Specialty Coffee began when Nasser Al-Naemi and Maryam Al-Bader turned their lifelong love of coffee into a shared mission. Their goal was to bring Specialty Coffee and Third Wave culture to Qatar."
+  },
+  {
+   "slug": "cafeoteca",
+   "name": "Cafeoteca",
+   "country": "Costa Rica",
+   "editions": {
+    "world": 98,
+    "north": 14
+   },
+   "id": "cafeoteca",
+   "city": "San Jose",
+   "blurb": "Cafeoteca, located in San Jose, Costa Rica, is a specialty coffee roastery dedicated to the art and education of coffee. They offer an unparalleled experience, blending in-house roasted specialty coffee with artisan bakery goods and handcrafted dishes made from local ingredients, all served with gen"
+  },
+  {
+   "slug": "surry-hills-coffee",
+   "name": "Surry Hills Coffee",
+   "country": "Argentina",
+   "editions": {
+    "world": 99
+   },
+   "id": "surryhillscoffee",
+   "city": null,
+   "blurb": "Inspired by the fresh, sunny mornings of Surry Hills, Sydney’s trendiest and most vibrant neighborhood, Surry Hills Coffee was born in Buenos Aires in the spring of 2019. Their mission is clear: to redefine the coffee and brunch experience, bringing our passion for specialty coffee and the relaxed s"
+  },
+  {
+   "slug": "vacation-coffee",
+   "name": "Vacation Coffee",
+   "country": "Australia",
+   "editions": {
+    "world": 100
+   },
+   "id": "vacationcoffee",
+   "city": null,
+   "blurb": "At Vacation Coffee, everyone is dedicated to providing you with the finest specialty coffee, freshly roasted by their small, passionate team right in Melbourne! When you step into the café, you’ll immediately notice the vibrant atmosphere in their spacious, 8-meter-high space."
+  },
+  {
+   "slug": "hola-coffee-roastery",
+   "name": "Hola Coffee Roastery",
+   "country": "Spain",
+   "editions": {
+    "europe": 8
+   },
+   "id": "holacoffeeroastery",
+   "city": null,
+   "blurb": "Hola Coffee Roastery is their most complete coffee shop, where you can see the roaster, explore their academy, or enjoy a coffee at one of their bars right in front of the barista. There, you can try the best coffees from their frozen cellar or simply enjoy a signature drink with the sound of the ro"
+  },
+  {
+   "slug": "rosslyn-coffee",
+   "name": "Rosslyn Coffee",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 12
+   },
+   "id": "rosslyncoffee",
+   "city": "London",
+   "blurb": "Rosslyn is a collection of some of the world’s leading (and busiest) high-volume, multi-award-winning specialty coffee shops. All sites are located within the Square Mile of the City of London with Queen Victora St being the original."
+  },
+  {
+   "slug": "espresso-embassy",
+   "name": "Espresso Embassy",
+   "country": "Hungary",
+   "editions": {
+    "europe": 17
+   },
+   "id": "espressoembassy",
+   "city": "Budapest",
+   "blurb": "Espresso Embassy opened in 2012 as one of Budapest’s first specialty coffee shops, and has been serving carefully sourced, lightly roasted coffee under the brick vaults of Arany János utca 15 ever since. It is as much a destination for traveling coffee geeks as a daily stop for regulars from the sur"
+  },
+  {
+   "slug": "moonstruck-cafe",
+   "name": "Moonstruck Café",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 18
+   },
+   "id": "moonstruckcaf",
+   "city": "South London",
+   "blurb": "Tucked away in South London, Moonstruck is a neighborhood specialty café dedicated to serving world-class coffee in a beautifully designed, relaxed environment. Far from the frantic pace of the city, the space offers a calm sanctuary where guests can slow down and truly appreciate the craft behind e"
+  },
+  {
+   "slug": "brew-lab",
+   "name": "Brew Lab",
+   "country": "Ireland",
+   "editions": {
+    "europe": 25
+   },
+   "id": "brewlab",
+   "city": null,
+   "blurb": "Brew Lab began as a dream shared by two people brought together by a love for specialty coffee. Years spent competing, learning, travelling, and exploring coffee shaped their vision of creating a space where every cup tells a story."
+  },
+  {
+   "slug": "orioli-coffee-lab",
+   "name": "Orioli Coffee & Lab.",
+   "country": "Portugal",
+   "editions": {
+    "europe": 26
+   },
+   "id": "oriolicoffeelab",
+   "city": "Alcântara",
+   "blurb": "Orioli Coffee & Lab is a specialty coffee hub located in Alcântara, Lisbon, Portugal, bringing together a coffee shop, education, roasting, and hospitality under one roof. With roots at Fazenda Bagagem, their family-owned coffee farm in Brazil, they combine firsthand experience in coffee production "
+  },
+  {
+   "slug": "valenio-coffee-roastery",
+   "name": "Valenio Coffee Roastery",
+   "country": "Greece",
+   "editions": {
+    "europe": 28
+   },
+   "id": "valeniocoffeeroastery",
+   "city": "Thessaloniki",
+   "blurb": "VALENIO is a specialty coffee roastery and coffee shop based in Thessaloniki, Greece, dedicated to excellence in coffee, craftsmanship and hospitality. Through carefully sourced beans, expert roasting, and an unwavering commitment to quality, VALENIO creates exceptional coffee experiences that bring"
+  },
+  {
+   "slug": "paper-mill-coffee",
+   "name": "Paper Mill Coffee",
+   "country": "Estonia",
+   "editions": {
+    "europe": 29
+   },
+   "id": "papermillcoffee",
+   "city": "Tallinn",
+   "blurb": "Paper Mill is a specialty coffee roastery and a bakery with three cafés in Tallinn. Opened in 2020, after bringing a decade of London’s specialty coffee experience back home, the flagship café and roastery was set up in a historic 1912 pulp and paper factory fire station building, inspiring the name"
+  },
+  {
+   "slug": "ripsnorter-coffee-roasters",
+   "name": "Ripsnorter Coffee Roasters",
+   "country": "Netherlands",
+   "editions": {
+    "europe": 31
+   },
+   "id": "ripsnortercoffeeroasters",
+   "city": "Rotterdam",
+   "blurb": "The Ripsnorter Coffee Bar in Rotterdam is where the magic happens. A place where curious minds, killer coffees, and good people collide."
+  },
+  {
+   "slug": "kali",
+   "name": "Kali",
+   "country": "Ireland",
+   "editions": {
+    "europe": 32
+   },
+   "id": "kali",
+   "city": "January",
+   "blurb": "Kali Coffee Bar is a coffee shop in Salthill, Galway, owned by husband and wife, Enda & Laura. After years of working in coffee and hospitality, they opened their doors in January 2021 to finally create a welcoming space to enjoy & share great coffee."
+  },
+  {
+   "slug": "shavi-coffee-roasters",
+   "name": "Shavi Coffee Roasters",
+   "country": "Georgia",
+   "editions": {
+    "europe": 33
+   },
+   "id": "shavicoffeeroasters",
+   "city": null,
+   "blurb": "Shavi Coffee Roasters is an award-winning specialty coffee company based in Georgia, with five locations in Tbilisi and a reputation for serving the country’s finest coffee. Recognized for both its coffee quality and café experience, Shavi works directly with hand-selected farmers to source exceptio"
+  },
+  {
+   "slug": "elbgold-city",
+   "name": "Elbgold City",
+   "country": "Germany",
+   "editions": {
+    "europe": 35
+   },
+   "id": "elbgoldcity",
+   "city": null,
+   "blurb": "Elbgold City in the heart of Hamburg showcases the coffee expertise of some of the world’s best coffee producers. Building and cultivating direct relationships with producers and roasting coffees in a way that does their work justice are core principles of the elbgold DNA."
+  },
+  {
+   "slug": "hotel-beograd-cafe",
+   "name": "Hotel Beograd Café",
+   "country": "Serbia",
+   "editions": {
+    "europe": 36
+   },
+   "id": "hotelbeogradcaf",
+   "city": "Belgrade",
+   "blurb": "Hotel Beograd is a specialty coffee roastery and café in Belgrade, Serbia, inspired by the original Hotel Beograd built in 1937. Founded in 2020, the project grew into an in-house roastery in 2022 and is built around a simple philosophy: making things from scratch and doing them with care."
+  },
+  {
+   "slug": "lalchimiste-cafe-boutique",
+   "name": "L’Alchimiste Café Boutique",
+   "country": "France",
+   "editions": {
+    "europe": 37
+   },
+   "id": "lalchimistecafboutique",
+   "city": "Bordeaux",
+   "blurb": "Alchimiste is a specialty coffee roasting company based in Bordeaux, France, with over 12 years of experience sourcing, importing, and roasting exceptional coffees. What truly sets them apart is their commitment to traceability and long-term relationships with producers."
+  },
+  {
+   "slug": "dark-pony",
+   "name": "Dark Pony",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 39
+   },
+   "id": "darkpony",
+   "city": null,
+   "blurb": "The vision for Dark Pony has always been to make the world of specialty coffee fun and inclusive to all. They are a small team who share a passion for coffee, working together to champion what they think are some of the best coffees available."
+  },
+  {
+   "slug": "black-honey",
+   "name": "Black Honey",
+   "country": "Ukraine",
+   "editions": {
+    "europe": 40
+   },
+   "id": "blackhoney",
+   "city": "Lviv. Founded",
+   "blurb": "Black Honey is a specialty coffee shop chain born in Lviv. Founded in 2016 out of a deep passion for coffee, Black Honey was built on the foundation of coffee roasting — a craft that remains at the heart of who they are today."
+  },
+  {
+   "slug": "evalynn",
+   "name": "Evalynn",
+   "country": "Ireland",
+   "editions": {
+    "europe": 41
+   },
+   "id": "evalynn",
+   "city": "Bryanstown",
+   "blurb": "Evalynn Coffee is a specialty coffee bar and bakery with three locations based in Drogheda, Co. Louth, Ireland."
+  },
+  {
+   "slug": "andy-roasters",
+   "name": "Andy Roasters",
+   "country": "Belgium",
+   "editions": {
+    "europe": 42
+   },
+   "id": "andyroasters",
+   "city": null,
+   "blurb": "Andy Store is all about bringing great coffee to a broad audience. A neighbourhood bar where hospitality, carefully curated music, and exceptional products go hand in hand."
+  },
+  {
+   "slug": "the-brick-coffee-roastery",
+   "name": "The Brick Coffee Roastery",
+   "country": "Estonia",
+   "editions": {
+    "europe": 43
+   },
+   "id": "thebrickcoffeeroastery",
+   "city": "Tallinn",
+   "blurb": "The Brick Coffee Roastery is a specialty coffee roastery and brew bar in Tallinn, committed to an ethical and sustainable supply chain and dedicated to showcasing the finest coffee producers from around the world. Tucked into Tallinn’s creative Telliskivi district, the brew bar is as much a flagship"
+  },
+  {
+   "slug": "snack-specialty-coffee",
+   "name": "SNACK! Specialty Coffee",
+   "country": "Bulgaria",
+   "editions": {
+    "europe": 44
+   },
+   "id": "snackspecialtycoffee",
+   "city": null,
+   "blurb": "Snack! Coffee Roasters is a small, living-room-sized cafe."
+  },
+  {
+   "slug": "karma-coffee",
+   "name": "Karma Coffee",
+   "country": "Poland",
+   "editions": {
+    "europe": 45
+   },
+   "id": "karmacoffee",
+   "city": "Kraków",
+   "blurb": "Karma Coffee Roastery (Kraków, Poland) was founded by pioneers Bartek Kozina and Marta Hausner, Karma is a foundational pillar of Kraków’s specialty scene. They take flavor seriously—precision-roasting their own beans to absolute perfection on a state-of-the-art Loring—while keeping the atmosphere e"
+  },
+  {
+   "slug": "playground-coffee",
+   "name": "Playground Coffee",
+   "country": "Germany",
+   "editions": {
+    "europe": 46
+   },
+   "id": "playgroundcoffee",
+   "city": "Hamburg",
+   "blurb": "Founded in 2014, Playground Coffee roasts high-quality specialty coffee in the heart of Hamburg. What began as a small counter in a friend’s burger restaurant has grown into one of Europe’s most respected roasteries, complete with its own café in St."
+  },
+  {
+   "slug": "4-coffee",
+   "name": "4 Coffee",
+   "country": "Croatia",
+   "editions": {
+    "europe": 47
+   },
+   "id": "4coffee",
+   "city": "Split",
+   "blurb": "Tucked into the vibrant streets of Split, Croatia, 4 Coffee is a minimalist, micro-specialty coffee shop that proves great things come in small packages. Operating from a compact, hole-in-the-wall space, this cozy spot focuses entirely on the essentials: exceptional beans, precise extraction, and ge"
+  },
+  {
+   "slug": "boardwalk",
+   "name": "Boardwalk",
+   "country": "Ireland",
+   "editions": {
+    "europe": 48
+   },
+   "id": "boardwalk",
+   "city": "Killarney",
+   "blurb": "Located in the heart of Killarney, Boardwalk Coffee is a specialty coffee kiosk dedicated to quality, craftsmanship, and community. Serving coffee roasted on Ireland’s Wild Atlantic Way alongside house-made baked goods and seasonal offerings, Boardwalk delivers a specialty coffee experience that is "
+  },
+  {
+   "slug": "bnkr-specialty-coffee-roasters",
+   "name": "BNKR Specialty Coffee Roasters",
+   "country": "Georgia",
+   "editions": {
+    "europe": 49
+   },
+   "id": "bnkrspecialtycoffeeroasters",
+   "city": "BNKR",
+   "blurb": "BNKR is a contemporary specialty coffee brand shaped by taste, atmosphere, and individuality. The project itself began in 2018, when the first passion for coffee emerged and the earliest ideas for BNKR started to take shape."
+  },
+  {
+   "slug": "fuglen-coffee-roasters",
+   "name": "Fuglen Coffee Roasters",
+   "country": "Norway",
+   "editions": {
+    "europe": 50
+   },
+   "id": "fuglencoffeeroasters",
+   "city": "Tokyo",
+   "blurb": "Fuglen is all about quality products and good moments. They have been serving specialty coffee in Oslo since 1963 and opened their first coffee and cocktail bar in Tokyo in 2012."
+  },
+  {
+   "slug": "rocket-bean-roastery",
+   "name": "Rocket Bean Roastery",
+   "country": "Latvia",
+   "editions": {
+    "europe": 51
+   },
+   "id": "rocketbeanroastery",
+   "city": "Riga",
+   "blurb": "At the heart of Riga’s creative Miera Street district, Rocket Bean Roastery has become one of the defining names of Baltic specialty coffee. More than a café, it is a working roastery, bakery, retail space, and gathering place for the city’s growing coffee community."
+  },
+  {
+   "slug": "kauka",
+   "name": "Kauka",
+   "country": "Slovakia",
+   "editions": {
+    "europe": 52
+   },
+   "id": "kauka",
+   "city": null,
+   "blurb": "Kauka is a blend of raw industrial aesthetics, warmth, and creativity. Exposed concrete, original wall textures, microcement floors, and structural elements create an authentic atmosphere, softened by distinctive pink accents and flowing curtains that shape the space and guide movement."
+  },
+  {
+   "slug": "senzi",
+   "name": "Senzi",
+   "country": "Portugal",
+   "editions": {
+    "europe": 53
+   },
+   "id": "senzi",
+   "city": "Lisbon",
+   "blurb": "Senzi Lisboa is a specialty coffee and matcha bar in the heart of Lisbon, built around the idea of balance between craftsmanship, wellness, and hospitality. They proudly serve coffee from Nomad Coffee, one of Europe’s most respected specialty roasters, offering carefully selected espresso and filter"
+  },
+  {
+   "slug": "mabo",
+   "name": "MABO",
+   "country": "Romania",
+   "editions": {
+    "europe": 54
+   },
+   "id": "mabo",
+   "city": "Basarab Bridge",
+   "blurb": "Tucked into the ground floor of a modern building near Basarab Bridge, MABÓ ONE is where precision meets warmth. The space was designed from bare concrete up: raw ceilings, white metal, natural wood, and a floating LED logo that seems to hover between inside and out."
+  },
+  {
+   "slug": "rams-roasters",
+   "name": "Rams Roasters",
+   "country": "Finland",
+   "editions": {
+    "europe": 55
+   },
+   "id": "ramsroasters",
+   "city": "Helsinki",
+   "blurb": "RAMS Helsinki is a specialty coffee shop and small-batch bakery, done without compromise. They have been at it for nearly seven years in Helsinki, quietly consistent and on their own terms."
+  },
+  {
+   "slug": "d59b",
+   "name": "D59B",
+   "country": "Serbia",
+   "editions": {
+    "europe": 56
+   },
+   "id": "d59b",
+   "city": "Belgrade",
+   "blurb": "A pioneer of Belgrade’s third-wave coffee movement, D59B has spent over a decade seamlessly blending exceptional specialty coffee with the city’s vibrant creative scene. Situated on the iconic Kralja Petra Street, the space is well-known for its distinct minimalist interior—featuring exposed brick, "
+  },
+  {
+   "slug": "liberty",
+   "name": "Liberty",
+   "country": "Portugal",
+   "editions": {
+    "europe": 57
+   },
+   "id": "liberty",
+   "city": "Europe",
+   "blurb": "Liberty is a coffee shop project with two locations in Portugal, in Lisbon and Parede. At its core is a seasonal brunch menu, an independent coffee program featuring some of Europe’s leading coffee roasters, and a bookstore with a curated selection of books in multiple languages."
+  },
+  {
+   "slug": "kaffi-o-le",
+   "name": "Kaffi Ó-le",
+   "country": "Iceland",
+   "editions": {
+    "europe": 58
+   },
+   "id": "kaffile",
+   "city": "Reykjavík",
+   "blurb": "Jess started working at Kaffi Ole when it opened in 2021. She began as a barista, worked her way up to manager, and now runs the shop alongside Árni Ólafur Jónsson."
+  },
+  {
+   "slug": "kaffemisjonen",
+   "name": "Kaffemisjonen",
+   "country": "Norway",
+   "editions": {
+    "europe": 59
+   },
+   "id": "kaffemisjonen",
+   "city": null,
+   "blurb": "Kaffemisjonen is an independent, locally owned specialty coffee shop in Bergen in search of the world’s best coffee. Opening in 2007 with a burning commitment to taking coffee further, the café started by offering coffee from several roasters, weekly coffee tastings, and different brewing methods."
+  },
+  {
+   "slug": "uncommon-cafe",
+   "name": "Uncommon Cafe",
+   "country": "Netherlands",
+   "editions": {
+    "europe": 60
+   },
+   "id": "uncommoncafe",
+   "city": null,
+   "blurb": "Uncommon Café is a place of vibrance and friendliness in the middle of the hustle and bustle of the exciting city of Amsterdam. The aesthetically calming interior of their space in the middle of Amsterdam invites visitors to take a moment out of their busy day to heighten different senses."
+  },
+  {
+   "slug": "lumen-coffee",
+   "name": "Lumen Coffee",
+   "country": "Armenia",
+   "editions": {
+    "europe": 61
+   },
+   "id": "lumencoffee",
+   "city": null,
+   "blurb": "Lumen Coffee is a specialty coffee company born in Armenia and growing across Armenia and the United States. They source exceptional coffees from some of the world’s most renowned coffee-growing regions and roast them in-house, carefully developing each coffee to express its unique character and ori"
+  },
+  {
+   "slug": "savy",
+   "name": "Sävy",
+   "country": "Finland",
+   "editions": {
+    "europe": 62
+   },
+   "id": "svy",
+   "city": "Kallio",
+   "blurb": "Sävy is a vibrant and intimate coffee shop in the heart of Kallio, Helsinki, offering a warm and welcoming atmosphere for coffee lovers and neighbors alike. Their coffee selection always features award-winning coffees from Good Life Coffee Roasters, complemented by occasional guest roasters from aro"
+  },
+  {
+   "slug": "bugan-coffee-lab",
+   "name": "Bugan Coffee Lab",
+   "country": "Italy",
+   "editions": {
+    "europe": 63
+   },
+   "id": "bugancoffeelab",
+   "city": "Milan",
+   "blurb": "Located in Milan’s vibrant Navigli district, Bugan Coffee Lab is a specialty coffee bar that breaks with tradition: no sugar is offered at the counter, encouraging guests to move beyond their habits and discover the natural complexity of coffee. The menu changes weekly and features single-origin cof"
+  },
+  {
+   "slug": "pascal-kaffebar",
+   "name": "Pascal Kaffebar",
+   "country": "Sweden",
+   "editions": {
+    "europe": 64
+   },
+   "id": "pascalkaffebar",
+   "city": null,
+   "blurb": "Pascal is a specialty coffee roastery and café on Gävlegatan in Stockholm. They roast their own coffee and serve pastries and bread from their own bakery, with a focus on quality, craftsmanship, and great hospitality."
+  },
+  {
+   "slug": "coffee-addict",
+   "name": "Coffee Addict",
+   "country": "Switzerland",
+   "editions": {
+    "europe": 65
+   },
+   "id": "coffeeaddict",
+   "city": "Zurich",
+   "blurb": "Coffee Addict Zurich is an independent specialty coffee brand driven by a passion for quality, craftsmanship, and authentic hospitality. Based in Zurich, the company focuses on carefully sourced beans, expertly crafted espresso, and creating memorable coffee experiences for both locals and visitors."
+  },
+  {
+   "slug": "do-for-love",
+   "name": "Do for Love",
+   "country": "Luxembourg",
+   "editions": {
+    "europe": 66
+   },
+   "id": "doforlove",
+   "city": null,
+   "blurb": "Founded by three friends with a shared passion for specialty coffee, Do For Love is an independent coffee shop based in Luxembourg. Their mission is simple: to serve exceptional coffee in a welcoming and approachable environment."
+  },
+  {
+   "slug": "taste-map-coffee-roasters",
+   "name": "Taste Map Coffee Roasters",
+   "country": "Lithuania",
+   "editions": {
+    "europe": 67
+   },
+   "id": "tastemapcoffeeroasters",
+   "city": null,
+   "blurb": "Taste Map Coffee Roasters is a warm, family-founded pioneer of Baltic specialty coffee, blending world-class professionalism with a cozy neighborhood atmosphere. Established over 13 years ago by industry leaders Ieva Ivonė and Domas Ivonis, this flagship venue has been a cornerstone of the Vilnius c"
+  },
+  {
+   "slug": "dabov-specialty-coffee",
+   "name": "DABOV Specialty Coffee",
+   "country": "Bulgaria",
+   "editions": {
+    "europe": 68
+   },
+   "id": "dabovspecialtycoffee",
+   "city": "Sofia",
+   "blurb": "At Dabov Specialty Coffee, quality is shaped long before the coffee reaches the cup. Through direct relationships with producers, close oversight of the roasting process at their roastery in Sofia, and a sourcing program built over more than a decade alongside the Cup of Excellence and the Alliance "
+  },
+  {
+   "slug": "conway-co",
+   "name": "Conway & Co.",
+   "country": "Ireland",
+   "editions": {
+    "europe": 69
+   },
+   "id": "conwayco",
+   "city": "Tullamore",
+   "blurb": "Established in 2019, Conway&Co is a forward-thinking specialty brew bar located in Tullamore, county Offaly, Ireland. They have a super focus on making consistent and precise drinks coupled with innovative bar processes, top-notch bakes, and an overall modern design ethos."
+  },
+  {
+   "slug": "loky",
+   "name": "Loky",
+   "country": "France",
+   "editions": {
+    "europe": 70
+   },
+   "id": "loky",
+   "city": null,
+   "blurb": "Meters from the ocean, Café Loky is the kind of low-key neighbourhood coffee shop you’d look for in every city, with a warm and welcoming atmosphere where locals and travellers slow down and connect over great coffee."
+  },
+  {
+   "slug": "ditta-artigianale-florence",
+   "name": "Ditta Artigianale Florence",
+   "country": "Italy",
+   "editions": {
+    "europe": 71
+   },
+   "id": "dittaartigianaleflorence",
+   "city": "Piazza Ferrucci",
+   "blurb": "With Ditta Artigianale in Piazza Ferrucci, they wanted to bring new life to a place that has long been a hub for gathering and community. They have reimagined the space with a new concept and design, creating an environment that goes beyond breakfast or a quick coffee on the go."
+  },
+  {
+   "slug": "suedhang-kaffee",
+   "name": "SUEDHANG Kaffee",
+   "country": "Germany",
+   "editions": {
+    "europe": 72
+   },
+   "id": "suedhangkaffee",
+   "city": "Tübingen",
+   "blurb": "SUEDHANG is a specialty coffee roastery, café, and activism hub in Tübingen, Germany. We roast light, source transparently, and see coffee as part of a broader social context."
+  },
+  {
+   "slug": "lean-to-coffee",
+   "name": "Lean to coffee",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 73
+   },
+   "id": "leantocoffee",
+   "city": null,
+   "blurb": "Lean To Coffee is a small coffee shop based on a family croft on the Isle of Skye, Scotland. Set within a converted shipping container beside an old croft house ruin, it serves specialty coffee alongside house-made pastries and sourdough toasties, with an emphasis on quality equipment and ingredient"
+  },
+  {
+   "slug": "lamberts",
+   "name": "Lamberts",
+   "country": "Ireland",
+   "editions": {
+    "europe": 74
+   },
+   "id": "lamberts",
+   "city": "Carlow",
+   "blurb": "Lamberts Coffee House is an independent specialty coffee shop in the heart of Carlow, Ireland. Built on the belief that hospitality matters as much as coffee, the team strives to make every guest feel at home."
+  },
+  {
+   "slug": "kalve-coffee-living-room",
+   "name": "KALVE Coffee Living Room",
+   "country": "Latvia",
+   "editions": {
+    "europe": 75
+   },
+   "id": "kalvecoffeelivingroom",
+   "city": null,
+   "blurb": "KALVE is a specialty coffee roastery founded by coffee professionals with a mission to develop and strengthen coffee culture through every stage of the journey—from sourcing and roasting to brewing and enjoying coffee. The team believes great coffee goes hand in hand with environmental responsibilit"
+  },
+  {
+   "slug": "mas-specialty-coffee-brunch",
+   "name": "MAS Specialty Coffee & Brunch",
+   "country": "Portugal",
+   "editions": {
+    "europe": 76
+   },
+   "id": "masspecialtycoffeebrunch",
+   "city": "Lisbon",
+   "blurb": "M.A.S. Specialty Coffee & Brunch is an independent specialty coffee shop in Lisbon, Portugal."
+  },
+  {
+   "slug": "lobita-atelier",
+   "name": "Lobita Atelier",
+   "country": "France",
+   "editions": {
+    "europe": 77
+   },
+   "id": "lobitaatelier",
+   "city": null,
+   "blurb": "Lobita Atelier is a specialty coffee shop where they welcome people the way they’d welcome friends into their home. The team roasts their own coffee, bakes everything in-house, and serves a fresh, seasonal menu in a relaxed and unpretentious setting."
+  },
+  {
+   "slug": "united-coffee-beans-ucb",
+   "name": "United Coffee Beans (UCB)",
+   "country": "Azerbaijan",
+   "editions": {
+    "europe": 78
+   },
+   "id": "unitedcoffeebeansucb",
+   "city": "Baku",
+   "blurb": "United Coffee Beans is a specialty coffee company based in Baku, Azerbaijan, founded in 2017 with a simple mission: to share better coffee and help build a stronger coffee culture in their country. Over the years, UCB has grown beyond a coffee shop and roastery into a hub for coffee, education, crea"
+  },
+  {
+   "slug": "vivinas-cafe-roastery",
+   "name": "VIVINA’S Café & Roastery",
+   "country": "Hungary",
+   "editions": {
+    "europe": 79
+   },
+   "id": "vivinascafroastery",
+   "city": null,
+   "blurb": "Vivina’s Café & Roastery is a specialty coffeeshop and roastery in the heart of downtown Budapest — set just off the beaten path, with an intimate terrace that feels like a small Mediterranean escape. What began as two people’s love — first for each other, then for coffee — has grown into a small co"
+  },
+  {
+   "slug": "stow",
+   "name": "Stow",
+   "country": "Slovenia",
+   "editions": {
+    "europe": 80
+   },
+   "id": "stow",
+   "city": null,
+   "blurb": "Stow Coffee at the City Museum of Ljubljana is one of the pioneering specialty coffee shops in Slovenia. Opened in 2016 in the historic atrium of the City Museum, the café combines a contemporary approach to specialty coffee with a minimalist interior and the cultural character of Ljubljana’s old to"
+  },
+  {
+   "slug": "grani-farine-e-caffe",
+   "name": "Grani Farine e Caffè",
+   "country": "Italy",
+   "editions": {
+    "europe": 81
+   },
+   "id": "granifarineecaff",
+   "city": "Dublin",
+   "blurb": "Grani Farine e Caffè is a charming small bakery and specialty coffee shop. They take pride in handcrafting everything they sell, from their pastries and jams to their cold brew and house-made almond milk."
+  },
+  {
+   "slug": "slow-athens",
+   "name": "Slow Athens",
+   "country": "Greece",
+   "editions": {
+    "europe": 82
+   },
+   "id": "slowathens",
+   "city": "Galatsi",
+   "blurb": "At Slow in Galatsi, specialty coffee culture meets the vibrant energy of the square. Driven by a pure passion for the perfect extraction, they focus on premium beans, single-origin selections, and medium roast to deliver an exceptional taste experience in every single cup."
+  },
+  {
+   "slug": "wide-awake-coffee-espresso-bar",
+   "name": "Wide Awake Coffee Espresso Bar",
+   "country": "Belgium",
+   "editions": {
+    "europe": 83
+   },
+   "id": "wideawakecoffeeespressobar",
+   "city": null,
+   "blurb": "Wide Awake Coffee Espresso Bar is a contemporary interpretation of a fast-paced espresso bar. They offer some of the best coffees in the world, pressure profiled on the Strada X."
+  },
+  {
+   "slug": "la-maniere",
+   "name": "La Manière",
+   "country": "Spain",
+   "editions": {
+    "europe": 84
+   },
+   "id": "lamanire",
+   "city": "Vigo",
+   "blurb": "At La Manière, they believe that coffee, food, design, and hospitality deserve the same attention and care. Located in Vigo, Spain, they are a specialty coffee shop, bakery, and concept store built around quality, craftsmanship, and thoughtful simplicity."
+  },
+  {
+   "slug": "figment-coffee",
+   "name": "Figment Coffee",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 85
+   },
+   "id": "figmentcoffee",
+   "city": null,
+   "blurb": "Located in Aberdeen just minutes from Scotland’s wild North Sea coast, Figment is a specialty coffee roastery and café shaped by expressive coffee, warm hospitality and a quietly imaginative approach. The café shares a space with the roastery next door, bringing production and service closely togeth"
+  },
+  {
+   "slug": "taf-coffee",
+   "name": "Taf Coffee",
+   "country": "Greece",
+   "editions": {
+    "europe": 86
+   },
+   "id": "tafcoffee",
+   "city": "Athens",
+   "blurb": "Taf Coffee Shop was created with the aim of offering an exceptional coffee experience focused on both the product itself and the people involved in it. Since 2009, at their space on Emmanouil Benaki Street, in the center of Athens, they have been introducing their visitors to high-quality coffee bea"
+  },
+  {
+   "slug": "oliva-coffee",
+   "name": "Oliva Coffee",
+   "country": "Montenegro",
+   "editions": {
+    "europe": 87
+   },
+   "id": "olivacoffee",
+   "city": "Budva",
+   "blurb": "OLIVA Coffee was born in Budva, Montenegro, in December 2020—a small neighborhood coffee shop with a passion for quality and one of the first specialty concepts in the country focused on 100% Arabica coffee. Over four years, they grew into a network of four cafés across Montenegro, introducing filte"
+  },
+  {
+   "slug": "kaffemik",
+   "name": "Kaffemik",
+   "country": "Austria",
+   "editions": {
+    "europe": 88
+   },
+   "id": "kaffemik",
+   "city": "Colombia",
+   "blurb": "Since 2014, Kaffemik has been more than a spot for coffee, it’s been their way of creating connection in the community. Inspired by the Greenlandic tradition of open‑door hospitality, the founders wanted to build a place where people feel welcome the moment they step inside."
+  },
+  {
+   "slug": "kapow-coffee",
+   "name": "Kapow Coffee",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 89
+   },
+   "id": "kapowcoffee",
+   "city": null,
+   "blurb": "Kapow Coffee is built on the enjoyment of the process as much as the final product. It’s a space where everyone can come to learn, experiment, and grow together—whether that’s trying out the million brew methods available or simply appreciating the many farms and roasters from around the world."
+  },
+  {
+   "slug": "moe",
+   "name": "Moe",
+   "country": "Czech Republic",
+   "editions": {
+    "europe": 90
+   },
+   "id": "moe",
+   "city": null,
+   "blurb": "Moe is an all-day hangout spot. They are not just a coffee place, but also the perfect spot for lunch, dinner, a glass of wine, or a drink."
+  },
+  {
+   "slug": "coffee-up",
+   "name": "Coffee UP",
+   "country": "Switzerland",
+   "editions": {
+    "europe": 91
+   },
+   "id": "coffeeup",
+   "city": "Geneva",
+   "blurb": "Meet Coffee UP. Switzerland’s first specialty coffee shop inspired by watchmaking, where time stands still."
+  },
+  {
+   "slug": "darcys-kaffe",
+   "name": "Darcy’s Kaffe",
+   "country": "Denmark",
+   "editions": {
+    "europe": 92
+   },
+   "id": "darcyskaffe",
+   "city": null,
+   "blurb": "Darcy’s started life eight years ago with a La Marzocco Linea Mini and a dream to serve the best coffee in town, directly from the streets of Copenhagen. After a tough winter, it was clear they needed to find an indoor home."
+  },
+  {
+   "slug": "oma-coffee-roaster",
+   "name": "Oma Coffee Roaster",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 94
+   },
+   "id": "omacoffeeroaster",
+   "city": null,
+   "blurb": "Oma Coffee Roaster is a small-batch specialty coffee roastery formed by a team who shares a passion for coffee. Their mission is simple: the finest selections from every harvest."
+  },
+  {
+   "slug": "grain-liege",
+   "name": "Grain Liège",
+   "country": "Belgium",
+   "editions": {
+    "europe": 95
+   },
+   "id": "grainlige",
+   "city": "Liège",
+   "blurb": "Grain is a specialty coffee shop located in the heart of Liège, featuring a charming terrace where guests can relax and enjoy great coffee. They serve carefully selected specialty coffees, homemade pastries, and a small seasonal food menu that changes every month to showcase the freshest ingredients"
+  },
+  {
+   "slug": "off-grid",
+   "name": "Off Grid",
+   "country": "Ireland",
+   "editions": {
+    "europe": 96
+   },
+   "id": "offgrid",
+   "city": "North County Dublin",
+   "blurb": "Located in the bustling harbor village of Howth, just off St. Lawrence Road, their coffee shop is a little off the beaten track—a hidden gem away from the crowds, where people can slow down and enjoy a moment of calm."
+  },
+  {
+   "slug": "choncote",
+   "name": "Choncote",
+   "country": "France",
+   "editions": {
+    "europe": 97
+   },
+   "id": "choncote",
+   "city": "Limoges",
+   "blurb": "Choncote is a specialty coffee shop in the heart of Limoges, France. They source their coffee from some of Europe’s finest roasters, rotating selections to showcase the best of what the continent has to offer."
+  },
+  {
+   "slug": "saints-of-mokha",
+   "name": "Saints of Mokha",
+   "country": "United Kingdom",
+   "editions": {
+    "europe": 98
+   },
+   "id": "saintsofmokha",
+   "city": "Leicester",
+   "blurb": "Saints of Mokha is a family-run coffee house and coffee roastery born in the heart of Leicester, founded by a band of four brothers. The name is an ode to the history of coffee, dating back to the 14th-century Saints of Yemen who consumed coffee as a means to heighten spirituality."
+  },
+  {
+   "slug": "noje",
+   "name": "NÖJE",
+   "country": "Albania",
+   "editions": {
+    "europe": 99
+   },
+   "id": "nje",
+   "city": null,
+   "blurb": "Nestled in the modern Lake View Residence complex along Rruga e Kosovarëve, NÖJE brings a distinct slice of Scandinavian café culture to the heart of Tirana. Inspired by the clean aesthetics and minimalist charm of Copenhagen, this Nordic-style bakery and café seamlessly blends high-quality craft wi"
+  },
+  {
+   "slug": "kitchen-coffee-roasters",
+   "name": "Kitchen Coffee Roasters",
+   "country": "Belarus",
+   "editions": {
+    "europe": 100
+   },
+   "id": "kitchencoffeeroasters",
+   "city": null,
+   "blurb": "Kitchen Coffee Minsk is a specialty coffee shop and flagship cafe of one of Belarus’s pioneering coffee roasters. Located in a former industrial district of Minsk, they combine carefully sourced and roasted coffee with a seasonal food menu made in-house."
+  },
+  {
+   "slug": "cafe-nativo-roastery",
+   "name": "Café Nativo & Roastery",
+   "country": "Honduras",
+   "editions": {
+    "north": 8
+   },
+   "id": "cafnativoroastery",
+   "city": null,
+   "blurb": "Café Nativo & Roastery is a 100% Honduran company with 9 years in the coffee industry, dedicated to preserving heritage while embracing innovation. From sourcing the finest beans directly from local farmers to expert roasting and distribution, they oversee the entire value chain to ensure exceptiona"
+  },
+  {
+   "slug": "atte-coffee",
+   "name": "Atte Coffee",
+   "country": "Guatemala",
+   "editions": {
+    "north": 10
+   },
+   "id": "attecoffee",
+   "city": null,
+   "blurb": "Atte Coffee is a Slow Coffee Bar—gratitude in the form of a cup… and also in the form of a shared table. They believe in the value of things well done: carefully selected coffees, prepared with respect, and homemade desserts born from their culinary training and love for the craft."
+  },
+  {
+   "slug": "the-colombian-coffee-bar",
+   "name": "The Colombian Coffee Bar",
+   "country": "Canada",
+   "editions": {
+    "north": 15
+   },
+   "id": "thecolombiancoffeebar",
+   "city": "Colombia",
+   "blurb": "The Colombian is built on a direct connection to coffee farming in Colombia, offering a true farm-to-cup experience within the Canadian specialty coffee scene and serving as a meaningful bridge between producer and guest. Coffee is sourced from its family farm and like-minded smallholder producers a"
+  },
+  {
+   "slug": "cafetano",
+   "name": "Cafetano",
+   "country": "Honduras",
+   "editions": {
+    "north": 17
+   },
+   "id": "cafetano",
+   "city": null,
+   "blurb": "Located in the heart of Honduras, Cafetano is more than just a coffee shop; it’s a tribute to Honduran coffee and its local producers. With a careful selection of 100% Honduran beans from the best coffee-growing regions, Cafetano offers a unique sensory experience, where each cup reflects the effort"
+  },
+  {
+   "slug": "bellwood-coffee-riverside",
+   "name": "Bellwood Coffee – Riverside",
+   "country": "USA",
+   "editions": {
+    "north": 22
+   },
+   "id": "bellwoodcoffeeriverside",
+   "city": "Atlanta",
+   "blurb": "Bellwood Coffee is a specialty coffee roastery and cafe located in Atlanta, Georgia. Bellwood has become the go-to spot for locals that are seeking a high-level coffee beverage experience."
+  },
+  {
+   "slug": "fika-cafe",
+   "name": "FIKA Café",
+   "country": "Canada",
+   "editions": {
+    "north": 25
+   },
+   "id": "fikacaf",
+   "city": "Toronto",
+   "blurb": "FIKA Cafe is a cozy Scandinavian-inspired café in Toronto’s eclectic Kensington Market, celebrated for its warm atmosphere, cardamom-infused lattes, and house-made pastries like the Kanelbulle, a traditional Swedish cinnamon bun. Inspired by the Swedish tradition of “fika” — pausing to enjoy coffee "
+  },
+  {
+   "slug": "fount-coffee-kitchen",
+   "name": "Fount Coffee + Kitchen",
+   "country": "USA",
+   "editions": {
+    "north": 26
+   },
+   "id": "fountcoffeekitchen",
+   "city": "Morrisville",
+   "blurb": "Fount is a specialty coffee shop and gluten-free cafe located in Morrisville, NC, driven by quality and hospitality. These standards, which are present in every aspect of Fount, are ultimately the outworking of their belief that people matter deeply."
+  },
+  {
+   "slug": "academy-coffee",
+   "name": "Academy Coffee",
+   "country": "USA",
+   "editions": {
+    "north": 27
+   },
+   "id": "academycoffee",
+   "city": null,
+   "blurb": "Academy Coffee ATL sits at the intersection of foundational excellence and explosive creativity. At Academy, they consistently strive to push the boundaries of their flavor pairings and the techniques they use to achieve them."
+  },
+  {
+   "slug": "nativo-coffee-roasters",
+   "name": "Nativo Coffee Roasters",
+   "country": "Costa Rica",
+   "editions": {
+    "north": 29
+   },
+   "id": "nativocoffeeroasters",
+   "city": null,
+   "blurb": "Nativo Coffee Roasters is a Costa Rican specialty coffee brand focused on offering high-quality experiences from origin to cup. As a roastery and coffee shop, they carefully select grains, develop precise roast profiles, and promote a coffee culture that is accessible, innovative, and customer-orien"
+  },
+  {
+   "slug": "itzam-mayan-cuisine",
+   "name": "ITZAM: Mayan Cuisine",
+   "country": "Guatemala",
+   "editions": {
+    "north": 31
+   },
+   "id": "itzammayancuisine",
+   "city": null,
+   "blurb": "ITZAM is a gastronomic and cultural experience in Antigua Guatemala that brings together a restaurant, specialty coffee shop, and cocktail bar under a single vision: reinterpreting Mayan heritage in a contemporary, elegant, and memorable way. They seek to create a connection with Mayan culture throu"
+  },
+  {
+   "slug": "787-coffee-co",
+   "name": "787 Coffee Co.",
+   "country": "USA",
+   "editions": {
+    "north": 32
+   },
+   "id": "787coffeeco",
+   "city": "Maricao",
+   "blurb": "787 Coffee is a farmer-owned specialty coffee company founded in 2014, rooted in Hacienda Iluminada — a working coffee farm in Maricao, Puerto Rico. With more than 30 locations across New York City, New Jersey, Texas, Puerto Rico, and Mexico City, 787 Coffee is part of fewer than 1% of coffee shops "
+  },
+  {
+   "slug": "truly-coffee",
+   "name": "Truly Coffee",
+   "country": "Guatemala",
+   "editions": {
+    "north": 33
+   },
+   "id": "trulycoffee",
+   "city": null,
+   "blurb": "Academy Coffee ATL sits at the intersection of foundational excellence and explosive creativity. At Academy, they consistently strive to push the boundaries of their flavor pairings and the techniques they use to achieve them."
+  },
+  {
+   "slug": "cafe-pista",
+   "name": "Café Pista",
+   "country": "Canada",
+   "editions": {
+    "north": 34
+   },
+   "id": "cafpista",
+   "city": "Montreal",
+   "blurb": "Café Pista is a Montreal-based specialty coffee company founded in 2014. From a single coffee bike, it has grown into a roastery and multiple locations focused on quality, transparency, and community."
+  },
+  {
+   "slug": "estucafe",
+   "name": "Estucafé",
+   "country": "Honduras",
+   "editions": {
+    "north": 36
+   },
+   "id": "estucaf",
+   "city": null,
+   "blurb": "ESTUCAFE is a Honduran company specialized in coffee quality control, integrating three fundamental pillars: Roastery, Coffee Shop, and Academy. Their business model is designed to strengthen the entire coffee value chain, from origin to cup, with a technical, educational, social, and commercial foc"
+  },
+  {
+   "slug": "kafiex-roasters",
+   "name": "Kafiex Roasters",
+   "country": "USA",
+   "editions": {
+    "north": 37
+   },
+   "id": "kafiexroasters",
+   "city": "Vancouver",
+   "blurb": "Kafiex Gastro Café is a waterfront coffee destination in Vancouver, Washington, built around one of the most ambitious coffee programs in the region. Guests are welcomed by a 23-foot mural inspired by a Mexican coffee farm and a soundscape of international music that reflects their Latin roots."
+  },
+  {
+   "slug": "mexican-harvest",
+   "name": "Mexican Harvest",
+   "country": "Mexico",
+   "editions": {
+    "north": 39
+   },
+   "id": "mexicanharvest",
+   "city": "Puebla",
+   "blurb": "Mexican Harvest is a family-owned company based in Puebla, born from more than 30 years of coffee experiences lived alongside producing families in communities across Mexico. They are guardians of organic biodiversity, committed to fairness, and creators of extraordinary coffees."
+  },
+  {
+   "slug": "be-bright-coffee",
+   "name": "Be Bright Coffee",
+   "country": "USA",
+   "editions": {
+    "north": 40
+   },
+   "id": "bebrightcoffee",
+   "city": null,
+   "blurb": "Be Bright Coffee is an award-winning Los Angeles coffee company founded by Frank and Michelle La with a simple goal: make exceptional coffee feel approachable, joyful, and easy to enjoy. What began in 2020 as a way to connect everyday coffee drinkers with thoughtfully roasted coffee has grown into a"
+  },
+  {
+   "slug": "buena-vida-coffee-roasters",
+   "name": "Buena Vida Coffee Roasters",
+   "country": "Costa Rica",
+   "editions": {
+    "north": 41
+   },
+   "id": "buenavidacoffeeroasters",
+   "city": null,
+   "blurb": "At Buena Vida Coffee Roasters, they offer much more than coffee: they offer a purpose. Every cup and every dish is born from fresh, locally sourced ingredients and regenerative-certified specialty coffee."
+  },
+  {
+   "slug": "monogram-coffee",
+   "name": "Monogram Coffee",
+   "country": "Canada",
+   "editions": {
+    "north": 42
+   },
+   "id": "monogramcoffee",
+   "city": "Calgary",
+   "blurb": "Monogram Coffee was founded in Calgary, Alberta, by a team of award-winning baristas with a mission to combine «wonder and warmth.» What began as a local pop-up has grown into a leading Canadian roastery, celebrated for its inclusive approach to specialty coffee and its consistent presence on the wo"
+  },
+  {
+   "slug": "sweet-bloom-coffee",
+   "name": "Sweet Bloom Coffee",
+   "country": "USA",
+   "editions": {
+    "north": 43
+   },
+   "id": "sweetbloomcoffee",
+   "city": "Denver",
+   "blurb": "Sweet Bloom Coffee Roasters, based in Denver, Colorado, is dedicated to serving its community through generous hospitality, creativity, and excellence in every area. Through their Seasonal Sweet Spot™ commitment, they source coffees at their peak harvest and roast them for optimal freshness."
+  },
+  {
+   "slug": "cafe-comunion",
+   "name": "Café Comunión",
+   "country": "Puerto Rico",
+   "editions": {
+    "north": 44
+   },
+   "id": "cafcomunin",
+   "city": null,
+   "blurb": "Café Comunión is a Puerto Rican coffee space built on the belief that coffee is, above all, a way to connect. Deeply rooted in its community, the cafe serves as a reflection of real relationships with producers, careful processing, and hospitality that feels both close and honest."
+  },
+  {
+   "slug": "horizon-line-coffee",
+   "name": "Horizon Line Coffee",
+   "country": "USA",
+   "editions": {
+    "north": 45
+   },
+   "id": "horizonlinecoffee",
+   "city": null,
+   "blurb": "Horizon Line Coffee is a coffee bar and roastery located in the West End Artist District of Des Moines, Iowa. Built on the simple goal of serving great coffee while caring for others, they focus on offering exciting single-origin selections alongside a menu of whimsical seasonal drinks."
+  },
+  {
+   "slug": "cafe-san-rafael",
+   "name": "Café San Rafael",
+   "country": "Honduras",
+   "editions": {
+    "north": 46
+   },
+   "id": "cafsanrafael",
+   "city": "Copán Ruinas",
+   "blurb": "Café San Rafael is a charming family coffee shop located in the heart of Copán Ruinas, Honduras. Founded by the Guerra family—a 100% Honduran family passionate about coffee farming and dairy cattle—they produce their own high-altitude, 100% Arabica specialty coffee, which they cultivate, process, an"
+  },
+  {
+   "slug": "dosocho-cafe",
+   "name": "Dosocho Café",
+   "country": "Guatemala",
+   "editions": {
+    "north": 47
+   },
+   "id": "dosochocaf",
+   "city": null,
+   "blurb": "Dosocho was born with the idea that coffee is more than just a cup: it is a meeting point for building community. They are a specialty coffee shop that believes in simplicity, craftsmanship, and real connections."
+  },
+  {
+   "slug": "diezmilpies",
+   "name": "Diezmilpies",
+   "country": "Mexico",
+   "editions": {
+    "north": 48
+   },
+   "id": "diezmilpies",
+   "city": "León",
+   "blurb": "There are places where coffee is truly lived. At Diez Mil Pies Coffee Lab, coffee represents process, community, and culture in constant motion."
+  },
+  {
+   "slug": "little-waves-coffee-roasters",
+   "name": "Little Waves Coffee Roasters",
+   "country": "USA",
+   "editions": {
+    "north": 49
+   },
+   "id": "littlewavescoffeeroasters",
+   "city": null,
+   "blurb": "Latina led, women forward, Little Waves Coffee Roasters sources by building relationships over time aimed to develop prudent trusting reciprocity. While they seek out and feature top competition level lots, they also recognize that flavor preference is as diverse as people, and coffee is a crop, wit"
+  },
+  {
+   "slug": "rucio",
+   "name": "Rucio",
+   "country": "Mexico",
+   "editions": {
+    "north": 50
+   },
+   "id": "rucio",
+   "city": "Pachuca",
+   "blurb": "Rucio is a small, hidden coffee bar nestled among the streets of downtown Pachuca, Mexico. Upon entering, the atmosphere invites a slower pace, where time is measured by books, music, art, and conversation."
+  },
+  {
+   "slug": "navi-coffee-flowers",
+   "name": "Navi Coffee & Flowers",
+   "country": "USA",
+   "editions": {
+    "north": 51
+   },
+   "id": "navicoffeeflowers",
+   "city": "Coconut Grove",
+   "blurb": "Navi is a neighborhood coffee and flower shop in Coconut Grove, Miami, Florida. Named after the founder’s mother, Navideh, the family-owned shop strives to be a gathering point in the community – an inviting bird-feeder."
+  },
+  {
+   "slug": "viva-espresso",
+   "name": "Viva Espresso",
+   "country": "El Salvador",
+   "editions": {
+    "north": 52
+   },
+   "id": "vivaespresso",
+   "city": null,
+   "blurb": "Viva Espresso is a Salvadoran coffee shop founded in 2005, a pioneer in specialty coffee within the country. Recognized for its technical excellence and legacy, the brand stands out for working hand-in-hand with local coffee farmers to highlight the richness of Salvadoran profiles."
+  },
+  {
+   "slug": "cafe-de-hacienda-yalipur",
+   "name": "Café de Hacienda Yalipur",
+   "country": "Guatemala",
+   "editions": {
+    "north": 53
+   },
+   "id": "cafdehaciendayalipur",
+   "city": "Cobán",
+   "blurb": "Café de Hacienda Yalipur is a space where the history and tradition of more than a century of coffee production in Alta Verapaz are shared. As part of a company founded in 1911, their coffee shop seeks to connect people with the origin of coffee, working from seed to cup and overseeing every stage o"
+  },
+  {
+   "slug": "library-coffee",
+   "name": "Library Coffee",
+   "country": "Canada",
+   "editions": {
+    "north": 54
+   },
+   "id": "librarycoffee",
+   "city": null,
+   "blurb": "Library Coffee is a micro-roaster and café established in 2018, inspired by the vibrant coffee culture of Australia. Founded on the belief that coffee is a moment to slow down and discover something new, they have created a welcoming hub where curiosity and community intersect."
+  },
+  {
+   "slug": "aromas-cafe-tegucigalpa",
+   "name": "Aromas Café (Tegucigalpa)",
+   "country": "Honduras",
+   "editions": {
+    "north": 55
+   },
+   "id": "aromascaftegucigalpa",
+   "city": "Tegucigalpa",
+   "blurb": "Aromas Café 1324 is a specialty coffee shop located in Tegucigalpa, Honduras, founded on December 8, 2018, with the vision of offering an exceptional coffee experience based on quality, knowledge, and hospitality. More than just serving coffee, they have built a space where every cup seeks to connec"
+  },
+  {
+   "slug": "guilder-coffee-company-cully-neighborhood",
+   "name": "Guilder Coffee Company",
+   "country": "USA",
+   "editions": {
+    "north": 56
+   },
+   "id": "guildercoffeecompany",
+   "city": "Portland",
+   "blurb": "Guilder Coffee Company is located in the Cully neighborhood of Portland, Oregon, serving as an ideal stop for those traveling to or from the airport. Situated at the corner of 72nd and Prescott, this former gas station has been transformed into a vibrant hub featuring a coffee shop, tap house, and a"
+  },
+  {
+   "slug": "tuyo",
+   "name": "Tuyo",
+   "country": "Mexico",
+   "editions": {
+    "north": 57
+   },
+   "id": "tuyo",
+   "city": "Querétaro",
+   "blurb": "Tuyo Café, located in Querétaro, Mexico, is built on the philosophy that human connection is essential—embodied in their name, which reflects the bond between «you» and «me.» They operate as a high-end coffee curation space, selecting and roasting premium raw materials with a deep respect for origin"
+  },
+  {
+   "slug": "calcali-coffee-la-catalina",
+   "name": "Calcalí Coffee – La Catalina",
+   "country": "Dominican Republic",
+   "editions": {
+    "north": 58
+   },
+   "id": "calcalcoffeelacatalina",
+   "city": null,
+   "blurb": "Calcalí is a specialty coffee concept based in the Dominican Republic, shaped by a deep connection to origin and a family tradition that’s been around for 5 generations in coffee cultivation. Built on a true seed-to-cup philosophy, every stage—from farming to the final cup—is carefully overseen, ens"
+  },
+  {
+   "slug": "cafe-del-centro",
+   "name": "Café del Centro",
+   "country": "El Salvador",
+   "editions": {
+    "north": 59
+   },
+   "id": "cafdelcentro",
+   "city": null,
+   "blurb": "In the vibrant heart of San Salvador, where history and culture intertwine, CAFÉ DEL CENTRO was born as an oasis for coffee lovers seeking an exceptional sensory experience. Their mission is simple: to bring the best Salvadoran specialty coffee to every cup, highlighting the quality and unique poten"
+  },
+  {
+   "slug": "cafe-saint-henri",
+   "name": "Café Saint-Henri",
+   "country": "Canada",
+   "editions": {
+    "north": 60
+   },
+   "id": "cafsainthenri",
+   "city": "Villeray",
+   "blurb": "Nestled in the heart of Villeray, their former headquarters has been transformed from a roasting facility into a flagship café and coffee lab. It serves as a dedicated space to explore, taste, and learn everything about specialty coffee."
+  },
+  {
+   "slug": "queen-city-collective-coffee",
+   "name": "Queen City Collective Coffee",
+   "country": "USA",
+   "editions": {
+    "north": 61
+   },
+   "id": "queencitycollectivecoffee",
+   "city": "Denver",
+   "blurb": "Queen City Collective Coffee, founded in 2016, connects coffee at origin to its final expression in Denver, Colorado. Through long-term, direct partnerships with producers, each harvest is approached with a commitment to quality, sustainability, and shared growth."
+  },
+  {
+   "slug": "ethos",
+   "name": "Ethos",
+   "country": "Mexico",
+   "editions": {
+    "north": 62
+   },
+   "id": "ethos",
+   "city": "Veracruz",
+   "blurb": "Ethos Casa de Café is a specialty coffee bar in Veracruz, México — and their motto says it all: good coffee is no accident. Behind every cup lies a years-long relationship with Finca De la Vequia, a family-owned farm in Veracruz that raises the bar with every harvest, and a meticulous process that e"
+  },
+  {
+   "slug": "coffee-project-new-york",
+   "name": "Coffee Project New York",
+   "country": "USA",
+   "editions": {
+    "north": 63
+   },
+   "id": "coffeeprojectnewyork",
+   "city": "New York City",
+   "blurb": "Coffee Project New York is a coffee retailer, roaster, and educator founded in New York City’s East Village in 2015. Their mission is to improve the quality of life for every person in the coffee supply chain by way of sustainable sourcing, community initiatives, stable career growth for longtime co"
+  },
+  {
+   "slug": "aroma-cafe-marcala",
+   "name": "Aroma Café (Marcala)",
+   "country": "Honduras",
+   "editions": {
+    "north": 64
+   },
+   "id": "aromacafmarcala",
+   "city": "Marcala",
+   "blurb": "Aroma Café is a family-owned business founded in 2010 in the coffee-growing region of Marcala, La Paz, standing out as the first coffee shop established in the area. Recognized as a pioneer in promoting quality coffee, its creation was driven by the purpose of transforming the local coffee consumpti"
+  },
+  {
+   "slug": "almanegra",
+   "name": "Almanegra",
+   "country": "Mexico",
+   "editions": {
+    "north": 65
+   },
+   "id": "almanegra",
+   "city": "Narvarte",
+   "blurb": "Founded in 2014 in the Narvarte neighborhood of Mexico City, Almanegra was born as a project committed to its local community and Mexican coffee. Their name evokes the depth and character of the coffee they serve, but it also reflects a philosophy: every cup is the result of real human bonds with pr"
+  },
+  {
+   "slug": "subtext-coffee-roasters",
+   "name": "Subtext Coffee Roasters",
+   "country": "Canada",
+   "editions": {
+    "north": 66
+   },
+   "id": "subtextcoffeeroasters",
+   "city": "Toronto",
+   "blurb": "Subtext Coffee Roasters is located in Toronto’s West End. The cafe highlights smallholder producer coffee with a daily rotation."
+  },
+  {
+   "slug": "clandestino-cafe",
+   "name": "Clandestino Café",
+   "country": "Mexico",
+   "editions": {
+    "north": 67
+   },
+   "id": "clandestinocaf",
+   "city": "Holbox",
+   "blurb": "Clandestino began as a small project between two brothers on the island of Holbox, dedicated to presenting specialty coffee in the most remote location possible. As the island grew into a global destination, they became recognized as the premier choice for coffee in Holbox, developing simple dishes "
+  },
+  {
+   "slug": "cafeteo-los-proceres",
+   "name": "Cafeteo • Los Próceres",
+   "country": "Honduras",
+   "editions": {
+    "north": 68
+   },
+   "id": "cafeteolosprceres",
+   "city": null,
+   "blurb": "CAFETEO is proud to have been the first-ever specialty coffee shop and roaster established in Honduras. Located in San Pedro Sula, they feature a Giesen W15 coffee roaster inside the shop, allowing customers to watch their coffees being roasted firsthand."
+  },
+  {
+   "slug": "good-beans-el-salvador-coffee-roasters",
+   "name": "Good Beans El Salvador Coffee Roasters",
+   "country": "El Salvador",
+   "editions": {
+    "north": 69
+   },
+   "id": "goodbeanselsalvadorcoffeeroasters",
+   "city": "San Salvador",
+   "blurb": "Good Beans is a tiny, 10-seat specialty coffee roastery and café tucked along Bulevar del Hipódromo in San Salvador’s Colonia San Benito. What began four years ago as a simple to-go kiosk in a suburban strip mall has grown into one of the city’s most distinctive coffee destinations and now, one with"
+  },
+  {
+   "slug": "tina-in-the-gables",
+   "name": "Tina in the Gables",
+   "country": "USA",
+   "editions": {
+    "north": 70
+   },
+   "id": "tinainthegables",
+   "city": "Coral Gables. Tina",
+   "blurb": "Tina in the Gables is your neighborhood cafe and Latin-inspired diner, rooted in home cooked flavors and traditions. Tina’s cozy atmosphere, the constant smell of fresh brewed coffee, and its home-style dishes will make you feel like you’re in your own family kitchen, right here in Coral Gables."
+  },
+  {
+   "slug": "coffee-colors",
+   "name": "Coffee Colors",
+   "country": "Honduras",
+   "editions": {
+    "north": 71
+   },
+   "id": "coffeecolors",
+   "city": "Santa Rosa de Copán",
+   "blurb": "Coffee Colors is a Honduran specialty coffee shop created by young siblings Douglas and Marlith in Santa Rosa de Copán, located in western Honduras. Coffee Colors is a new way to experience coffee: through colors, they represent the diversity of the coffee world, where different profiles and sensory"
+  },
+  {
+   "slug": "memento-coffee-works",
+   "name": "Memento Coffee Works",
+   "country": "USA",
+   "editions": {
+    "north": 72
+   },
+   "id": "mementocoffeeworks",
+   "city": "East Long Beach",
+   "blurb": "Memento Coffee is a family-owned business based in East Long Beach, California—a space to meet, create, and connect. They think about what it means to make something properly."
+  },
+  {
+   "slug": "la-central-coffee-roasters",
+   "name": "La Central Coffee Roasters",
+   "country": "Guatemala",
+   "editions": {
+    "north": 73
+   },
+   "id": "lacentralcoffeeroasters",
+   "city": null,
+   "blurb": "La Central Coffee Roasters is a specialty coffee shop and roastery in Guatemala. They focus on showcasing exceptional coffees through a careful selection, roasting, and preparation process dedicated to highlighting quality."
+  },
+  {
+   "slug": "spirit-origin",
+   "name": "Spirit Origin",
+   "country": "Honduras",
+   "editions": {
+    "north": 74
+   },
+   "id": "spiritorigin",
+   "city": null,
+   "blurb": "Spirit Origin Coffee is a destination coffee experience located at origin in Honduras, bringing together the full journey of coffee, from sourcing with local producers to roasting and serving at the highest level. Positioned on one of the highest points in Roatán, it offers panoramic island views al"
+  },
+  {
+   "slug": "jamanit-cafe",
+   "name": "Jamanit Café",
+   "country": "Honduras",
+   "editions": {
+    "north": 75
+   },
+   "id": "jamanitcaf",
+   "city": null,
+   "blurb": "Jamanit Café is a specialty coffee shop where every cup becomes an experience. Inspired by a warm environment with true essence, they ensure each coffee is carefully selected and paired with delicious pastries to make every moment unique."
+  },
+  {
+   "slug": "three-keys-coffee-bar",
+   "name": "Three Keys Coffee Bar",
+   "country": "USA",
+   "editions": {
+    "north": 76
+   },
+   "id": "threekeyscoffeebar",
+   "city": "Houston",
+   "blurb": "Three Keys Coffee is a Houston-based specialty coffee roastery and cafe built at the intersection of coffee, music, and culture. Honored 3 years in a row by Roast Magazine as a Micro Roaster of the Year finalist, Three Keys seeks to fuel creativity and create a multi-sensory experience that connects"
+  },
+  {
+   "slug": "negro-blanco",
+   "name": "Negro Blanco Café",
+   "country": "Mexico",
+   "editions": {
+    "north": 77
+   },
+   "id": "negroblancocaf",
+   "city": "Chihuahua",
+   "blurb": "Negro Blanco Cafe is a specialty coffee bar and roastery located in Chihuahua, Mexico. They celebrate Mexican specialty coffee, roasting and serving award-winning coffees sourced directly from producers they proudly call friends."
+  },
+  {
+   "slug": "smile-tiger-coffee",
+   "name": "Smile Tiger Coffee",
+   "country": "Canada",
+   "editions": {
+    "north": 78
+   },
+   "id": "smiletigercoffee",
+   "city": "Kitchener",
+   "blurb": "Smile Tiger Coffee Roasters is a vibrant specialty coffee hub located in Kitchener, Ontario, housed in a spacious industrial building near the city’s train station. Since opening, they have established themselves as a cornerstone of the local coffee scene, combining a high-volume roastery with a wel"
+  },
+  {
+   "slug": "alterno-cafe",
+   "name": "Alterno Café",
+   "country": "Dominican Republic",
+   "editions": {
+    "north": 79
+   },
+   "id": "alternocaf",
+   "city": "Santo Domingo",
+   "blurb": "Alterno Café is a specialty coffee space in the heart of Santo Domingo’s Colonial Zone, dedicated to showcasing the richness of Dominican coffee. They focus on origin, quality, and precision, offering carefully crafted cups that highlight the unique profiles of local beans."
+  },
+  {
+   "slug": "cowdog-kits",
+   "name": "Cowdog (Kits)",
+   "country": "Canada",
+   "editions": {
+    "north": 80
+   },
+   "id": "cowdogkits",
+   "city": "Vancouver",
+   "blurb": "Cowdog (Kits) is a minimalist specialty coffee destination located in the heart of the Kitsilano neighborhood in Vancouver, Canada. Originally gaining a following as a focused pop-up, they have established a permanent home known for its meticulous approach to the craft and a stripped-back, intention"
+  },
+  {
+   "slug": "ceremony-college-hill",
+   "name": "Ceremony College Hill",
+   "country": "USA",
+   "editions": {
+    "north": 81
+   },
+   "id": "ceremonycollegehill",
+   "city": null,
+   "blurb": "Ceremony is a Providence café with a deeply intentional coffee program rooted in precision, hospitality, and craftsmanship. From the meticulous way they pull each shot on their Slayer espresso machine to their omakase-style coffee tasting experiences, every detail is designed to showcase coffee at i"
+  },
+  {
+   "slug": "manos-coffee",
+   "name": "Mano’s Coffee",
+   "country": "Guatemala",
+   "editions": {
+    "north": 82
+   },
+   "id": "manoscoffee",
+   "city": null,
+   "blurb": "Mano’s Coffee is a specialty coffee shop located in Guatemala City with over eight years of experience in the market. Founded by twin brothers—inspiring the name «Mano’s»—they are dedicated to rigorous quality control, from the selection of green coffee to the final preparation of the cup."
+  },
+  {
+   "slug": "donde-su-cafeteria",
+   "name": "Donde Su Cafetería",
+   "country": "Costa Rica",
+   "editions": {
+    "north": 83
+   },
+   "id": "dondesucafetera",
+   "city": "Moravia",
+   "blurb": "Donde Su is a space that brings together community, learning, and hospitality in Moravia, Costa Rica. With a mostly female team, the coffee shop reflects a genuine commitment to creating opportunities and empowerment through their daily work."
+  },
+  {
+   "slug": "de-la-montana-coffee-co",
+   "name": "De la Montaña Coffee Co",
+   "country": "Honduras",
+   "editions": {
+    "north": 84
+   },
+   "id": "delamontaacoffeeco",
+   "city": "Tegucigalpa",
+   "blurb": "They are a specialty coffee shop where coffee is their history. Located in Tegucigalpa, Honduras, they are multi-generational coffee producers who decided to close the loop by personally bringing their beans from the farm to the cup."
+  },
+  {
+   "slug": "cafe-fulanos-centro-historico",
+   "name": "Café Fulanos Centro Histórico",
+   "country": "El Salvador",
+   "editions": {
+    "north": 85
+   },
+   "id": "caffulanoscentrohistrico",
+   "city": "San Salvador",
+   "blurb": "Since 2018, Café Fulanos has been a pioneer in the revitalization of San Salvador’s Historic Center, marking the beginning of a new era as the area’s first specialty coffee shop. Their project was born from the dream of bringing life back to the heart of the city, offering purposeful single-origin c"
+  },
+  {
+   "slug": "pilot-coffee-roasters",
+   "name": "Pilot Coffee Roasters",
+   "country": "Canada",
+   "editions": {
+    "north": 86
+   },
+   "id": "pilotcoffeeroasters",
+   "city": null,
+   "blurb": "Pilot Coffee Roasters was founded in 2009 by Andy Wilkin and Jessie Holmes in Toronto’s Leslieville neighbourhood. What began as Te Aro Roasters — named after Andy’s home neighbourhood in Wellington, New Zealand — grew into one of Canada’s most recognized specialty coffee brands, specializing in dir"
+  },
+  {
+   "slug": "ete-cafe",
+   "name": "E’te Café",
+   "country": "Dominican Republic",
+   "editions": {
+    "north": 87
+   },
+   "id": "etecaf",
+   "city": "Cambita Garabitos",
+   "blurb": "E’te Café is a small specialty coffee house and roastery based in Cambita Garabitos, Dominican Republic. They focus on highlighting the true expression of Dominican coffee through careful sourcing, roasting, and brewing."
+  },
+  {
+   "slug": "verve-coffee-roasters",
+   "name": "Verve Coffee Roasters",
+   "country": "USA",
+   "editions": {
+    "north": 88
+   },
+   "id": "vervecoffeeroasters",
+   "city": "Santa Cruz",
+   "blurb": "Verve Coffee Roasters was founded in Santa Cruz, California, in 2006 with a mission to bridge the gap between the coffee farm and the city street. Rooted in the spirit of the California coast, they have grown from a local neighborhood roastery into an international specialty coffee leader, all while"
+  },
+  {
+   "slug": "micro-espresso-vieux-port",
+   "name": "Micro Espresso – Vieux Port",
+   "country": "Canada",
+   "editions": {
+    "north": 89
+   },
+   "id": "microespressovieuxport",
+   "city": "Vieux Port",
+   "blurb": "Micro Espresso is where Montreal’s true coffee lovers come for their daily cup; no gimmicks, just precision extractions, consistent drinks, and genuinely great service. Their coffee program is built around exceptional coffees from producers like Wilton Benitez and a select few outstanding farms from"
+  },
+  {
+   "slug": "parcela-coffee-bistro",
+   "name": "Parcela Coffee & Bistro",
+   "country": "Guatemala",
+   "editions": {
+    "north": 90
+   },
+   "id": "parcelacoffeebistro",
+   "city": "Guatemala City",
+   "blurb": "Parcela Coffee & Bistro is located in Zone 15 in Guatemala City. A concept that started as a cafe but has been shaped for the neighborhood where a combination of some of the best Guatemalan Specialty Coffees are honored and served, and a full menu of Breakfast, Brunch and Lunch is offered."
+  },
+  {
+   "slug": "cafe-eclair",
+   "name": "Café Éclair",
+   "country": "Canada",
+   "editions": {
+    "north": 91
+   },
+   "id": "cafclair",
+   "city": "Mile End",
+   "blurb": "Café Éclair is a small specialty coffee shop based in Montreal. Established in the heart of Mile End, they offer high-quality coffees roasted outside of Canada to introduce clients to the different visions of the coffee industry in other parts of the world."
+  },
+  {
+   "slug": "5ta-cafe",
+   "name": "5ta Café",
+   "country": "Honduras",
+   "editions": {
+    "north": 92
+   },
+   "id": "5tacaf",
+   "city": "Guaimaca",
+   "blurb": "5ta Café is located in the department of Francisco Morazán, in the city of Guaimaca, Honduras. They are a coffee shop dedicated to coffee cultivation, processing, and service."
+  },
+  {
+   "slug": "cafe-grumpy",
+   "name": "Café Grumpy",
+   "country": "USA",
+   "editions": {
+    "north": 93
+   },
+   "id": "cafgrumpy",
+   "city": "Brooklyn",
+   "blurb": "Café Grumpy was founded with the dream of serving great-tasting specialty coffee to everyone in a welcoming environment. Since opening their first cafe location in Brooklyn in 2005, Café Grumpy has grown to eleven coffee shops, including iconic locations such as Grand Central Terminal and Rockefelle"
+  },
+  {
+   "slug": "fat-cat-coffee-house",
+   "name": "Fat Cat Coffee House",
+   "country": "Guatemala",
+   "editions": {
+    "north": 94
+   },
+   "id": "fatcatcoffeehouse",
+   "city": null,
+   "blurb": "In the heart of Antigua Guatemala, they are honored to be part of the diversity of Guatemala’s specialty coffees. They have been present in the world of specialty coffee since April 10, 2010, and after 15 years, they look back at how the coffee scene in Guatemala has grown."
+  },
+  {
+   "slug": "boxcar-social-laneway",
+   "name": "Boxcar Social Laneway",
+   "country": "Canada",
+   "editions": {
+    "north": 95
+   },
+   "id": "boxcarsociallaneway",
+   "city": "Toronto",
+   "blurb": "You’ll have to earn this one—duck into a graffiti-lined alley and you’ll find one of Toronto’s most serious coffee destinations hiding in plain sight. The menu is thoughtfully divided between coffees suited for drinking black and those built to shine with milk, with two to three rotating options in "
+  },
+  {
+   "slug": "taste-pura-vida",
+   "name": "Taste Pura Vida",
+   "country": "Costa Rica",
+   "editions": {
+    "north": 96
+   },
+   "id": "tastepuravida",
+   "city": null,
+   "blurb": "Taste Pura Vida is a Costa Rican specialty coffee shop and retail space focused on honoring the work of micro-producers. They connect consumers with high-quality coffees defined by identity, traceability, and history."
+  },
+  {
+   "slug": "arabica-elemento",
+   "name": "Arabica Elemento",
+   "country": "Guatemala",
+   "editions": {
+    "north": 97
+   },
+   "id": "arabicaelemento",
+   "city": null,
+   "blurb": "At Arabica Elemento, they combine a coffee bar and a dining room with a solid and integrated approach. They focus on maintaining an honest and transparent connection with producers, working with regional products through expert techniques to achieve high-quality results."
+  },
+  {
+   "slug": "reprise",
+   "name": "Reprise",
+   "country": "USA",
+   "editions": {
+    "north": 98
+   },
+   "id": "reprise",
+   "city": "Now",
+   "blurb": "Reprise started small—inside a train station in the Chicago suburbs, on the quiet side of town. From the beginning, they had one goal: to create a meaningful impact through specialty coffee."
+  },
+  {
+   "slug": "atelier-caramella",
+   "name": "Atelier Caramella",
+   "country": "Honduras",
+   "editions": {
+    "north": 99
+   },
+   "id": "ateliercaramella",
+   "city": null,
+   "blurb": "Atelier means «workshop» in French. The concept of Atelier Caramella was born with the purpose of offering an authentic experience of coffee, bakery, and artisanal pastry in San Pedro Sula."
+  },
+  {
+   "slug": "maru-coffee",
+   "name": "Maru Coffee",
+   "country": "USA",
+   "editions": {
+    "north": 100
+   },
+   "id": "marucoffee",
+   "city": null,
+   "blurb": "Maru Coffee is an independently owned coffee roaster and café with locations in Los Angeles and New York. Maru focuses on sourcing and roasting high-quality beans, with an emphasis on balance, craft, and the ritual of a well-made cup."
+  },
+  {
+   "slug": "eco-mapu-coffee-villarica",
+   "name": "Eco Mapu Coffee Villarica",
+   "country": "Chile",
+   "editions": {
+    "south": 1
+   },
+   "id": "ecomapucoffeevillarica",
+   "city": "Southern Chile",
+   "blurb": "Ecomapu Coffee is an innovative and experimental specialty coffee shop. They fuse high-quality coffee with traditional flavors from Southern Chile, offering a unique and creative experience."
+  },
+  {
+   "slug": "differente-coffee",
+   "name": "Differente Coffee",
+   "country": "Colombia",
+   "editions": {
+    "south": 3
+   },
+   "id": "differentecoffee",
+   "city": "Manizales",
+   "blurb": "Differente Coffee is a specialty coffee shop located in the vibrant neighborhood of La Estrella in Manizales, Caldas—the heart of Colombia’s Coffee Triangle. Grounded in the region’s rich coffee heritage, the shop celebrates local coffee culture through carefully sourced Colombian beans and precise "
+  },
+  {
+   "slug": "lucca-cafes-especiais",
+   "name": "Lucca Cafés Especiais",
+   "country": "Brazil",
+   "editions": {
+    "south": 4
+   },
+   "id": "luccacafsespeciais",
+   "city": "Luiz Otávio",
+   "blurb": "Founded on June 7, 2002, in the Batel neighborhood of Curitiba by Georgia Franco de Souza and Luiz Otávio Franco Souza, Lucca Cafés Especiais is Brazil’s pioneer specialty coffee shop. Named in honor of Luiz Otávio’s grandfather—a coffee grower in Northern Paraná—the brand introduced in-house roasti"
+  },
+  {
+   "slug": "negro-cueva-de-cafe",
+   "name": "Negro Cueva de Café",
+   "country": "Argentina",
+   "editions": {
+    "south": 7
+   },
+   "id": "negrocuevadecaf",
+   "city": "Buenos Aires",
+   "blurb": "Negro Cueva de Café was founded in 2015 with the purpose of offering a new and pleasant experience to the public in Buenos Aires, becoming the first specialty coffee bar in the downtown area of the city. Their coffee is prepared and served by trained and certified baristas, who guide customers in di"
+  },
+  {
+   "slug": "alquimia-specialty-coffee-shop",
+   "name": "Alquimia Specialty Coffee Shop",
+   "country": "Bolivia",
+   "editions": {
+    "south": 8
+   },
+   "id": "alquimiaspecialtycoffeeshop",
+   "city": "Sierra",
+   "blurb": "Alquimia Specialty Coffee Shop is a refined specialty café based in Santa Cruz de la Sierra, Bolivia. Founded around 2020 by coffee enthusiasts Ale Schami, Nicolás Vargas, and Matías Torrico, Alquimia combines a passion for traceability and technique with a cozy, educational space."
+  },
+  {
+   "slug": "especie-cafe",
+   "name": "Especie Café",
+   "country": "Ecuador",
+   "editions": {
+    "south": 9
+   },
+   "id": "especiecaf",
+   "city": "Riobamba",
+   "blurb": "Especie Café is a place where coffee, people, and memorable moments meet. Born in Riobamba, Ecuador, they were founded on the conviction that coffee is more than just a drink—it is a way to make every moment special."
+  },
+  {
+   "slug": "wake-up-coffee-lab",
+   "name": "Wake Up Coffee Lab",
+   "country": "Chile",
+   "editions": {
+    "south": 11
+   },
+   "id": "wakeupcoffeelab",
+   "city": "From Punta Arenas",
+   "blurb": "From Punta Arenas, Chile, at the end of the world, Wake Up Coffee takes the passion for specialty coffee to another level. Founded in 2017, Wake Up strives and works to offer an experience with a global character, where every detail counts and every cup has a story."
+  },
+  {
+   "slug": "caferatto-cafe-especial",
+   "name": "Caferatto Café Especial",
+   "country": "Colombia",
+   "editions": {
+    "south": 12
+   },
+   "id": "caferattocafespecial",
+   "city": "Manizales",
+   "blurb": "Caferatto Café Especial was born in Manizales, Caldas, in 2017 with the idea of bringing coffee consumers closer to the world of specialty coffee. Under the motto: «Educating taste buds and cheering hearts, something as special as you,» they have been part of the change many people have experienced,"
+  },
+  {
+   "slug": "rdv-roasters",
+   "name": "RDV Roasters",
+   "country": "Brazil",
+   "editions": {
+    "south": 13
+   },
+   "id": "rdvroasters",
+   "city": null,
+   "blurb": "RDV Roasters pioneered the specialty coffee movement in Maceió. Born as a micro-roastery and coffee school, expanding into a full-service coffee shop was the natural next step to offer an all-around, immersive 360-degree coffee experience for their community."
+  },
+  {
+   "slug": "do-coado-ao-espresso-cafeteria",
+   "name": "Do Coado ao Espresso | Cafeteria",
+   "country": "Brazil",
+   "editions": {
+    "south": 14
+   },
+   "id": "docoadoaoespressocafeteria",
+   "city": "Salvador",
+   "blurb": "Do Coado ao Espresso is a cozy place to enjoy the best selection of home-roasted Specialty Coffees from Bahia, paired with the best signature food menu from Salvador, Brazil."
+  },
+  {
+   "slug": "blacksoul-cafe-brewing-lab",
+   "name": "BlackSoul Café Brewing Lab",
+   "country": "Bolivia",
+   "editions": {
+    "south": 15
+   },
+   "id": "blacksoulcafbrewinglab",
+   "city": "Cochabamba",
+   "blurb": "BlackSoul Café Brewing Lab was born in Cochabamba, Bolivia. It is more than a coffee shop: it is a space where coffee is experienced with soul."
+  },
+  {
+   "slug": "tributo-casa-de-cafe-chacao",
+   "name": "TRIBUTO casa de café – Chacao",
+   "country": "Venezuela",
+   "editions": {
+    "south": 16
+   },
+   "id": "tributocasadecafchacao",
+   "city": "Caracas",
+   "blurb": "TRIBUTO Casa de Café opened its doors this year in the historic center of Chacao, Caracas, Venezuela. Its concept celebrates Venezuelan coffee, from the cherry to the cups served in their space: they pay tribute to the entire process, highlight the work of the producers, and ensure all their process"
+  },
+  {
+   "slug": "elisa-cafe-e-torrefacao",
+   "name": "Elisa Café e Torrefação",
+   "country": "Brazil",
+   "editions": {
+    "south": 17
+   },
+   "id": "elisacafetorrefao",
+   "city": null,
+   "blurb": "Elisa Café is where the mountains of Minas Gerais meet the cup. Every coffee tells a story—of the producers who grow it, the land that shapes its flavor, and the care it takes to bring both to your table."
+  },
+  {
+   "slug": "benchtime-bakery-cafe-cumbaya",
+   "name": "Benchtime Bakery & Cafe Cumbayá",
+   "country": "Ecuador",
+   "editions": {
+    "south": 18
+   },
+   "id": "benchtimebakerycafecumbay",
+   "city": "Quito",
+   "blurb": "Enjoy your Benchtime. Every day, they believe every customer should enjoy their own «Benchtime.» Benchtime is a specialty coffee shop that opened in Quito, Ecuador, in 2019, featuring its own coffee lab and roastery."
+  },
+  {
+   "slug": "abstrakto-cafe-de-especialidad",
+   "name": "Abstrakto Café de Especialidad",
+   "country": "Uruguay",
+   "editions": {
+    "south": 21
+   },
+   "id": "abstraktocafdeespecialidad",
+   "city": "Punta del Este",
+   "blurb": "Abstrakto Café is a specialty coffee shop located within a cultural center in Punta del Este, Uruguay. Surrounded by art, the beach, and tranquility, they focus on offering a sensory experience through brewing methods, cuppings, and workshops."
+  },
+  {
+   "slug": "king-experience-cafeteria-e-escola-de-cafe",
+   "name": "King Experience – Cafeteria e Escola de Café",
+   "country": "Brazil",
+   "editions": {
+    "south": 22
+   },
+   "id": "kingexperiencecafeteriaeescoladecaf",
+   "city": null,
+   "blurb": "A pioneer of specialty coffee in Goiás since 2005 and home to the 2020 Brazilian roasting champion, King Experience combines excellence and tradition. More than a coffee shop, it is a coffee school dedicated to providing an unforgettable sensory experience in every cup."
+  },
+  {
+   "slug": "primates-tostadores",
+   "name": "Primates Tostadores",
+   "country": "Chile",
+   "editions": {
+    "south": 23
+   },
+   "id": "primatestostadores",
+   "city": "Talca",
+   "blurb": "Primates Tostadores is a specialty café and roastery located in Talca, Chile (Calle 30 Oriente 1562, Local C). They roast their own beans with a strong focus on traceability, quality, and craftsmanship."
+  },
+  {
+   "slug": "three-monkeys-coffee-cusco",
+   "name": "Three Monkeys Coffee Cusco",
+   "country": "Peru",
+   "editions": {
+    "south": 24
+   },
+   "id": "threemonkeyscoffeecusco",
+   "city": "Cusco",
+   "blurb": "Three Monkeys Coffee in Cusco redefines specialty coffee with an innovative and technical approach to its processes. Located downtown, their coffee shop fuses tradition with the avant-garde, emphasizing quality control starting from their precision farming estate."
+  },
+  {
+   "slug": "islander-coffee-roasters",
+   "name": "Islander Coffee Roasters",
+   "country": "Ecuador",
+   "editions": {
+    "south": 26
+   },
+   "id": "islandercoffeeroasters",
+   "city": "Galápagos",
+   "blurb": "Islander Coffee is a specialty coffee shop and roastery born in the Galápagos Islands with a clear vision: to grow alongside their community and evolve without losing their essence. They prioritize local and national products, strengthening a value chain that connects their land, producers, and cons"
+  },
+  {
+   "slug": "bicho-specialty-coffee",
+   "name": "Bicho Specialty Coffee",
+   "country": "Peru",
+   "editions": {
+    "south": 27
+   },
+   "id": "bichospecialtycoffee",
+   "city": null,
+   "blurb": "Bicho Specialty Coffee has established itself as a unique spot in Huancayo for true coffee lovers. Set inside a historic 200-year-old traditional home (casona) right in the heart of the city, it offers a quiet refuge where local agriculture and craftsmanship take center stage."
+  },
+  {
+   "slug": "larome-cafe",
+   "name": "L’arôme Café",
+   "country": "Bolivia",
+   "editions": {
+    "south": 28
+   },
+   "id": "larmecaf",
+   "city": "Santa Cruz",
+   "blurb": "Located along Avenida San Martín in Santa Cruz de la Sierra, Bolivia, L’arôme Café – Equipetrol is a specialty coffee shop dedicated to delivering refined coffee experiences in the vibrant Equipetrol district. Focused on quality extraction and carefully selected origins, the café pairs its specialty"
+  },
+  {
+   "slug": "cafe-melosa",
+   "name": "Café Melosa",
+   "country": "Venezuela",
+   "editions": {
+    "south": 29
+   },
+   "id": "cafmelosa",
+   "city": "Caracas",
+   "blurb": "Café Melosa (f. 2012) is a micro-roastery in Caracas, led by engineer and food technician Kleidys Ramírez, a certified SCA/CQI Q Arabica Grader."
+  },
+  {
+   "slug": "rita-specialty-coffee-armenia",
+   "name": "Rita Specialty Coffee Armenia",
+   "country": "Argentina",
+   "editions": {
+    "south": 31
+   },
+   "id": "ritaspecialtycoffeearmenia",
+   "city": null,
+   "blurb": "Since its beginnings in 2021, RITA has always worked on a differentiating proposal based on its excellent coffee, unique pieces of artisanal pastry, and signature dishes. Every detail is designed to offer a complete and memorable experience, inviting customers to enjoy special moments with every vis"
+  },
+  {
+   "slug": "famosta-cafe",
+   "name": "Famosta Café",
+   "country": "Colombia",
+   "editions": {
+    "south": 32
+   },
+   "id": "famostacaf",
+   "city": null,
+   "blurb": "Famosta Café is a specialty shop that was born in the city of Pereira, Risaralda, in 2016. There, you can find a diversity of drinks, brewing methods, processes, and varieties of Colombian and international single-origin coffee."
+  },
+  {
+   "slug": "william-sons-coffee-co-petropolis",
+   "name": "William & Sons Coffee Co. – Petrópolis",
+   "country": "Brazil",
+   "editions": {
+    "south": 33
+   },
+   "id": "williamsonscoffeecopetrpolis",
+   "city": "Petrópolis",
+   "blurb": "William and Sons is a roastery and a coffee shop in southern Brazil committed to honor coffee producers. Since 2013, they source the finest beans in the country, roast with precision, and showcase each producer’s legacy on every package."
+  },
+  {
+   "slug": "cafe-guayasamin-centro-quito",
+   "name": "Café Guayasamin – Centro Quito",
+   "country": "Ecuador",
+   "editions": {
+    "south": 34
+   },
+   "id": "cafguayasamincentroquito",
+   "city": "Centro Quito",
+   "blurb": "Café Guayasamín They were born more than a decade ago with the purpose of elevating the work of the Ecuadorian coffee producer and sharing, in every cup, the history of their land. They have become a showcase for specialty coffee, where the local community and global travelers discover the diversity"
+  },
+  {
+   "slug": "dsala-caffe",
+   "name": "D’Sala Caffe",
+   "country": "Peru",
+   "editions": {
+    "south": 35
+   },
+   "id": "dsalacaffe",
+   "city": "Lima",
+   "blurb": "D’Sala Caffè was born in 2014 in Lima, Peru, from Alessandra Sala’s dream and her deep desire to do things with heart. Their goal is to bring to the table coffee with a story, a name, and a family behind it."
+  },
+  {
+   "slug": "abuela-cafe-torrefacao",
+   "name": "Abuela Café & Torrefação",
+   "country": "Brazil",
+   "editions": {
+    "south": 36
+   },
+   "id": "abuelacaftorrefao",
+   "city": "Porto Alegre",
+   "blurb": "A cozy place in Porto Alegre, Abuela Torrefação & Café puts the art of roasting and preparation center stage. Minimalist, unpretentious, and calm, it’s built around small, thoughtful details."
+  },
+  {
+   "slug": "cafe-micelio-puerto-varas",
+   "name": "Café Micelio Puerto Varas",
+   "country": "Chile",
+   "editions": {
+    "south": 37
+   },
+   "id": "cafmiceliopuertovaras",
+   "city": "Puerto Varas",
+   "blurb": "Café Micelio is a coffee shop and roastery in the heart of Puerto Varas. It was born with the desire to be a local network, a source of support in a growing city surrounded by nature at the beginning of Patagonia, where specialty coffee plays a main role in people’s daily lives."
+  },
+  {
+   "slug": "pergamino-cafe-laureles",
+   "name": "Pergamino Café Laureles",
+   "country": "Colombia",
+   "editions": {
+    "south": 38
+   },
+   "id": "pergaminocaflaureles",
+   "city": "Colombia. Furthermore",
+   "blurb": "In the heart of Laureles, Medellín—a neighborhood with history and plenty of greenery—they converted one of its charming houses into their café. They preserved its essence and architecture to offer a warm and cozy atmosphere."
+  },
+  {
+   "slug": "savignano-cafe",
+   "name": "Savignano Café",
+   "country": "Venezuela",
+   "editions": {
+    "south": 39
+   },
+   "id": "savignanocaf",
+   "city": "Caracas",
+   "blurb": "Founded in 2015 as the first specialty coffee shop in Caracas, Savignano Café is a pioneer of specialty coffee in Venezuela. Located in El Hatillo, Edo."
+  },
+  {
+   "slug": "ninina",
+   "name": "Ninina",
+   "country": "Argentina",
+   "editions": {
+    "south": 41
+   },
+   "id": "ninina",
+   "city": null,
+   "blurb": "Ninina is a cherished culinary destination in Buenos Aires that seamlessly fuses the warmth of a family restaurant with the artistry of a specialty coffee roaster and bakery. Over the last decade, Ninina has cultivated a reputation for excellence, rooted in treasured family recipes passed down throu"
+  },
+  {
+   "slug": "montse",
+   "name": "Montse",
+   "country": "Ecuador",
+   "editions": {
+    "south": 42
+   },
+   "id": "montse",
+   "city": null,
+   "blurb": "Montse is a specialty coffee shop where coffee, pastry, and culinary creations come together to deliver a unique experience. With deep respect for every step of the coffee production chain, they craft all of their menu items using quality ingredients and genuine heart."
+  },
+  {
+   "slug": "cafe-buena-vista",
+   "name": "Café Buena Vista",
+   "country": "Bolivia",
+   "editions": {
+    "south": 43
+   },
+   "id": "cafbuenavista",
+   "city": "Samaipata",
+   "blurb": "At Café Buena Vista, they work from the coffee root to the cup. They cultivate, process, and roast 100% Bolivian coffee, with a focus on quality, origin, and sustainability."
+  },
+  {
+   "slug": "cuervo-cafe",
+   "name": "Cuervo Café",
+   "country": "Argentina",
+   "editions": {
+    "south": 44
+   },
+   "id": "cuervocaf",
+   "city": "Buenos Aires",
+   "blurb": "Cuervo Café is a standout specialty coffee shop in Buenos Aires, Argentina, with several locations including Palermo (El Salvador 4580), Newbery, Belgrano, and Juramento. Founded in 2017 by two musician friends, Pablo Tokatlian and Agustín Caro, Cuervo blends a laid-back, artistic vibe with serious "
+  },
+  {
+   "slug": "lohas-cafe",
+   "name": "Lohas Café",
+   "country": "Colombia",
+   "editions": {
+    "south": 45
+   },
+   "id": "lohascaf",
+   "city": null,
+   "blurb": "Lohas Café is a global benchmark in the selection of specialty and competition-grade coffees in Colombia. Created by Lohas Beans—a company dedicated to curating and exporting Colombian coffee since 2010—the brand operates with a deep commitment to quality at the source."
+  },
+  {
+   "slug": "boca-cafe",
+   "name": "Boca Café",
+   "country": "Venezuela",
+   "editions": {
+    "south": 46
+   },
+   "id": "bocacaf",
+   "city": "Caracas",
+   "blurb": "Located in the peaceful surroundings of the Los Galpones Art Center in Caracas, Boca Café offers a refined specialty coffee experience integrated with art and nature. Designed as an intimate coffee bar and showroom, it provides a space to enjoy high-quality coffee outdoors—whether discovering new ex"
+  },
+  {
+   "slug": "tinticoos-cafeteria",
+   "name": "Tinticoos Cafeteria",
+   "country": "Ecuador",
+   "editions": {
+    "south": 47
+   },
+   "id": "tinticooscafeteria",
+   "city": null,
+   "blurb": "Tinticoos was born from the love of two people who decided to turn their passion into a space to share with others. That love is reflected in every corner of their coffee shop, along with a deep respect and admiration for specialty coffee."
+  },
+  {
+   "slug": "tasta-cafe",
+   "name": "Tasta Café",
+   "country": "Peru",
+   "editions": {
+    "south": 48
+   },
+   "id": "tastacaf",
+   "city": "Lima",
+   "blurb": "TASTA is a coffee family with deep roots in the land of Llaylla, Satipo – Junín, Peru, located at 1,550 meters above sea level (m.a.s.l.). On their farm, they passionately cultivate varieties such as Caturra, Catuai, Gesha, Pacamara, and Maragogype, and will soon incorporate new varietals that will "
+  },
+  {
+   "slug": "giotti-cafes-microtorrefacao",
+   "name": "Giotti Cafés Microtorrefação",
+   "country": "Brazil",
+   "editions": {
+    "south": 49
+   },
+   "id": "giotticafsmicrotorrefao",
+   "city": "Juiz de Fora",
+   "blurb": "Giotti Cafés is a small coffee roastery in Juiz de Fora, nestled in the countryside of Minas Gerais, Brazil. Run directly by Marcelo and Louise, the duo personally manages every aspect of the business—from customer service and bean curation to the roasting process itself."
+  },
+  {
+   "slug": "roaster-specialty-coffee",
+   "name": "Roaster Specialty Coffee",
+   "country": "Bolivia",
+   "editions": {
+    "south": 50
+   },
+   "id": "roasterspecialtycoffee",
+   "city": null,
+   "blurb": "ROASTER SPECIALTY COFFEE is the first specialty coffee shop and roastery in Bolivia. It began operations in 2011."
+  },
+  {
+   "slug": "barista-coffee-house",
+   "name": "Barista Coffee House",
+   "country": "Argentina",
+   "editions": {
+    "south": 51
+   },
+   "id": "baristacoffeehouse",
+   "city": "Rosario",
+   "blurb": "Located on a corner in Rosario, stepping into Barista feels like returning to your grandparents’ home for a cup of coffee. It is a small, cozy coffee shop, run by its owner, where the aroma of freshly brewed coffee and the sweetness of homemade pastry invade every corner."
+  },
+  {
+   "slug": "dagada",
+   "name": "Dagadá",
+   "country": "Ecuador",
+   "editions": {
+    "south": 52
+   },
+   "id": "dagad",
+   "city": "Loja",
+   "blurb": "Dagadá Cafetería de Especialidad is a modern and cozy space located in the south of Ecuador, in Loja, the coffee capital of the country. Here, coffee is experienced with passion, technique, and respect for its origin."
+  },
+  {
+   "slug": "diblu-cafeteria-de-especialidad",
+   "name": "Diblú Cafetería de Especialidad",
+   "country": "Chile",
+   "editions": {
+    "south": 53
+   },
+   "id": "diblcafeteradeespecialidad",
+   "city": "Temuco",
+   "blurb": "Diblú was born in Temuco, in southern Chile, with a vision that places specialty coffee at the heart of a warm, creative, and contemporary experience. Its identity brings together exceptional coffee, gastronomy, and hospitality, with careful attention to every detail, creating a space where people c"
+  },
+  {
+   "slug": "raiz-coffee",
+   "name": "Raiz Coffee",
+   "country": "Peru",
+   "editions": {
+    "south": 54
+   },
+   "id": "raizcoffee",
+   "city": null,
+   "blurb": "Raiz Coffee (Root Coffee) was born from the search for the origin: to know the coffee trees, understand the producer, and better grasp the reality of their country. To this essence is added the art of roasting with care and precision to highlight the sensory profile of each bean."
+  },
+  {
+   "slug": "surry-hills-coffee-palermo",
+   "name": "Surry Hills Coffee Palermo",
+   "country": "Argentina",
+   "editions": {
+    "south": 55
+   },
+   "id": "surryhillscoffeepalermo",
+   "city": null,
+   "blurb": "Inspired by the fresh, sunny mornings of Surry Hills, Sydney’s trendiest and most vibrant neighborhood, Surry Hills Coffee was born in Buenos Aires in the spring of 2019. Their mission is clear: to redefine the coffee and brunch experience, bringing the passion for specialty coffee and the relaxed s"
+  },
+  {
+   "slug": "cafe-18-el-chico",
+   "name": "Café 18 – El Chicó",
+   "country": "Colombia",
+   "editions": {
+    "south": 56
+   },
+   "id": "caf18elchic",
+   "city": null,
+   "blurb": "Café 18 El Chicó offers a unique experience where you can enjoy between 10 and 15 specialty coffees from different departments of Colombia, such as Nariño, Magdalena, Huila, Cauca, Tolima, Antioquia, and Boyacá: a journey through the richness and coffee diversity of Colombia in one place. Furthermor"
+  },
+  {
+   "slug": "royalty-cafe",
+   "name": "Royalty Café",
+   "country": "Brazil",
+   "editions": {
+    "south": 57
+   },
+   "id": "royaltycaf",
+   "city": "Curitiba",
+   "blurb": "At the heart of Curitiba’s old town, Royalty Quality Coffee is a regenerative refuge for their city. Serving specialty coffee from all over Brazil that is roasted in the exact same building."
+  },
+  {
+   "slug": "marron-cafe",
+   "name": "MARRÓN CAFÉ",
+   "country": "Venezuela",
+   "editions": {
+    "south": 58
+   },
+   "id": "marrncaf",
+   "city": "Valencia",
+   "blurb": "Marrón Café is a specialty coffee shop and artisanal chocolatier born in Valencia, Venezuela, celebrating the union between two sister cultures: Venezuela and Colombia. Recognized among the Top 100 coffee shops in South America 2025, Marrón represents a new generation of spaces where quality, creati"
+  },
+  {
+   "slug": "selva-brew",
+   "name": "Selva Brew",
+   "country": "Chile",
+   "editions": {
+    "south": 59
+   },
+   "id": "selvabrew",
+   "city": "Valdivia",
+   "blurb": "Selva Brew was born in Valdivia in 2025 with a simple purpose: good specialty coffee paired with homemade signature cuisine. They seek to bring coffee culture closer to people in a grab-and-go format, providing a welcoming and high-quality experience to everyone who visits."
+  },
+  {
+   "slug": "kaldis-specialty-coffee-grimaldo",
+   "name": "Kaldis Specialty Coffee Grimaldo",
+   "country": "Peru",
+   "editions": {
+    "south": 60
+   },
+   "id": "kaldisspecialtycoffeegrimaldo",
+   "city": "Lima",
+   "blurb": "Founded in 2015, KALDIS was born out of a deep passion for coffee and a genuine desire to understand its journey from origin to cup. Built on a belief in carefully crafted processes, the brand is dedicated to creating memorable experiences centered around specialty coffee."
+  },
+  {
+   "slug": "mijito-cafe",
+   "name": "Mijito Café",
+   "country": "Argentina",
+   "editions": {
+    "south": 61
+   },
+   "id": "mijitocaf",
+   "city": "Mendoza City",
+   "blurb": "Founded in 2025, Mijito is a specialty coffee shop with two locations in Argentina—one in Godoy Cruz and the other in the heart of Mendoza City. Inspired by the classic neighborhood «cafetín» but driven by a fresh, youthful vision, Mijito was designed as an open house built around the culture of cof"
+  },
+  {
+   "slug": "cherry-season",
+   "name": "Cherry Season",
+   "country": "Argentina",
+   "editions": {
+    "south": 63
+   },
+   "id": "cherryseason",
+   "city": null,
+   "blurb": "Cherry Season is a specialty coffee roaster that selects, roasts, and crafts its own coffees, taking care of every stage of the process to showcase the best of each origin. It features its own coffee shops, where coffee comes together with signature pastry and culinary offerings."
+  },
+  {
+   "slug": "rituales-compania-de-cafe",
+   "name": "Rituales Compañía de Café",
+   "country": "Colombia",
+   "editions": {
+    "south": 64
+   },
+   "id": "ritualescompaadecaf",
+   "city": null,
+   "blurb": "Rituales Compañía de Café is a coffee shop that has been working for nine years with producers from the La Sierra neighborhood in Medellín—an area affected by violence for years that now tells a different story of transformation. It is a coffee shop of the city, for the city, and 100% local."
+  },
+  {
+   "slug": "zulu-haus",
+   "name": "Zulu Haus",
+   "country": "Argentina",
+   "editions": {
+    "south": 65
+   },
+   "id": "zuluhaus",
+   "city": "La Lucila",
+   "blurb": "Zulu Haus is a specialty coffee shop located in a century-old mansion in La Lucila, Buenos Aires. Surrounded by trees and featuring a serene atmosphere, it offers a refuge to slow down and reconnect with the present."
+  },
+  {
+   "slug": "perfecto",
+   "name": "Perfecto",
+   "country": "Bolivia",
+   "editions": {
+    "south": 66
+   },
+   "id": "perfecto",
+   "city": "Oruro",
+   "blurb": "Since 2018, Perfecto Coffee has been a pioneer of specialty coffee in Oruro, Bolivia—a city known as the capital of Bolivian folklore and recognized as a UNESCO World Heritage site. As the region’s first local specialty coffee shop and roastery, it highlights the richness of Bolivian coffee through "
+  },
+  {
+   "slug": "don-salazar",
+   "name": "Don Salazar",
+   "country": "Peru",
+   "editions": {
+    "south": 67
+   },
+   "id": "donsalazar",
+   "city": "Villa Rica",
+   "blurb": "Don Salazar (San Isidro, Perú) is a specialty coffee brand and café rooted in Peruvian coffee cultivation. Founded by Arturo Marín Salazar — whose family owns a coffee farm in Villa Rica — the company oversees the entire value chain: from bean production and selection to roasting in-house."
+  },
+  {
+   "slug": "artemisa-coffee-cocktail-bar",
+   "name": "ARTEMISA Coffee & Cocktail Bar",
+   "country": "Chile",
+   "editions": {
+    "south": 68
+   },
+   "id": "artemisacoffeecocktailbar",
+   "city": null,
+   "blurb": "Artemisa is the first Coffee & Cocktail Bar in Chile, a space where specialty coffee is the soul that gives life to every moment of the day. From the first cup to the last cocktail, coffee becomes the common thread that unites the energy of the day with the magic of the night."
+  },
+  {
+   "slug": "soul-coffee-house",
+   "name": "Soul Coffee House",
+   "country": "Ecuador",
+   "editions": {
+    "south": 70
+   },
+   "id": "soulcoffeehouse",
+   "city": null,
+   "blurb": "At Soul Coffee House, they believe that coffee tastes different when made with the heart. Every cup they serve carries passion, dedication, and the desire to create lasting memories."
+  },
+  {
+   "slug": "terra-specialty-coffee",
+   "name": "Terra Specialty Coffee",
+   "country": "Chile",
+   "editions": {
+    "south": 71
+   },
+   "id": "terraspecialtycoffee",
+   "city": null,
+   "blurb": "Terra Specialty Coffee is located in the heart of Valdivia in southern Chile, a city embraced by rivers and wetlands. Housed in a heritage building, the specialty coffee shop seamlessly connects the city’s identity and architectural tradition with modern coffee culture."
+  },
+  {
+   "slug": "mr-wush-wush",
+   "name": "Mr Wush Wush",
+   "country": "Colombia",
+   "editions": {
+    "south": 72
+   },
+   "id": "mrwushwush",
+   "city": null,
+   "blurb": "At Mr. Wush Wush, they believe that coffee should not be taken in a hurry: it should be discovered."
+  },
+  {
+   "slug": "nameless-cafeteria-de-especialidad",
+   "name": "Nameless Cafetería de Especialidad",
+   "country": "Ecuador",
+   "editions": {
+    "south": 73
+   },
+   "id": "namelesscafeteradeespecialidad",
+   "city": null,
+   "blurb": "Nameless is the place where people feel right at home! They are a specialty coffee shop delivering the highest quality coffee in Ecuador."
+  },
+  {
+   "slug": "coffee-bike",
+   "name": "Coffee Bike",
+   "country": "Bolivia",
+   "editions": {
+    "south": 74
+   },
+   "id": "coffeebike",
+   "city": null,
+   "blurb": "Founded in 2019 as an ambitious project on wheels on the streets of Sucre, Coffee Bike has established itself as a benchmark for specialty coffee in Bolivia. Created by Fernando Arnez, the initiative evolved into a business featuring two locations, its own roastery, and a coffee lab equipped with pr"
+  },
+  {
+   "slug": "guanacoffee",
+   "name": "Guanacoffee",
+   "country": "Peru",
+   "editions": {
+    "south": 75
+   },
+   "id": "guanacoffee",
+   "city": null,
+   "blurb": "Guanacoffee is a specialty coffee shop inspired by South American camelids. They offer a wide diversity of coffees and complementary products."
+  },
+  {
+   "slug": "cafeteria-15-coffee-company",
+   "name": "Cafeteria 15 Coffee Company",
+   "country": "Brazil",
+   "editions": {
+    "south": 76
+   },
+   "id": "cafeteria15coffeecompany",
+   "city": null,
+   "blurb": "15 Coffee Company is a roastery, specialty coffee school, and café dedicated to promoting Brazil’s high‑quality coffee culture. With its own coffee farm in southern Minas Gerais and a careful curation of beans from small‑scale producers, it seeks much more than quality, transparency, and respect for"
+  },
+  {
+   "slug": "cafe-calderon",
+   "name": "Café Calderón",
+   "country": "Chile",
+   "editions": {
+    "south": 77
+   },
+   "id": "cafcaldern",
+   "city": null,
+   "blurb": "Founded in 2021, Café Calderón began in a food truck, driven by a love for coffee, gastronomy, and service. Today, it is part of Santiago as a space where every detail is born from passion: from the aroma that welcomes guests upon entering to the respect with which their baristas seek the best expre"
+  },
+  {
+   "slug": "masaro-cafe",
+   "name": "Masaro Café",
+   "country": "Peru",
+   "editions": {
+    "south": 78
+   },
+   "id": "masarocaf",
+   "city": "Chiclayo",
+   "blurb": "Masaro is a specialty coffee shop located in Chiclayo, Peru. They were born in 2019 with the dream of sharing their passion for coffee and creating a space where people could enjoy it at its best."
+  },
+  {
+   "slug": "sailor-coffee",
+   "name": "Sailor Coffee",
+   "country": "Ecuador",
+   "editions": {
+    "south": 79
+   },
+   "id": "sailorcoffee",
+   "city": "Guayaquil",
+   "blurb": "Sailor Coffee was born in Guayaquil in 2016 and was a pioneer in bringing specialty coffee to Ecuadorian consumers. The brand transformed the idea of a traditional coffee shop into an experience centered around gastronomy, design, community, and culture."
+  },
+  {
+   "slug": "kaweh-coffee-shop",
+   "name": "Kaweh Coffee Shop",
+   "country": "Ecuador",
+   "editions": {
+    "south": 79
+   },
+   "id": "kawehcoffeeshop",
+   "city": null,
+   "blurb": "Kaweh Coffee Shop is a specialty coffee shop that was born as a showcase for the coffee of Hacienda La Florida, a comprehensive family farm dedicated to cultivating beans of excellence. Their coffees, awarded the Golden Cup (Taza Dorada), Cup of Excellence (Taza de Excelencia), and multiple national"
+  },
+  {
+   "slug": "simon-coffee",
+   "name": "Simón Coffee",
+   "country": "Colombia",
+   "editions": {
+    "south": 80
+   },
+   "id": "simncoffee",
+   "city": "El Poblado",
+   "blurb": "Simón Coffee is a specialty coffee shop in the heart of El Poblado, Medellín, Colombia. It was born from an extraordinary bond: Simón, a golden retriever who became a source of support for his owner during one of the most difficult moments of her life, inspired the creation of a space where warmth, "
+  },
+  {
+   "slug": "la-colibri-cafe",
+   "name": "La Colibrí Café",
+   "country": "Peru",
+   "editions": {
+    "south": 81
+   },
+   "id": "lacolibrcaf",
+   "city": "Chilchos",
+   "blurb": "La Colibrí Café is a space dedicated to specialty coffee culture, blending artisanal pastries, healthy gastronomy, and signature drinks with carefully selected origin beans—such as those grown by coffee farmer Enelith Llaga Garay in Chilchos, Amazonas. Conceived as a cozy refuge in Lima, this specia"
+  },
+  {
+   "slug": "la-cafeteria-coffee-roasters",
+   "name": "La Cafetería Coffee Roasters",
+   "country": "Venezuela",
+   "editions": {
+    "south": 82
+   },
+   "id": "lacafeteracoffeeroasters",
+   "city": "Caracas",
+   "blurb": "Situated on Avenida Tamanaco in Caracas, Venezuela, La Cafetería Coffee Roasters is a specialty coffee shop and roastery dedicated to highlighting the rich diversity of Venezuelan coffee. By selecting and roasting high-quality local beans in-house, they focus on precision extraction, full traceabili"
+  },
+  {
+   "slug": "atmosferico-cafeteria-de-especialidad",
+   "name": "Atmosférico Cafetería de Especialidad",
+   "country": "Ecuador",
+   "editions": {
+    "south": 83
+   },
+   "id": "atmosfricocafeteradeespecialidad",
+   "city": "Samborondón",
+   "blurb": "Atmosférico is a specialty coffee café located in Samborondón, Ecuador at CC Diana Quintana 2. They offer a refined brunch-style menu with crafted pastries (croissants), waffles, avo toast, and sweet baked goods from “The Barn.” Their coffee menu includes espresso-based drinks, filtro-style brews li"
+  },
+  {
+   "slug": "destino-cafe-oxapampa",
+   "name": "Destino Café Oxapampa",
+   "country": "Peru",
+   "editions": {
+    "south": 84
+   },
+   "id": "destinocafoxapampa",
+   "city": null,
+   "blurb": "In Oxapampa, a small town in the heart of Peru, Destino Café was born—a specialty coffee shop that seeks to share the best of their land in every cup. They work hand in hand with local producers, selecting 100% Arabica coffee grown in the mountains of Oxapampa and caring for every detail to offer a "
+  },
+  {
+   "slug": "le-grenier-cafeteria",
+   "name": "Le Grenier Cafetería",
+   "country": "Chile",
+   "editions": {
+    "south": 85
+   },
+   "id": "legreniercafetera",
+   "city": null,
+   "blurb": "Le Grenier was born as a space where coffee, gastronomy, and great moments come together. Their offering combines specialty coffee, various filter methods such as V60, Chemex, and Japanese syphon, and a menu that highlights local and national products."
+  },
+  {
+   "slug": "oso-cafe",
+   "name": "Oso Café",
+   "country": "Peru",
+   "editions": {
+    "south": 86
+   },
+   "id": "osocaf",
+   "city": "Arequipa",
+   "blurb": "Oso Café Tostaduría (Oso Coffee Roastery) was born in Arequipa, Peru, with the intention of sharing the true experience of Peruvian coffee. They roast their own single-origin beans, selected with care, to reveal their essence and connect people with the work of those who cultivate them."
+  },
+  {
+   "slug": "azahar-cafe",
+   "name": "Azahar Café",
+   "country": "Colombia",
+   "editions": {
+    "south": 87
+   },
+   "id": "azaharcaf",
+   "city": "Bogotá",
+   "blurb": "Azahar Coffee is a specialty café and roastery based in Bogotá, Colombia, with locations in Chapinero (Parque de la 93) and El Nogal. They source high-quality Colombian beans directly from small and medium producers across the country, favoring transparency and fair, stable prices."
+  },
+  {
+   "slug": "fok",
+   "name": "FOK",
+   "country": "Uruguay",
+   "editions": {
+    "south": 88
+   },
+   "id": "fok",
+   "city": "Punta del Este",
+   "blurb": "FÖK is a specialty coffee shop and roastery born in Punta del Este, Uruguay. They select coffees from different origins and develop their own roast profiles, seeking to express the identity and characteristics of each coffee."
+  },
+  {
+   "slug": "kajue-cafe",
+   "name": "Kajue Café",
+   "country": "Argentina",
+   "editions": {
+    "south": 90
+   },
+   "id": "kajuecaf",
+   "city": "October",
+   "blurb": "Kajue Café started in October 2019 in the heart of Palermo Soho in the Autonomous City of Buenos Aires – Argentina. They successfully consolidated themselves as a space for delicious eating with sweet and savory options, always accompanied by excellent specialty coffee prepared with single-origins f"
+  },
+  {
+   "slug": "la-raza-coffee",
+   "name": "La Raza Coffee",
+   "country": "Chile",
+   "editions": {
+    "south": 91
+   },
+   "id": "larazacoffee",
+   "city": null,
+   "blurb": "La Raza is coffee with identity. They were born in Chillán to share their passion for specialty coffee, roasting every bean with respect for its origin and creating spaces where stories, culture, and people meet."
+  },
+  {
+   "slug": "antaqa-cafe",
+   "name": "Antaqa Café",
+   "country": "Peru",
+   "editions": {
+    "south": 92
+   },
+   "id": "antaqacaf",
+   "city": "Ayacucho",
+   "blurb": "At Antaqa, they believe that good coffee should be accessible to everyone. Every cup is an invitation to discover the coffee of Ayacucho and Peru, to connect with its aroma, its history, and its people."
+  },
+  {
+   "slug": "cafe-labranza",
+   "name": "Café Labranza",
+   "country": "Venezuela",
+   "editions": {
+    "south": 93
+   },
+   "id": "caflabranza",
+   "city": null,
+   "blurb": "Café Labranza is a Venezuelan company dedicated to the world of single-origin and specialty coffee since 2017. Their coffee comes from the Andean region in Mérida State—specifically the Santa Cruz de Mora sector and Pueblos del Sur—where green coffee is sourced from selected farms located at altitud"
+  },
+  {
+   "slug": "kaffei",
+   "name": "Kaffe’i",
+   "country": "Paraguay",
+   "editions": {
+    "south": 95
+   },
+   "id": "kaffei",
+   "city": "November",
+   "blurb": "The name “Kaffe’i” holds a special meaning: in Guaraní, “’i” means “small,” reminding them that great transformations often begin with small steps. Kaffe’i – Coffee Roasters opened its doors in November 2024 and quickly became a benchmark in the Paraguayan coffee scene."
+  },
+  {
+   "slug": "cafe-bauda",
+   "name": "Café Bauda",
+   "country": "Chile",
+   "editions": {
+    "south": 96
+   },
+   "id": "cafbauda",
+   "city": "Castro",
+   "blurb": "Specialty Coffee Shop over the Sea — Castro, Chiloé Island Café Bauda Palafito is a refuge for specialty coffee lovers, located atop a traditional palafito (stilt house) in the Pedro Montt heritage neighborhood, in Castro, Chiloé Island. From its colorful and modern facade to its warm and artisanal "
+  },
+  {
+   "slug": "puma-cafe",
+   "name": "Puma Café",
+   "country": "Peru",
+   "editions": {
+    "south": 97
+   },
+   "id": "pumacaf",
+   "city": "Lima",
+   "blurb": "Puma Café is a specialty coffee café and roastery based in Lima, Peru, located at Av. Arenales 1199 in Santa Beatriz."
+  },
+  {
+   "slug": "casa-berracos",
+   "name": "Casa Berracos",
+   "country": "Uruguay",
+   "editions": {
+    "south": 98
+   },
+   "id": "casaberracos",
+   "city": "La Blanqueada",
+   "blurb": "Aquí tienes la traducción al inglés del texto de presentación de Casa Berracos, destacando la historia de la casona, el juego de palabras del nombre, y su enfoque comunitario en el barrio: Casa Berracos is a specialty coffee shop located in the heart of La Blanqueada, Montevideo, inside a carefully "
+  },
+  {
+   "slug": "raymi-coffee-shops-el-bosque",
+   "name": "Raymi Coffee Shops El Bosque",
+   "country": "Ecuador",
+   "editions": {
+    "south": 99
+   },
+   "id": "raymicoffeeshopselbosque",
+   "city": null,
+   "blurb": "Raymi Coffee offers a modern taste of Ecuador. As a specialty coffee shop, it brings together exceptional local coffee and traditional Ecuadorian flavors reimagined in a contemporary way."
+  },
+  {
+   "slug": "okafe-roasters",
+   "name": "Okafe Roasters",
+   "country": "Colombia",
+   "editions": {
+    "south": 100
+   },
+   "id": "okaferoasters",
+   "city": "Cali",
+   "blurb": "Okafe Roasters became the first roastery and coffee shop open to the public in Cali, Colombia, when it launched in 2018. As pioneers of the specialty coffee movement in the city, they offer an extensive selection of 24 coffee varieties, origins, and processing methods."
+  }
+ ]
+}
