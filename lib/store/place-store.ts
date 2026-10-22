@@ -26,6 +26,13 @@ interface PlaceStoreState {
   setAllFromRemote: (rows: PlaceVisit[]) => void;
 }
 
+/** Keep the primary `kind` and the `kinds` array consistent, tolerating
+ *  visits that only have one of the two (rows from older builds). */
+function normalizeKinds(v: PlaceVisit): PlaceVisit {
+  const kinds = v.kinds && v.kinds.length > 0 ? v.kinds : [v.kind];
+  return { ...v, kinds, kind: kinds[0] };
+}
+
 function isAlive(v: PlaceVisit): boolean {
   return !v.deletedAt;
 }
@@ -62,7 +69,7 @@ export const usePlaceStore = create<PlaceStoreState>()(
 
       save: (visit) => {
         const stamped: PlaceVisit = {
-          ...visit,
+          ...normalizeKinds(visit),
           updatedAt: new Date().toISOString(),
           deletedAt: visit.deletedAt ?? null,
         };
@@ -115,8 +122,9 @@ export const usePlaceStore = create<PlaceStoreState>()(
           const byId = new Map<string, PlaceVisit>();
           for (const v of s.allVisits) byId.set(v.id, v);
           for (const r of rows) {
-            const local = byId.get(r.id);
-            if (!local || tsOf(r) >= tsOf(local)) byId.set(r.id, r);
+            const row = normalizeKinds(r);
+            const local = byId.get(row.id);
+            if (!local || tsOf(row) >= tsOf(local)) byId.set(row.id, row);
           }
           const all = Array.from(byId.values()).sort(byVisitDateDesc);
           return { allVisits: all, visits: deriveLive(all) };
@@ -125,6 +133,17 @@ export const usePlaceStore = create<PlaceStoreState>()(
     }),
     {
       name: "origin-web/places/v1",
+      version: 2,
+      migrate: (persisted) => {
+        // v1 -> v2: visits gain `kinds` (multi-kind places). The primary kind
+        // becomes the single entry. Nothing is dropped.
+        const state = persisted as { allVisits?: PlaceVisit[] } | undefined;
+        if (!state?.allVisits) return persisted;
+        return {
+          ...state,
+          allVisits: state.allVisits.map((v) => normalizeKinds(v)),
+        };
+      },
       storage: createJSONStorage(() => localStorage),
       onRehydrateStorage: () => (state) => {
         if (state) {

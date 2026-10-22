@@ -16,7 +16,10 @@ interface Payload {
   places?: {
     id: string;
     name: string;
-    kind: PlaceKind;
+    /** Single kind (original payload shape). */
+    kind?: PlaceKind;
+    /** Multi-kind payload; wins over `kind` when both are present. */
+    kinds?: PlaceKind[];
     city: string;
     country: string;
     date: string;
@@ -62,11 +65,16 @@ export function ImportScreen() {
     for (const p of payload.places ?? []) {
       const existing = store.getVisit(p.id);
       const now = new Date().toISOString();
+      const rawKinds =
+        p.kinds && p.kinds.length > 0 ? p.kinds : p.kind ? [p.kind] : [];
+      const kinds = rawKinds.filter((k) => PlaceKindAll.includes(k));
+      if (kinds.length === 0) kinds.push("Other");
       const visit: PlaceVisit = {
         id: p.id,
         createdAt: existing?.createdAt ?? now,
         name: p.name,
-        kind: PlaceKindAll.includes(p.kind) ? p.kind : "Other",
+        kind: kinds[0],
+        kinds,
         city: p.city,
         country: p.country,
         dateVisited: p.date,
@@ -88,7 +96,7 @@ export function ImportScreen() {
     rows.push(`Best 100: ${b.id}${b.rating ? ` - ${b.rating}/10` : ""}`);
   for (const p of payload?.places ?? [])
     rows.push(
-      `${p.name} (${p.kind}, ${p.city}) - ${p.rating > 0 ? `${p.rating / 10}/10` : "no rating yet"}`,
+      `${p.name} (${(p.kinds && p.kinds.length > 0 ? p.kinds : [p.kind]).filter(Boolean).join(" + ")}, ${p.city}) - ${p.rating > 0 ? `${p.rating / 10}/10` : "no rating yet"}`,
     );
 
   return (

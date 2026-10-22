@@ -10,7 +10,12 @@ import Link from "next/link";
 import { OLabel } from "@/components/OLabel";
 import { OChip } from "@/components/OChip";
 import { usePlaceStore } from "@/lib/store/place-store";
-import { computeExplorationStats, PlaceKind, type PlaceVisit } from "@/lib/types/place";
+import {
+  computeExplorationStats,
+  PlaceKind,
+  visitKinds,
+  type PlaceVisit,
+} from "@/lib/types/place";
 
 type Filter = "All" | "Roasteries" | "Cafés";
 
@@ -23,9 +28,11 @@ export function PlacesScreen() {
 
   const shown = useMemo(() => {
     if (filter === "Roasteries")
-      return visits.filter((v) => v.kind === PlaceKind.Roastery);
+      return visits.filter((v) => visitKinds(v).includes(PlaceKind.Roastery));
     if (filter === "Cafés")
-      return visits.filter((v) => v.kind !== PlaceKind.Roastery);
+      return visits.filter((v) =>
+        visitKinds(v).some((k) => k !== PlaceKind.Roastery),
+      );
     return visits;
   }, [visits, filter]);
 
@@ -212,7 +219,7 @@ function VisitRow({ visit }: { visit: PlaceVisit }) {
           >
             {location}
             {location && " · "}
-            {visit.kind}
+            {visitKinds(visit).join(" · ")}
             {" · "}
             {formatDate(visit.dateVisited)}
           </div>
