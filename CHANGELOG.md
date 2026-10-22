@@ -5,6 +5,37 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.14.0 — Multi-kind places (2026-10-22)
+
+For Nikhil. A place can now be more than one kind — Lonich in Tokyo is a café
+that is also its own roastery, and the log should say so.
+
+### Added
+
+- **`kinds` on every visit** (`lib/types/place.ts`, `lib/db.ts`) — the full
+  set of kinds as an array. The old `kind` field stays as the primary
+  (`kinds[0]`) so older builds and old rows keep reading cleanly.
+- **Multi-select kind chips** on the New visit / Edit visit form
+  (`components/screens/PlaceFormScreen.tsx`) — tap all that apply; the last
+  remaining chip cannot be turned off, so a visit always has a kind.
+- **Places list shows every kind** (`components/screens/PlacesScreen.tsx`) —
+  "Tokyo, Japan · Café · Roastery · 22 Oct 2026". A multi-kind place counts
+  once in the stats and shows under both the Roasteries and Cafés tabs.
+- **Import links accept `kinds`** (`components/screens/ImportScreen.tsx`) —
+  an array wins over the old single `kind` field; old single-kind links keep
+  working unchanged.
+
+### Migration
+
+- Server DB: additive only — `place_visits` gains a `kinds` JSON column,
+  backfilled from `kind` on first boot. Live DB snapshotted to
+  `/data/origin-backup-20261022-p0.db` on the Fly volume before this shipped
+  (copy pulled down too).
+- Browser: the places store in localStorage migrates v1 → v2 on first load
+  (`kinds = [old kind]`). Nothing to do.
+
+---
+
 ## v0.13.1 — Map streak fix (2026-08-10)
 
 ### Fixed

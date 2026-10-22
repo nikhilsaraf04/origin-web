@@ -43,6 +43,16 @@ export function PlaceFormScreen({ visitId }: { visitId?: string }) {
   const set = <K extends keyof PlaceVisit>(key: K, value: PlaceVisit[K]) =>
     setDraft((d) => ({ ...d, [key]: value }));
 
+  // Multi-select kind chips. The first selected kind stays the primary
+  // (`kind`), and the last remaining chip cannot be turned off.
+  const toggleKind = (k: PlaceKind) =>
+    setDraft((d) => {
+      const has = d.kinds.includes(k);
+      if (has && d.kinds.length === 1) return d;
+      const kinds = has ? d.kinds.filter((x) => x !== k) : [...d.kinds, k];
+      return { ...d, kinds, kind: kinds[0] };
+    });
+
   // Suggest directory roasters as you type the name, so a visit can link to a
   // known roaster and mark it tasted.
   const suggestions = useMemo(() => {
@@ -142,14 +152,14 @@ export function PlaceFormScreen({ visitId }: { visitId?: string }) {
           </Field>
         </div>
 
-        <Field label="Kind">
+        <Field label="Kind · pick all that apply">
           <div className="flex flex-wrap gap-s2">
             {PlaceKindAll.map((k) => (
               <Toggle
                 key={k}
                 label={k}
-                active={draft.kind === k}
-                onClick={() => set("kind", k as PlaceKind)}
+                active={draft.kinds.includes(k)}
+                onClick={() => toggleKind(k as PlaceKind)}
               />
             ))}
           </div>

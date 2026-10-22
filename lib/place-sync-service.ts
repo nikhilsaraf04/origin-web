@@ -22,6 +22,9 @@ interface PlaceVisitRow {
   deleted_at: string | null;
   name: string;
   kind: string;
+  /** Full set of kinds as a JSON array; rows from before multi-kind existed
+   *  may still arrive with only `kind`. */
+  kinds?: string[];
   city: string;
   country: string;
   roaster_name: string | null;
@@ -43,6 +46,10 @@ function rowToVisit(r: PlaceVisitRow): PlaceVisit {
     deletedAt: r.deleted_at,
     name: r.name,
     kind: r.kind as PlaceKind,
+    kinds:
+      r.kinds && r.kinds.length > 0
+        ? (r.kinds as PlaceKind[])
+        : [r.kind as PlaceKind],
     city: r.city,
     country: r.country,
     roasterName: r.roaster_name ?? undefined,
@@ -68,7 +75,8 @@ function visitToRow(v: PlaceVisit): PlaceVisitRow {
     updated_at: v.updatedAt ?? new Date().toISOString(),
     deleted_at: v.deletedAt ?? null,
     name: v.name,
-    kind: v.kind,
+    kind: v.kinds && v.kinds.length > 0 ? v.kinds[0] : v.kind,
+    kinds: v.kinds && v.kinds.length > 0 ? v.kinds : [v.kind],
     city: v.city,
     country: v.country,
     roaster_name: v.roasterName ?? null,

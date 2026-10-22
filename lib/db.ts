@@ -114,6 +114,20 @@ function init(db: Database.Database): void {
     CREATE INDEX IF NOT EXISTS idx_place_visits_user_updated
       ON place_visits (user_id, updated_at);
   `);
+
+  // Additive migrations. CREATE TABLE IF NOT EXISTS does nothing for a DB that
+  // already exists, so new columns go in by hand, guarded by table_info.
+  // `kinds` holds the full JSON array of kinds; `kind` stays as the primary
+  // (kinds[0]) so older builds can still read every row.
+  const placeCols = db
+    .prepare("SELECT name FROM pragma_table_info('place_visits')")
+    .all() as { name: string }[];
+  if (!placeCols.some((c) => c.name === "kinds")) {
+    db.exec("ALTER TABLE place_visits ADD COLUMN kinds TEXT NOT NULL DEFAULT '[]'");
+    db.exec(
+      "UPDATE place_visits SET kinds = json_array(kind) WHERE kind <> ''",
+    );
+  }
 }
 
 // ---- Row (de)serialization -------------------------------------------------
@@ -128,7 +142,7 @@ const ARRAY_COLS = [
 
 const BOOL_COLS = ["would_source_again"] as const;
 
-const PLACE_ARRAY_COLS = ["flavor_tags"] as const;
+const PLACE_ARRAY_COLS = ["flavor_tags", "kinds"] as const;
 const PLACE_BOOL_COLS = ["would_return"] as const;
 
 /** DB row (arrays as JSON text, bools as 0/1) -> API row (arrays, bools). */
@@ -229,6 +243,7 @@ export const PLACE_COLUMNS = [
   "deleted_at",
   "name",
   "kind",
+  "kinds",
   "city",
   "country",
   "roaster_name",

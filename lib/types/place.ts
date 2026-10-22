@@ -28,7 +28,13 @@ export interface PlaceVisit {
 
   // The place
   name: string;
+  /** Primary kind — always the first entry of `kinds`. Kept as its own field
+   *  (and its own DB column) so rows written before multi-kind existed stay
+   *  readable by older builds. */
   kind: PlaceKind;
+  /** Every kind that applies — a café that roasts its own beans is both Café
+   *  and Roastery. Always non-empty; `kind` is `kinds[0]`. */
+  kinds: PlaceKind[];
   city: string;
   country: string;
   /** Exact directory entry name when this place is a roaster we already list,
@@ -63,6 +69,7 @@ export function emptyPlaceVisit(): PlaceVisit {
     deletedAt: null,
     name: "",
     kind: PlaceKind.Roastery,
+    kinds: [PlaceKind.Roastery],
     city: "",
     country: "",
     dateVisited: now,
@@ -91,6 +98,12 @@ export interface ExplorationStats {
   best: PlaceVisit | null;
   /** Visits in the trailing 365 days. */
   lastYear: number;
+}
+
+/** All kinds of a visit, tolerating rows written before multi-kind existed
+ *  (localStorage from an older build, or a server row with only `kind`). */
+export function visitKinds(v: Pick<PlaceVisit, "kind" | "kinds">): PlaceKind[] {
+  return v.kinds && v.kinds.length > 0 ? v.kinds : [v.kind];
 }
 
 export function computeExplorationStats(visits: PlaceVisit[]): ExplorationStats {
@@ -132,7 +145,7 @@ export function computeExplorationStats(visits: PlaceVisit[]): ExplorationStats 
     places: live.length,
     cities: cityCounts.size,
     countries: countryCounts.size,
-    roasteries: live.filter((v) => v.kind === PlaceKind.Roastery).length,
+    roasteries: live.filter((v) => visitKinds(v).includes(PlaceKind.Roastery)).length,
     countryList: Array.from(countryCounts.entries())
       .map(([country, count]) => ({ country, count }))
       .sort((a, b) => b.count - a.count || a.country.localeCompare(b.country)),
