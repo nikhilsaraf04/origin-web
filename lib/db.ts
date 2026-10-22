@@ -128,6 +128,16 @@ function init(db: Database.Database): void {
       "UPDATE place_visits SET kinds = json_array(kind) WHERE kind <> ''",
     );
   }
+  // `photo_urls` holds every photo of the visit as a JSON array; `photo_url`
+  // stays as the cover (photo_urls[0]) so older builds can still read it.
+  if (!placeCols.some((c) => c.name === "photo_urls")) {
+    db.exec(
+      "ALTER TABLE place_visits ADD COLUMN photo_urls TEXT NOT NULL DEFAULT '[]'",
+    );
+    db.exec(
+      "UPDATE place_visits SET photo_urls = json_array(photo_url) WHERE photo_url IS NOT NULL AND photo_url <> ''",
+    );
+  }
 }
 
 // ---- Row (de)serialization -------------------------------------------------
@@ -142,7 +152,7 @@ const ARRAY_COLS = [
 
 const BOOL_COLS = ["would_source_again"] as const;
 
-const PLACE_ARRAY_COLS = ["flavor_tags", "kinds"] as const;
+const PLACE_ARRAY_COLS = ["flavor_tags", "kinds", "photo_urls"] as const;
 const PLACE_BOOL_COLS = ["would_return"] as const;
 
 /** DB row (arrays as JSON text, bools as 0/1) -> API row (arrays, bools). */
@@ -255,4 +265,5 @@ export const PLACE_COLUMNS = [
   "would_return",
   "notes",
   "photo_url",
+  "photo_urls",
 ] as const;

@@ -36,6 +36,9 @@ interface PlaceVisitRow {
   would_return: boolean;
   notes: string;
   photo_url: string | null;
+  /** All photos, in display order; rows from before multi-photo existed may
+   *  still arrive with only `photo_url`. */
+  photo_urls?: string[];
 }
 
 function rowToVisit(r: PlaceVisitRow): PlaceVisit {
@@ -61,6 +64,10 @@ function rowToVisit(r: PlaceVisitRow): PlaceVisit {
     wouldReturn: r.would_return,
     notes: r.notes ?? "",
     photoUrl: r.photo_url ?? undefined,
+    photoUrls:
+      r.photo_urls && r.photo_urls.length > 0
+        ? r.photo_urls
+        : (r.photo_url ? [r.photo_url] : []),
   };
 }
 
@@ -87,7 +94,16 @@ function visitToRow(v: PlaceVisit): PlaceVisitRow {
     rating: v.rating,
     would_return: v.wouldReturn,
     notes: v.notes ?? "",
-    photo_url: v.photoUrl ?? null,
+    photo_url:
+      v.photoUrls && v.photoUrls.length > 0
+        ? v.photoUrls[0]
+        : (v.photoUrl ?? null),
+    photo_urls:
+      v.photoUrls && v.photoUrls.length > 0
+        ? v.photoUrls
+        : v.photoUrl
+          ? [v.photoUrl]
+          : [],
   };
 }
 
