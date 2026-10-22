@@ -14,6 +14,7 @@ import {
   computeExplorationStats,
   PlaceKind,
   visitKinds,
+  visitPhotos,
   type PlaceVisit,
 } from "@/lib/types/place";
 
@@ -200,6 +201,7 @@ function formatDate(iso: string): string {
 
 function VisitRow({ visit }: { visit: PlaceVisit }) {
   const location = [visit.city, visit.country].filter(Boolean).join(", ");
+  const photos = visitPhotos(visit);
   return (
     <li className="border-b border-line-1">
       <Link
@@ -226,6 +228,31 @@ function VisitRow({ visit }: { visit: PlaceVisit }) {
 
           {visit.drink && (
             <p className="font-ui text-[13px] text-ink-2 mt-s2">{visit.drink}</p>
+          )}
+
+          {photos.length > 0 && (
+            <div className="flex flex-wrap gap-s2 mt-s2">
+              {photos.slice(0, 4).map((url, i) => (
+                <button
+                  key={url}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(url, "_blank", "noopener,noreferrer");
+                  }}
+                  className="w-[64px] h-[64px] rounded-r2 overflow-hidden border shrink-0"
+                  style={{ borderWidth: "0.5px", borderColor: "var(--line-2)" }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={url}
+                    alt={`${visit.name} photo ${i + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
           )}
 
           {visit.flavorTags.length > 0 && (

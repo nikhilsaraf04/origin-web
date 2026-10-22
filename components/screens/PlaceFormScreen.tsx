@@ -6,7 +6,7 @@
 
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { OLabel } from "@/components/OLabel";
 import { OChip } from "@/components/OChip";
@@ -14,9 +14,14 @@ import { usePlaceStore } from "@/lib/store/place-store";
 import {
   emptyPlaceVisit,
   PlaceKindAll,
+  visitPhotos,
   type PlaceKind,
   type PlaceVisit,
 } from "@/lib/types/place";
+import {
+  fileToDownscaledDataUrl,
+  uploadVisitPhoto,
+} from "@/lib/services/visit-image";
 import { FlavorGroups } from "@/lib/flavor-taxonomy";
 import { ROASTERS } from "@/lib/data/roasters";
 
@@ -39,6 +44,12 @@ export function PlaceFormScreen({ visitId }: { visitId?: string }) {
     () => existing ?? emptyPlaceVisit(),
   );
   const [confirmDelete, setConfirmDelete] = useState(false);
+  // Photos of the visit, in display order. `url` = already stored on the
+  // server; `dataUrl` = freshly picked, uploaded on save.
+  const [photos, setPhotos] = useState<{ url?: string; dataUrl?: string }[]>(
+    () => visitPhotos(existing ?? emptyPlaceVisit()).map((url) => ({ url })),
+  );
+  const fileInput = useRef<HTMLInputElement>(null);
 
   const set = <K extends keyof PlaceVisit>(key: K, value: PlaceVisit[K]) =>
     setDraft((d) => ({ ...d, [key]: value }));
@@ -63,8 +74,37 @@ export function PlaceFormScreen({ visitId }: { visitId?: string }) {
 
   const canSave = draft.name.trim().length > 0 && draft.city.trim().length > 0;
 
-  const onSave = () => {
+  const onPickPhotos = async (files: FileList | null) => {
+    if (!files) return;
+    for (const file of Array.from(files)) {
+      try {
+        const dataUrl = await fileToDownscaledDataUrl(file);
+        setPhotos((p) => [...p, { dataUrl }]);
+      } catch {
+        /* not an image / unreadable — skip */
+      }
+    }
+  };
+
+  const onSave = async () => {
     if (!canSave) return;
+    // Upload freshly picked photos at their final display positions. A failed
+    // upload keeps its local data URL as a preview (as bag photos do) instead
+    // of blocking the save.
+    const urls: string[] = [];
+    const localOnly: string[] = [];
+    for (let i = 0; i < photos.length; i++) {
+      const p = photos[i];
+      if (p.url) {
+        urls.push(p.url);
+      } else if (p.dataUrl) {
+        try {
+          urls.push(await uploadVisitPhoto(draft.id, i, p.dataUrl));
+        } catch {
+          localOnly.push(p.dataUrl);
+        }
+      }
+    }
     const clean: PlaceVisit = {
       ...draft,
       name: draft.name.trim(),
@@ -72,6 +112,10 @@ export function PlaceFormScreen({ visitId }: { visitId?: string }) {
       country: draft.country.trim(),
       drink: draft.drink.trim(),
       notes: draft.notes.trim(),
+      photoUrl: urls[0],
+      photoUrls: urls,
+      photoDataUrl: undefined,
+      photoDataUrls: localOnly.length > 0 ? localOnly : undefined,
     };
     if (existing) update(existing.id, clean);
     else save(clean);
@@ -165,6 +209,54 @@ export function PlaceFormScreen({ visitId }: { visitId?: string }) {
           </div>
         </Field>
 
+        <Field label="Photos">
+          <div className="flex flex-wrap gap-s2">
+            {photos.map((p, i) => (
+              <div
+                key={p.url ?? i}
+                className="relative w-[84px] h-[84px] rounded-r2 overflow-hidden border"
+                style={{ borderWidth: "0.5px", borderColor: "var(--line-2)" }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.url ?? p.dataUrl}
+                  alt={`Photo ${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                <button
+                  type="button"
+                  aria-label="Remove photo"
+                  onClick={() => setPhotos((all) => all.filter((_, j) => j !== i))}
+                  className="absolute top-[4px] right-[4px] w-[18px] h-[18px] rounded-full font-ui text-[10px] flex items-center justify-center"
+                  style={{ background: "rgba(10, 15, 24, 0.75)", color: "var(--ink-2)" }}
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={() => fileInput.current?.click()}
+              className="w-[84px] h-[84px] rounded-r2 border border-dashed flex flex-col items-center justify-center gap-[4px] font-ui text-[10px] uppercase text-ink-3"
+              style={{ borderColor: "var(--ink-4)", letterSpacing: "0.1em" }}
+            >
+              <span className="text-[18px]">+</span>
+              Add photo
+            </button>
+            <input
+              ref={fileInput}
+              type="file"
+              accept="image/*"
+              multiple
+              className="hidden"
+              onChange={(e) => {
+                void onPickPhotos(e.target.files);
+                e.target.value = "";
+              }}
+            />
+          </div>
+        </Field>
+
         <div className="grid grid-cols-2 gap-s4">
           <Field label="When">
             <input
@@ -248,7 +340,7 @@ export function PlaceFormScreen({ visitId }: { visitId?: string }) {
         <div className="flex items-center gap-s3 pt-s2">
           <button
             type="button"
-            onClick={onSave}
+            onClick={() => void onSave()}
             disabled={!canSave}
             className="flex-1 font-ui text-[13px] font-medium py-s4 rounded-r4 transition-colors"
             style={{

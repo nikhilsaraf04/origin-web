@@ -55,9 +55,16 @@ export interface PlaceVisit {
   wouldReturn: boolean;
   notes: string;
 
+  /** Cover photo — always the first entry of `photoUrls`, kept as its own
+   *  field (and DB column) so rows written before multi-photo existed stay
+   *  readable by older builds. */
   photoUrl?: string;
   /** Transient local preview only, dropped once uploaded. */
   photoDataUrl?: string;
+  /** Every photo of the visit, in display order. */
+  photoUrls?: string[];
+  /** Transient local previews for photos not yet uploaded. */
+  photoDataUrls?: string[];
 }
 
 export function emptyPlaceVisit(): PlaceVisit {
@@ -98,6 +105,15 @@ export interface ExplorationStats {
   best: PlaceVisit | null;
   /** Visits in the trailing 365 days. */
   lastYear: number;
+}
+
+/** All photos of a visit, tolerating rows written before multi-photo existed
+ *  (only `photoUrl`, the single cover). */
+export function visitPhotos(
+  v: Pick<PlaceVisit, "photoUrl" | "photoUrls">,
+): string[] {
+  if (v.photoUrls && v.photoUrls.length > 0) return v.photoUrls;
+  return v.photoUrl ? [v.photoUrl] : [];
 }
 
 /** All kinds of a visit, tolerating rows written before multi-kind existed

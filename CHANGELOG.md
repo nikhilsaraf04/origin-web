@@ -5,6 +5,34 @@ Format: `vMAJOR.MINOR.PATCH — description`
 
 ---
 
+## v0.15.0 — Photos on visits (2026-10-22)
+
+For Nikhil. A visit can now carry photos — the room, the cup, the bag on the
+shelf — attached from the New visit / Edit visit form.
+
+### Added
+
+- **Photos field on the visit form** (`components/screens/PlaceFormScreen.tsx`)
+  — pick several from camera or library, each downscaled in the browser
+  (1600px JPEG) before upload, removable before saving.
+- **Photo storage** (`lib/services/visit-image.ts`) — photos upload through
+  the existing image endpoint as `/api/images/<visitId>-<index>`, so bytes sit
+  on the Fly volume next to bag photos and the visit row stays small.
+- **Places list shows thumbnails** (`components/screens/PlacesScreen.tsx`) —
+  up to four per visit; tapping one opens the full photo.
+- **`photoUrls` on the visit model** (`lib/types/place.ts`) — `photoUrl` stays
+  as the cover (first photo) so older builds and old rows keep reading
+  cleanly; a failed upload keeps its local preview instead of blocking the
+  save.
+
+### Migration
+
+- Server DB: additive only — `place_visits` gains a `photo_urls` JSON column,
+  backfilled from `photo_url` on first boot. Covered by the same
+  `/data/origin-backup-20261022-p0.db` snapshot taken before v0.14.0.
+
+---
+
 ## v0.14.0 — Multi-kind places (2026-10-22)
 
 For Nikhil. A place can now be more than one kind — Lonich in Tokyo is a café
